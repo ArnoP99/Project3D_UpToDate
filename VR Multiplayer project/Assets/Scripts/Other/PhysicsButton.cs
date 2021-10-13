@@ -14,6 +14,7 @@ public class PhysicsButton : MonoBehaviour
     private bool isPressed = false;
     private Vector3 startPos;
     private ConfigurableJoint joint;
+    private Vector3 currentPos;
 
     public UnityEvent onPressed, onReleased;
 
@@ -31,6 +32,7 @@ public class PhysicsButton : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         Released();
+        currentPos = collision.transform.position;
 
         if (collision.gameObject.tag == "RightController" || collision.gameObject.tag == "LeftController")
         {
@@ -39,13 +41,13 @@ public class PhysicsButton : MonoBehaviour
             if (gameObject.tag == "AgressorButton")
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-                Instantiate(prefabAgressor, Vector3.zero, Quaternion.identity, visualRep.transform);
+                Instantiate(prefabAgressor, currentPos, Quaternion.identity, visualRep.transform);
 
             }
             if (gameObject.tag == "NurseButton")
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-                Instantiate(prefabNurse, Vector3.zero, Quaternion.identity, visualRep.transform);
+                Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
             }
         }
     }

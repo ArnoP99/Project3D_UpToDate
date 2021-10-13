@@ -27,7 +27,7 @@ public class PhysicsButton : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Pressed();
-        currentPos = collision.transform.parent.transform.parent.transform.parent.position;
+        currentPos = collision.transform.parent.transform.parent.position;
 
         if (collision.gameObject.tag == "RightController" || collision.gameObject.tag == "LeftController")
         {

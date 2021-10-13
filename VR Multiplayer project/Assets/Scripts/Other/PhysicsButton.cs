@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PhysicsButton : MonoBehaviour
 {
@@ -44,6 +45,11 @@ public class PhysicsButton : MonoBehaviour
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
                 Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
             }
+        }
+        if( gameObject.tag == "SceneButton")
+        {
+            SceneManager.LoadScene("TestScene");
+            Scene ziekenHuisKamer = SceneManager.GetSceneByName("ZiekenhuisKamer");
         }
     }
 

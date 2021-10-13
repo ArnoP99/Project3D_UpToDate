@@ -8,6 +8,7 @@ TagManager:
   - AgressorButton
   - LeftController
   - RightController
+  - SceneButton
   layers:
   - Default
   - TransparentFX

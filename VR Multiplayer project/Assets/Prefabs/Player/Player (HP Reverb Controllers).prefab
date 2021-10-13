@@ -705,6 +705,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1261382824632662450, guid: b8b3db4d94947074f95543cd83ac90eb,
+        type: 3}
+      propertyPath: m_TagString
+      value: LeftController
+      objectReference: {fileID: 0}
     - target: {fileID: 1870997956503366559, guid: b8b3db4d94947074f95543cd83ac90eb,
         type: 3}
       propertyPath: m_TrackingType
@@ -809,6 +814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874701982357180808, guid: cf3130c43f3a029419da6f1c4e36751c,
+        type: 3}
+      propertyPath: m_TagString
+      value: RightController
       objectReference: {fileID: 0}
     - target: {fileID: 4101238782127868349, guid: cf3130c43f3a029419da6f1c4e36751c,
         type: 3}

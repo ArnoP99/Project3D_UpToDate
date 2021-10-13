@@ -1111,7 +1111,7 @@ MonoBehaviour:
   autoStartServerBuild: 1
   serverTickRate: 30
   offlineScene: Assets/Scenes/Wachtkamer.unity
-  onlineScene: Assets/Scenes/ZiekenhuisKamer.unity
+  onlineScene: 
   transport: {fileID: 686124236}
   networkAddress: 192.30.20.200
   maxConnections: 100

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - NurseButton
   - AgressorButton
+  - LeftController
+  - RightController
   layers:
   - Default
   - TransparentFX

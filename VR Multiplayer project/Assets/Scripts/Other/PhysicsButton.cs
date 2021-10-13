@@ -27,11 +27,6 @@ public class PhysicsButton : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Pressed();
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        Released();
         currentPos = collision.transform.position;
 
         if (collision.gameObject.tag == "RightController" || collision.gameObject.tag == "LeftController")
@@ -50,6 +45,11 @@ public class PhysicsButton : MonoBehaviour
                 Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
             }
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Released();
     }
 
     private float GetValue()

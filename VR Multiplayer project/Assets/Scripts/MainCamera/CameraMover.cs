@@ -27,6 +27,7 @@ public class CameraMover : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         focusTarget = new Vector3(0, 0, 0); //Starting focus po_int is the origin
     }
 

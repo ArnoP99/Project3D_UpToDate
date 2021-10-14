@@ -36,6 +36,7 @@ public class ControllerConfiguration : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         optitrackStreamingClient = GameObject.Find("OptitrackClient").GetComponent<OptitrackStreamingClient>(); //Find optitrack client
 
         //Fills dictionairy with possible mac adresses and corresponding rigidbody ID's

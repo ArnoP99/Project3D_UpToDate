@@ -183,6 +183,10 @@ public class OptitrackStreamingClient : MonoBehaviour
     private object m_frameDataUpdateLock = new object();
     #endregion Private fields
 
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Update()
     {

@@ -14,6 +14,7 @@ public class NetworkConfiguration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         string jsonPath = File.ReadAllText(@"C:/KDGConfig/Backpackconfiguration.json");
 
         GameSettings = JsonUtility.FromJson<settings>(jsonPath);

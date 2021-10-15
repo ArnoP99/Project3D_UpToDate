@@ -8,7 +8,7 @@ public class SyncVisualRep : NetworkBehaviour
 
     void Update()
     {
-        string name = gameObject.transform.parent.transform.parent.name;
+        string name = gameObject.name;
         CmdTest(name);
     }
 

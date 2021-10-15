@@ -9,6 +9,7 @@ TagManager:
   - LeftController
   - RightController
   - SceneButton
+  - ChoicePopUp
   layers:
   - Default
   - TransparentFX

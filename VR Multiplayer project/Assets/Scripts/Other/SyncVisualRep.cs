@@ -9,15 +9,12 @@ public class SyncVisualRep : NetworkBehaviour
     void Update()
     {
         string name = gameObject.name;
-        CmdTest(name);
+        RpcTest(name);
     }
 
-    [Command(requiresAuthority = false)]
-    public void CmdTest(string s)
+    [ClientRpc]
+    public void RpcTest(string s)
     {
-        Debug.Log("Test" + s);
-        
-       
+        Debug.Log("Test" + s);              
     }
-
 }

@@ -9,11 +9,11 @@ public class SyncVisualRep : NetworkBehaviour
     void Update()
     {
         string name = gameObject.transform.parent.transform.parent.name;
-        Testcmd(name);
+        CmdTest(name);
     }
 
     [Command(requiresAuthority = false)]
-    public void Testcmd(string s)
+    public void CmdTest(string s)
     {
         Debug.Log("Test" + s);
         

@@ -7,7 +7,6 @@ public class HPReverbControls : MonoBehaviour
 {
     GameObject textPopUp;
 
-
     public void Start()
     {
 

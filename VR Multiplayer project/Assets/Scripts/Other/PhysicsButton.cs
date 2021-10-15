@@ -27,23 +27,25 @@ public class PhysicsButton : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         Pressed();
         currentPos = collision.transform.parent.transform.parent.position;
 
         if (collision.gameObject.tag == "RightController" || collision.gameObject.tag == "LeftController")
         {
             GameObject visualRep = collision.gameObject.transform.parent.transform.parent.Find("VisualRepresentation").gameObject;
-
+            
             if (gameObject.tag == "AgressorButton")
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
                 Instantiate(prefabAgressor, currentPos, Quaternion.identity, visualRep.transform);
-
+                visualRep.GetComponent<SyncVisualRep>().SetVisualRepType(1);
             }
             if (gameObject.tag == "NurseButton")
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
                 Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
+                visualRep.GetComponent<SyncVisualRep>().SetVisualRepType(2);
             }
             if (gameObject.tag == "SceneButton")
             {

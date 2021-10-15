@@ -5,22 +5,19 @@ using UnityEngine;
 
 public class SyncVisualRep : NetworkBehaviour
 {
-    [SyncVar] int visualRep = 0;
-    void Start()
-    {
-
-    }
-
 
     void Update()
     {
-        Debug.Log("New visual rep = " + visualRep);
+        string name = gameObject.transform.parent.transform.parent.name;
+        Testcmd(name);
     }
 
-    public void SetVisualRepType(int x)
+    [Command(requiresAuthority = false)]
+    public void Testcmd(string s)
     {
-        visualRep = x;
-        Debug.Log("New visual rep = " + x);
+        Debug.Log("Test" + s);
+        
+       
     }
 
 }

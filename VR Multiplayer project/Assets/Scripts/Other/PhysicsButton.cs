@@ -38,14 +38,12 @@ public class PhysicsButton : MonoBehaviour
             if (gameObject.tag == "AgressorButton")
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-                Instantiate(prefabAgressor, currentPos, Quaternion.identity, visualRep.transform);
-                visualRep.GetComponent<SyncVisualRep>().SetVisualRepType(1);
+                Instantiate(prefabAgressor, currentPos, Quaternion.identity, visualRep.transform);                
             }
             if (gameObject.tag == "NurseButton")
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-                Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
-                visualRep.GetComponent<SyncVisualRep>().SetVisualRepType(2);
+                Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);                
             }
             if (gameObject.tag == "SceneButton")
             {

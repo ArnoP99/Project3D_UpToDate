@@ -1,3 +1,4 @@
+using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,16 +35,19 @@ public class PhysicsButton : MonoBehaviour
         if (collision.gameObject.tag == "RightController" || collision.gameObject.tag == "LeftController")
         {
             GameObject visualRep = collision.gameObject.transform.parent.transform.parent.Find("VisualRepresentation").gameObject;
+            GameObject player = collision.gameObject.transform.parent.transform.parent.transform.parent.gameObject;
             
             if (gameObject.tag == "AgressorButton")
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-                Instantiate(prefabAgressor, currentPos, Quaternion.identity, visualRep.transform);                
+                Instantiate(prefabAgressor, currentPos, Quaternion.identity, visualRep.transform);
+                player.GetComponent<NetworkTransformChild>().target = visualRep.transform.gameObject.transform.GetChild(0);
             }
             if (gameObject.tag == "NurseButton")
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-                Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);                
+                Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
+                player.GetComponent<NetworkTransformChild>().target = visualRep.transform.gameObject.transform.GetChild(0);
             }
             if (gameObject.tag == "SceneButton")
             {

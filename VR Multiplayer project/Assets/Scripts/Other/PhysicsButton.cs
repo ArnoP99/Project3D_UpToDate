@@ -41,13 +41,17 @@ public class PhysicsButton : MonoBehaviour
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
                 Instantiate(prefabAgressor, currentPos, Quaternion.identity, visualRep.transform);
+                Debug.Log("pre");
                 player.GetComponent<NetworkTransformChild>().target = visualRep.transform.gameObject.transform.GetChild(0);
+                Debug.Log("post");
             }
             if (gameObject.tag == "NurseButton")
             {
                 Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
                 Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
+                Debug.Log("pre");
                 player.GetComponent<NetworkTransformChild>().target = visualRep.transform.gameObject.transform.GetChild(0);
+                Debug.Log("post");
             }
             if (gameObject.tag == "SceneButton")
             {

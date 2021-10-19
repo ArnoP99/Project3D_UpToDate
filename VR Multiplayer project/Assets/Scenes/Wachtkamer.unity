@@ -5802,7 +5802,7 @@ GameObject:
   - component: {fileID: 1977596255}
   m_Layer: 0
   m_Name: Push
-  m_TagString: NurseButton
+  m_TagString: SceneButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5871,7 +5871,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 1.5100005, z: 0.000000018626451}
+  m_ConnectedAnchor: {x: 0, y: 1.5100002, z: 0}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -6323,7 +6323,7 @@ GameObject:
   - component: {fileID: 2126869133}
   m_Layer: 0
   m_Name: Button (2)
-  m_TagString: SceneButton
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

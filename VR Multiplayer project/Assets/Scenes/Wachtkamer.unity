@@ -7348,9 +7348,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
-  prefabAgressor: {fileID: 83747920531053266, guid: 973027a873441af448f7493b9ce92e69,
+  prefabAgressor: {fileID: 8041295142563249104, guid: 6a4697ba12b88e44ebc80d4c81eceb58,
     type: 3}
-  prefabNurse: {fileID: 4995492246537770531, guid: 534cf32dfddd16d4783fd35032117be5,
+  prefabNurse: {fileID: 4463421280674292054, guid: d290e166a43063241892d196dcd036b3,
     type: 3}
   onPressed:
     m_PersistentCalls:
@@ -11022,9 +11022,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
-  prefabAgressor: {fileID: 83747920531053266, guid: 973027a873441af448f7493b9ce92e69,
+  prefabAgressor: {fileID: 8041295142563249104, guid: 6a4697ba12b88e44ebc80d4c81eceb58,
     type: 3}
-  prefabNurse: {fileID: 4995492246537770531, guid: 534cf32dfddd16d4783fd35032117be5,
+  prefabNurse: {fileID: 4463421280674292054, guid: d290e166a43063241892d196dcd036b3,
     type: 3}
   onPressed:
     m_PersistentCalls:

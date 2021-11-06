@@ -21,8 +21,8 @@ TagManager:
   - TLLights
   - Walls
   - Throwables
-  - 
-  - 
+  - TLLightsRoom
+  - TLLightsHallway
   - 
   - 
   - 

@@ -10,6 +10,9 @@ TagManager:
   - RightController
   - SceneButton
   - ChoicePopUp
+  - TVRemoteButton
+  - LightSwitch
+  - EKGButton
   layers:
   - Default
   - TransparentFX

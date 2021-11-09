@@ -36327,6 +36327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8511379926973371614, guid: c416c4665ee488242bd4931d01a57635,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511379926973371614, guid: c416c4665ee488242bd4931d01a57635,
+        type: 3}
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
@@ -36432,7 +36437,7 @@ LODGroup:
   - screenRelativeHeight: 0.1
     fadeTransitionWidth: 0
     renderers: []
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &7710679985382821762
 GameObject:
   m_ObjectHideFlags: 0

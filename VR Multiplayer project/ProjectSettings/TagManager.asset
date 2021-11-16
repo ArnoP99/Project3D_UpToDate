@@ -13,6 +13,11 @@ TagManager:
   - TVRemoteButton
   - LightSwitch
   - EKGButton
+  - Nurse
+  - InactiveChoise
+  - Agressor
+  - ActiveChoise
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -26,7 +31,7 @@ TagManager:
   - Throwables
   - TLLightsRoom
   - TLLightsHallway
-  - 
+  - Player
   - 
   - 
   - 

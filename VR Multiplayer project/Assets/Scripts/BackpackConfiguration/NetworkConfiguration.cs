@@ -8,7 +8,7 @@ using System.IO;
 public class NetworkConfiguration : MonoBehaviour
 {
     public static settings GameSettings;
-    public  NetworkManager _networkManager;
+    public NetworkManager _networkManager;
     public bool IsServer;
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class NetworkConfiguration : MonoBehaviour
         GameSettings = JsonUtility.FromJson<settings>(jsonPath);
 
         //Set wether this device is the server
-        if(GameSettings.ID == 0)
+        if (GameSettings.ID == 0)
         {
             IsServer = true;
         }

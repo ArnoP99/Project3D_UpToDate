@@ -1,12 +1,11 @@
 using Mirror;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class PhysicsButton : MonoBehaviour
+public class PhysicsButton : NetworkBehaviour
 {
     [SerializeField] private float threshold = 0.1f;
     [SerializeField] private float deadZone = 0.025f;
@@ -30,32 +29,29 @@ public class PhysicsButton : MonoBehaviour
     {
 
         Pressed();
+
         currentPos = collision.transform.parent.transform.parent.position;
 
         if (collision.gameObject.tag == "RightController" || collision.gameObject.tag == "LeftController")
         {
-            GameObject visualRep = collision.gameObject.transform.parent.transform.parent.Find("VisualRepresentation").gameObject;
             GameObject player = collision.gameObject.transform.parent.transform.parent.transform.parent.gameObject;
-            
+
             if (gameObject.tag == "AgressorButton")
             {
-                player.SetActive(false);
-                Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);                
-                Instantiate(prefabAgressor, currentPos, Quaternion.identity, visualRep.transform);
-                Debug.Log("pre");
-                player.GetComponent<NetworkTransformChild>().target = visualRep.transform.gameObject.transform.GetChild(0);
-                Debug.Log("post");
-                player.SetActive(true);
+                Debug.Log("IsLocalPlayer A: " + (player == isClient));
+
+                if (player == isClient)
+                {
+                    CmdUpdateAgressor(player);
+                }
             }
             if (gameObject.tag == "NurseButton")
             {
-                player.SetActive(false);
-                Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-                Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
-                Debug.Log("pre");
-                player.GetComponent<NetworkTransformChild>().target = visualRep.transform.gameObject.transform.GetChild(0);
-                Debug.Log("post");
-                player.SetActive(true);
+                Debug.Log("IsLocalPlayer N: " + (player == isClient));
+                if (player == isClient)
+                {
+                    CmdUpdateNurse(player);
+                }
             }
             if (gameObject.tag == "SceneButton")
             {
@@ -84,9 +80,8 @@ public class PhysicsButton : MonoBehaviour
     private void Pressed()
     {
         isPressed = true;
-        Debug.Log("Pressed");
         onPressed.Invoke();
-
+        Debug.Log("Pressed");
     }
 
     private void Released()
@@ -94,5 +89,55 @@ public class PhysicsButton : MonoBehaviour
         isPressed = false;
         onReleased.Invoke();
         Debug.Log("Released");
+    }
+
+    //[Command(requiresAuthority = false)]
+    //void CmdMessageTest(GameObject player)
+    //{
+    //    Debug.Log("This is a message run from the server, initiated by the player: " + player.name);
+    //}
+
+    //[ClientRpc(includeOwner = false)]
+    //public void RpcTest()
+    //{
+    //    Debug.Log("Message from Server To Client");
+    //}
+
+    //[TargetRpc]
+    //public void TargetTest(NetworkConnection target)
+    //{
+    //    Debug.Log("server to specific target");
+    //}
+
+    [Command(requiresAuthority = false)]
+    void CmdUpdateNurse(GameObject player)
+    {
+        RpcUpdateNurse(player);
+    }
+
+    [Command(requiresAuthority = false)]
+    void CmdUpdateAgressor(GameObject player)
+    {
+        RpcUpdateAgressor(player);
+    }
+
+    [ClientRpc]
+    public void RpcUpdateNurse(GameObject player)
+    {
+        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
+        player.tag = "Nurse";
+        Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
+        Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
+        GameManager.CheckForTwoPlayers(1); // Tell gamemanager an agressor has been initialized.
+    }
+
+    [ClientRpc]
+    public void RpcUpdateAgressor(GameObject player)
+    {
+        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
+        player.tag = "Agressor";
+        Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
+        Instantiate(prefabAgressor, currentPos, player.transform.GetChild(0).transform.GetChild(0).rotation, visualRep.transform);
+        GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.
     }
 }

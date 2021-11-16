@@ -23,9 +23,9 @@ public class SetUpManager : MonoBehaviour
     void Update()
     {
         //Check which backpacks are active
-        if(!gameHasStarted)
+        if (!gameHasStarted)
         {
-            for(byte i = 0; i < playerParent.childCount; i++)
+            for (byte i = 0; i < playerParent.childCount; i++)
             {
                 currentBackpack = playerParent.GetChild(i).GetComponent<PlayerConfiguration>().PlayerID;
                 if (currentBackpack > 0)

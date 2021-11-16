@@ -7,7 +7,8 @@ public class ControllersToHMDLocal : MonoBehaviour
     {
         Vector3 pos = Vector3.zero;
 
-        if(TryGetCenterEyePosition(out pos)){
+        if (TryGetCenterEyePosition(out pos))
+        {
             //Set it's position as the HMD negative position to substract additional movement on the controllers if the HMD is on 3DOF.
             transform.localPosition = -pos;
         }
@@ -16,9 +17,10 @@ public class ControllersToHMDLocal : MonoBehaviour
     bool TryGetCenterEyePosition(out Vector3 position)
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.CenterEye);
-        if(device.isValid)
+        if (device.isValid)
         {
-            if (device.TryGetFeatureValue(CommonUsages.centerEyePosition, out position)){
+            if (device.TryGetFeatureValue(CommonUsages.centerEyePosition, out position))
+            {
                 return true;
             }
         }
@@ -28,7 +30,8 @@ public class ControllersToHMDLocal : MonoBehaviour
     }
 
     //On Disable the script just use the normal position for the controllers.
-    private void OnDisable() {
+    private void OnDisable()
+    {
         transform.localPosition = Vector3.zero;
     }
 }

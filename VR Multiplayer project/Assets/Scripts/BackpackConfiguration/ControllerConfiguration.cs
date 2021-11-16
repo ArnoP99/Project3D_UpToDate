@@ -51,7 +51,7 @@ public class ControllerConfiguration : MonoBehaviour
     //Checks which controllers need to be used
     public void InstantiateControllers()
     {
-        switch(typeOfController)
+        switch (typeOfController)
         {
             case TypeOfController.None:
                 break;
@@ -69,9 +69,8 @@ public class ControllerConfiguration : MonoBehaviour
 
     private void InstantiateReverbControllers()
     {
-        
     }
-    
+
     //Creates all blaster rigidbodies (also the ones that aren't used)
     private void InstantiateStriker()
     {

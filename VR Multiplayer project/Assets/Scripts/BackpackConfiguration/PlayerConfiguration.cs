@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-using UnityEngine.XR;
 using UnityEngine.SpatialTracking;
 using UnityEngine.InputSystem;
 
@@ -12,6 +10,8 @@ public class PlayerConfiguration : NetworkBehaviour
     public OptitrackHmd optitrackrigidHmd;
     public OptitrackStreamingClient optitrackClient;
     public ControllerConfiguration controllerConfiguration;
+    public ControllersToHMDLocal controllersToHMDLocal;
+    public SyncRotation syncRotation;
 
     public OptitrackRigidBody blaster;
 
@@ -42,13 +42,15 @@ public class PlayerConfiguration : NetworkBehaviour
         myCamera = this.GetComponentInChildren<Camera>();
         optitrackClient = GameObject.Find("OptitrackClient").GetComponent<OptitrackStreamingClient>();
         controllerConfiguration = GameObject.Find("Controllers").GetComponent<ControllerConfiguration>();
-
+        controllersToHMDLocal = this.GetComponentInChildren<ControllersToHMDLocal>();
+        syncRotation = this.GetComponentInChildren<SyncRotation>();
 
         if (isLocalPlayer)
         {
-            //When it is the local player and isn't the server/PC enable the camera, the tracked pose driver of tyhe camera
+            //When it is the local player and isn't the server/PC enable the camera, the tracked pose driver of the camera
             if (NetworkConfiguration.GameSettings.ID != 0)
             {
+                syncRotation.enabled = true;
                 TrackedPoseDriver.enabled = true;
                 myCamera.enabled = true;
                 myCamera.GetComponent<AudioListener>().enabled = true;
@@ -56,6 +58,8 @@ public class PlayerConfiguration : NetworkBehaviour
             //When it is the local player and it is the server/PC enable the main camera
             else
             {
+                syncRotation.enabled = false;
+                controllersToHMDLocal.enabled = false;
                 myCamera.enabled = false;
                 myCamera.GetComponent<AudioListener>().enabled = false;
                 GameObject.Find("Main camera").GetComponent<Camera>().enabled = true;
@@ -69,24 +73,26 @@ public class PlayerConfiguration : NetworkBehaviour
         //When it isn't the local player dissable camera and audiolistener
         else
         {
+            syncRotation.enabled = false;
             TrackedPoseDriver.enabled = false;
             myCamera.enabled = false;
             myCamera.GetComponent<AudioListener>().enabled = false;
         }
 
-        //Make server/PC player invissable
-        if(PlayerID == 0)
+        //Make server/PC player invisible and make hands invisible
+        if (PlayerID == 0)
         {
             this.GetComponentInChildren<MeshRenderer>().enabled = false;
+            this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+            this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
         }
-
         this.transform.parent = GameObject.Find("Players").transform; //Set 'Players" gameobject as parent
 
         optitrackClient.LocalAddress = NetworkConfiguration.GameSettings.IPAdress; //Set IP adress
         optitrackClient.enabled = true;
 
         //When we use the HPReverb Controllers and this isn't the server/PC instantiate the reverb controllers
-        if(controllerConfiguration.typeOfController == ControllerConfiguration.TypeOfController.ReverbControllers && PlayerID != 0)
+        if (controllerConfiguration.typeOfController == ControllerConfiguration.TypeOfController.ReverbControllers && PlayerID != 0)
         {
             InstantiateReverbControllers();
         }

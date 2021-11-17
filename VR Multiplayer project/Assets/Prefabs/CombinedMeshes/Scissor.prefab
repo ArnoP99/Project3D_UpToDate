@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8850424165551282819}
   - component: {fileID: 5182993523343835880}
   - component: {fileID: 2329065920575247160}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Scissor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 7425463085798346783}
   - component: {fileID: 2087534138607841921}
   - component: {fileID: 2877170624313112122}
+  - component: {fileID: 8187436613791605388}
   m_Layer: 0
   m_Name: LeftController
   m_TagString: LeftController
@@ -521,6 +522,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88e563fe427264943abe92fb475040d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8187436613791605388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3900617060937231423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79d6b9bcfd482e4f9ba8849c7fae60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4254969924763305379
@@ -720,6 +733,7 @@ GameObject:
   - component: {fileID: 7167339889536513487}
   - component: {fileID: 8735425951221177279}
   - component: {fileID: 5502666571924201948}
+  - component: {fileID: 6573560629407152156}
   m_Layer: 12
   m_Name: Player (HP Reverb Controllers)
   m_TagString: Untagged
@@ -1085,6 +1099,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+--- !u!114 &6573560629407152156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254969925439542407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c747fa09787d17f4ba1d2ca4669d2a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  prefabAgressor: {fileID: 8041295142563249104, guid: 6a4697ba12b88e44ebc80d4c81eceb58,
+    type: 3}
+  prefabNurse: {fileID: 4463421280674292054, guid: d290e166a43063241892d196dcd036b3,
+    type: 3}
 --- !u!114 &4910937999900162877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,15 +1494,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4892608040228600679, guid: 13173dd926b1f5a43a22227f54e827fd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 13173dd926b1f5a43a22227f54e827fd, type: 3}
---- !u!1 &5956070972319153673 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1306230381332696143, guid: 13173dd926b1f5a43a22227f54e827fd,
-    type: 3}
-  m_PrefabInstance: {fileID: 4650141859861082694}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3147315156693137146 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7720609124690691260, guid: 13173dd926b1f5a43a22227f54e827fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4650141859861082694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5956070972319153673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1306230381332696143, guid: 13173dd926b1f5a43a22227f54e827fd,
     type: 3}
   m_PrefabInstance: {fileID: 4650141859861082694}
   m_PrefabAsset: {fileID: 0}

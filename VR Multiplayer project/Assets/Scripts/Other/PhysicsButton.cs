@@ -1,143 +1,133 @@
-using Mirror;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+//using Mirror;
+//using System;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using UnityEngine.Events;
+//using UnityEngine.SceneManagement;
 
-public class PhysicsButton : NetworkBehaviour
-{
-    [SerializeField] private float threshold = 0.1f;
-    [SerializeField] private float deadZone = 0.025f;
-    [SerializeField] public GameObject prefabAgressor;
-    [SerializeField] public GameObject prefabNurse;
+//public class PhysicsButton : NetworkBehaviour
+//{
+    
 
-    private bool isPressed = false;
-    private Vector3 startPos;
-    private ConfigurableJoint joint;
-    private Vector3 currentPos;
+//    void Start()
+//    {
+//        startPos = transform.localPosition;
+//        joint = GetComponent<ConfigurableJoint>();
+//    }
 
-    public UnityEvent onPressed, onReleased;
+//    private void OnCollisionEnter(Collision collision)
+//    {
 
-    void Start()
-    {
-        startPos = transform.localPosition;
-        joint = GetComponent<ConfigurableJoint>();
-    }
+//        Pressed();
 
-    private void OnCollisionEnter(Collision collision)
-    {
+//        currentPos = collision.transform.parent.transform.parent.position;
 
-        Pressed();
+//        if (collision.gameObject.tag == "RightController" || collision.gameObject.tag == "LeftController")
+//        {
+//            GameObject player = collision.gameObject.transform.parent.transform.parent.transform.parent.gameObject;
 
-        currentPos = collision.transform.parent.transform.parent.position;
+//            if (gameObject.tag == "AgressorButton")
+//            {
+//                Debug.Log("IsLocalPlayer A: " + (player == isClient));
 
-        if (collision.gameObject.tag == "RightController" || collision.gameObject.tag == "LeftController")
-        {
-            GameObject player = collision.gameObject.transform.parent.transform.parent.transform.parent.gameObject;
+//                if (player == isClient)
+//                {
+//                    CmdUpdateAgressor(player);
+//                }
+//            }
+//            if (gameObject.tag == "NurseButton")
+//            {
+//                Debug.Log("IsLocalPlayer N: " + (player == isClient));
+//                if (player == isClient)
+//                {
+//                    CmdUpdateNurse(player);
+//                }
+//            }
+//            //if (gameObject.tag == "SceneButton")
+//            //{
+//            //    SceneManager.LoadScene("ZiekenhuisKamer");
+//            //    Scene ziekenHuisKamer = SceneManager.GetSceneByName("ZiekenhuisKamer");
+//            //}
+//        }
+//    }
 
-            if (gameObject.tag == "AgressorButton")
-            {
-                Debug.Log("IsLocalPlayer A: " + (player == isClient));
+//    private void OnCollisionExit(Collision collision)
+//    {
+//        Released();
+//    }
 
-                if (player == isClient)
-                {
-                    CmdUpdateAgressor(player);
-                }
-            }
-            if (gameObject.tag == "NurseButton")
-            {
-                Debug.Log("IsLocalPlayer N: " + (player == isClient));
-                if (player == isClient)
-                {
-                    CmdUpdateNurse(player);
-                }
-            }
-            //if (gameObject.tag == "SceneButton")
-            //{
-            //    SceneManager.LoadScene("ZiekenhuisKamer");
-            //    Scene ziekenHuisKamer = SceneManager.GetSceneByName("ZiekenhuisKamer");
-            //}
-        }
-    }
+//    private float GetValue()
+//    {
+//        var value = Vector3.Distance(startPos, transform.localPosition) / joint.linearLimit.limit;
 
-    private void OnCollisionExit(Collision collision)
-    {
-        Released();
-    }
+//        if (Math.Abs(value) < deadZone)
+//        {
+//            value = 0;
+//        }
+//        return Mathf.Clamp(value, -1f, 1f);
+//    }
 
-    private float GetValue()
-    {
-        var value = Vector3.Distance(startPos, transform.localPosition) / joint.linearLimit.limit;
+//    private void Pressed()
+//    {
+//        isPressed = true;
+//        onPressed.Invoke();
+//        Debug.Log("Pressed");
+//    }
 
-        if (Math.Abs(value) < deadZone)
-        {
-            value = 0;
-        }
-        return Mathf.Clamp(value, -1f, 1f);
-    }
+//    private void Released()
+//    {
+//        isPressed = false;
+//        onReleased.Invoke();
+//        Debug.Log("Released");
+//    }
 
-    private void Pressed()
-    {
-        isPressed = true;
-        onPressed.Invoke();
-        Debug.Log("Pressed");
-    }
+//    //[Command(requiresAuthority = false)]
+//    //void CmdMessageTest(GameObject player)
+//    //{
+//    //    Debug.Log("This is a message run from the server, initiated by the player: " + player.name);
+//    //}
 
-    private void Released()
-    {
-        isPressed = false;
-        onReleased.Invoke();
-        Debug.Log("Released");
-    }
+//    //[ClientRpc(includeOwner = false)]
+//    //public void RpcTest()
+//    //{
+//    //    Debug.Log("Message from Server To Client");
+//    //}
 
-    //[Command(requiresAuthority = false)]
-    //void CmdMessageTest(GameObject player)
-    //{
-    //    Debug.Log("This is a message run from the server, initiated by the player: " + player.name);
-    //}
+//    //[TargetRpc]
+//    //public void TargetTest(NetworkConnection target)
+//    //{
+//    //    Debug.Log("server to specific target");
+//    //}
 
-    //[ClientRpc(includeOwner = false)]
-    //public void RpcTest()
-    //{
-    //    Debug.Log("Message from Server To Client");
-    //}
+//    [Command(requiresAuthority = false)]
+//    void CmdUpdateNurse(GameObject player)
+//    {
+//        RpcUpdateNurse(player);
+//    }
 
-    //[TargetRpc]
-    //public void TargetTest(NetworkConnection target)
-    //{
-    //    Debug.Log("server to specific target");
-    //}
+//    [Command(requiresAuthority = false)]
+//    void CmdUpdateAgressor(GameObject player)
+//    {
+//        RpcUpdateAgressor(player);
+//    }
 
-    [Command(requiresAuthority = false)]
-    void CmdUpdateNurse(GameObject player)
-    {
-        RpcUpdateNurse(player);
-    }
+//    [ClientRpc]
+//    public void RpcUpdateNurse(GameObject player)
+//    {
+//        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
+//        player.tag = "Nurse";
+//        Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
+//        Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
+//        GameManager.CheckForTwoPlayers(1); // Tell gamemanager an agressor has been initialized.
+//    }
 
-    [Command(requiresAuthority = false)]
-    void CmdUpdateAgressor(GameObject player)
-    {
-        RpcUpdateAgressor(player);
-    }
-
-    [ClientRpc]
-    public void RpcUpdateNurse(GameObject player)
-    {
-        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
-        player.tag = "Nurse";
-        Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-        Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
-        GameManager.CheckForTwoPlayers(1); // Tell gamemanager an agressor has been initialized.
-    }
-
-    [ClientRpc]
-    public void RpcUpdateAgressor(GameObject player)
-    {
-        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
-        player.tag = "Agressor";
-        Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-        Instantiate(prefabAgressor, currentPos, player.transform.GetChild(0).transform.GetChild(0).rotation, visualRep.transform);
-        GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.
-    }
-}
+//    [ClientRpc]
+//    public void RpcUpdateAgressor(GameObject player)
+//    {
+//        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
+//        player.tag = "Agressor";
+//        Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
+//        Instantiate(prefabAgressor, currentPos, player.transform.GetChild(0).transform.GetChild(0).rotation, visualRep.transform);
+//        GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.
+//    }
+//}

@@ -9,6 +9,7 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     [SerializeField] public GameObject prefabNurse;
 
     private Vector3 currentPos;
+    private Quaternion currentRot;
 
     public void ExecuteNurseChange(GameObject player)
     {
@@ -45,9 +46,14 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     public void RpcUpdateNurse(GameObject player)
     {
         GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
+        currentPos = player.transform.GetChild(0).position;
+        currentPos = player.transform.GetChild(0).position;
+        currentRot.x = player.transform.GetChild(0).rotation.x;
+        currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
+        currentRot.z = player.transform.GetChild(0).rotation.z;
         player.tag = "Nurse";
         Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-        Instantiate(prefabNurse, currentPos, Quaternion.identity, visualRep.transform);
+        Instantiate(prefabNurse, currentPos, currentRot, visualRep.transform);
         GameManager.CheckForTwoPlayers(1); // Tell gamemanager an agressor has been initialized.
     }
 
@@ -55,9 +61,13 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     public void RpcUpdateAgressor(GameObject player)
     {
         GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
+        currentPos = player.transform.GetChild(0).position;
+        currentRot.x = player.transform.GetChild(0).rotation.x;
+        currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
+        currentRot.z = player.transform.GetChild(0).rotation.z;
         player.tag = "Agressor";
         Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-        Instantiate(prefabAgressor, currentPos, player.transform.GetChild(0).transform.GetChild(0).rotation, visualRep.transform);
+        Instantiate(prefabAgressor, currentPos, currentRot, visualRep.transform);
         GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.
     }
 }

@@ -14,7 +14,7 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     public void ExecuteNurseChange(GameObject player)
     {
         Debug.Log("IsLocalPlayer N: " + (player == isClient));
-        if (player == isClient && player == isLocalPlayer)
+        if (player == isClient)
         {
             CmdUpdateNurse(player);
         }
@@ -24,7 +24,7 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     {
         Debug.Log("IsLocalPlayer A: " + (player == isClient));
 
-        if (player == isClient && player == isLocalPlayer)
+        if (player == isClient)
         {
             CmdUpdateAgressor(player);
         }
@@ -45,17 +45,18 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     [ClientRpc]
     public void RpcUpdateNurse(GameObject player)
     {
-        GameObject visualRep = this.transform.GetChild(0).transform.GetChild(2).gameObject;
+        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
 
         Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
 
-        currentPos = this.transform.GetChild(0).position;
+        currentPos = player.transform.GetChild(0).position;
         currentPos.y = currentPos.y - 0.72f;
         currentPos.z = currentPos.y - 0.12f;
-        currentRot.x = this.transform.GetChild(0).rotation.x;
-        currentRot.z = this.transform.GetChild(0).rotation.z;
-        currentRot.y = this.transform.GetChild(0).transform.GetChild(0).rotation.y;
-        Instantiate(prefabNurse, currentPos, currentRot, this.transform);
+        currentPos = player.transform.GetChild(0).position;
+        currentRot.x = player.transform.GetChild(0).rotation.x;
+        currentRot.z = player.transform.GetChild(0).rotation.z;
+        currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
+        Instantiate(prefabNurse, currentPos, currentRot, visualRep.transform);
         player.tag = "Nurse";
         GameManager.CheckForTwoPlayers(1); // Tell gamemanager an agressor has been initialized.
     }

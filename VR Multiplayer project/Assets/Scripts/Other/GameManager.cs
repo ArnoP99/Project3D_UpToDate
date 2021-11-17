@@ -1,11 +1,14 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     private static GameManager instance = null;
     private static readonly object padlock = new object();
+
+    NetworkManager networkManager;
 
     private GameManager()
     {
@@ -28,11 +31,56 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        networkManager = new NetworkManager();
         DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
     {
+    }
+
+
+    public void PrepNextScene(int playerRole)
+    {
+        bool nurseOnSpawn = false;
+        bool agressorOnSpawn = false;
+
+        if (playerRole == 1)
+        {
+            if (nurseOnSpawn == false)
+            {
+                Debug.Log("Check Nurse");
+                nurseOnSpawn = true;
+            }
+            else
+            {
+                nurseOnSpawn = false;
+            }
+        }
+        else if (playerRole == 2)
+        {
+            if (agressorOnSpawn == false)
+            {
+                Debug.Log("Check Agressor");
+                agressorOnSpawn = true;
+            }
+            else
+            {
+                agressorOnSpawn = false;
+            }
+        }
+
+        if (nurseOnSpawn == true && agressorOnSpawn == true)
+        {
+            Debug.Log("Networkserver active: " + NetworkServer.active);
+            Debug.Log("IsClient: " + (this == isClient));
+            Debug.Log("IsServer: " + (this == isServer));
+
+            if (NetworkServer.active)
+            {
+                networkManager.ServerChangeScene("ZiekenhuisKamer");
+            }
+        }
     }
 
     // Check if there are 2 different players in the game (Nurse & Agressor) and if they are both present, start a new conversation.
@@ -45,7 +93,7 @@ public class GameManager : MonoBehaviour
         {
             nursePlayer = true;
         }
-        else if(button == 2)
+        else if (button == 2)
         {
             agressorPlayer = true;
         }
@@ -60,7 +108,7 @@ public class GameManager : MonoBehaviour
             ConversationManager.StartConversation(nurse, agressor);
         }*/
 
-        if(nursePlayer == true)
+        if (nursePlayer == true)
         {
             Debug.Log("Conversation Started.");
             ConversationManager.StartConversation();

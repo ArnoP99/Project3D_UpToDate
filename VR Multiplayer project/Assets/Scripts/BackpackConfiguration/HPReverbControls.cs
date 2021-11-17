@@ -46,6 +46,8 @@ public class HPReverbControls : MonoBehaviour
 
     public void PrimaryButton(InputAction.CallbackContext context)
     {
+        Debug.Log("PrimaryButton Pressed");
+
         if (triggerValue == true)
         {
             this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<BoxCollider>().isTrigger = false;

@@ -18,6 +18,8 @@ TagManager:
   - Agressor
   - ActiveChoise
   - Button
+  - PointerAgressor
+  - PointerNurse
   layers:
   - Default
   - TransparentFX

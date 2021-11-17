@@ -53,11 +53,11 @@ public class PhysicsButton : NetworkBehaviour
                     CmdUpdateNurse(player);
                 }
             }
-            if (gameObject.tag == "SceneButton")
-            {
-                SceneManager.LoadScene("ZiekenhuisKamer");
-                Scene ziekenHuisKamer = SceneManager.GetSceneByName("ZiekenhuisKamer");
-            }
+            //if (gameObject.tag == "SceneButton")
+            //{
+            //    SceneManager.LoadScene("ZiekenhuisKamer");
+            //    Scene ziekenHuisKamer = SceneManager.GetSceneByName("ZiekenhuisKamer");
+            //}
         }
     }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3373150815553719026}
   - component: {fileID: 5385316450088882571}
   m_Layer: 0
-  m_Name: TreeV2
+  m_Name: TreeV2.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6241200632575200759}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: ffdf1a49a6f6c5043b3e05333d660210, type: 2}
 --- !u!23 &5385316450088882571
 MeshRenderer:
   m_ObjectHideFlags: 0

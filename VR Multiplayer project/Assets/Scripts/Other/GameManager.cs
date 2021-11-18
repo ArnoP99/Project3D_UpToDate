@@ -44,6 +44,8 @@ public class GameManager : NetworkBehaviour
     {
         bool nurseOnSpawn = false;
         bool agressorOnSpawn = false;
+        
+        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
         if (playerRole == 1)
         {

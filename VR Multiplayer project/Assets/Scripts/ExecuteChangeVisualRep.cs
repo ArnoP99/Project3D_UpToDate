@@ -47,33 +47,22 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     {
         GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
         player.tag = "Nurse";
-        currentPos.y = -0.72f;
-        currentPos.z = -0.12f;
-        currentRot.x = player.transform.GetChild(0).rotation.x;
-        currentRot.z = player.transform.GetChild(0).rotation.z;
-        currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
-        currentPos.x = 0f;
-
-        Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-        Instantiate(prefabNurse, currentPos, currentRot, visualRep.transform);
+        visualRep.transform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        visualRep.transform.GetChild(2).gameObject.SetActive(true);
+        visualRep.transform.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        GameObject model = player.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject;
+        model.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
         GameManager.CheckForTwoPlayers(1); // Tell gamemanager an agressor has been initialized.
     }
 
     [ClientRpc]
     public void RpcUpdateAgressor(GameObject player)
     {
-        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
-        
+        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;        
         player.tag = "Agressor";
-        currentPos.y = -0.72f;
-        currentPos.z = -0.12f;
-        currentRot.x = player.transform.GetChild(0).rotation.x;
-        currentRot.z = player.transform.GetChild(0).rotation.z;
-        currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
-
-        currentPos.x = 0f;
         visualRep.transform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         visualRep.transform.GetChild(1).gameObject.SetActive(true);
+        visualRep.transform.gameObject.transform.GetChild(2).gameObject.SetActive(false);
         GameObject model = player.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject;
         model.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
         GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ChangeVisualRep : MonoBehaviour
 {
-    
+    GameObject pointerNurse;
+    GameObject pointerAgressor;
 
     public void Start()
     {
-        GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(false);
-        GameObject.FindGameObjectWithTag("PointerNurse").SetActive(false);
+        pointerAgressor = GameObject.FindGameObjectWithTag("PointerAgressor");
+        pointerAgressor.SetActive(false);
+        pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse");
+        pointerNurse.SetActive(false);
 
     }
     // Start is called before the first frame update

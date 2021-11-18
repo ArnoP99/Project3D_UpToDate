@@ -1582,6 +1582,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8041295142563249104, guid: 6a4697ba12b88e44ebc80d4c81eceb58,
+        type: 3}
+      propertyPath: m_TagString
+      value: Agressor
+      objectReference: {fileID: 0}
     - target: {fileID: 8355703075710997821, guid: 6a4697ba12b88e44ebc80d4c81eceb58,
         type: 3}
       propertyPath: m_Layer
@@ -2168,6 +2173,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463421280674292054, guid: d290e166a43063241892d196dcd036b3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nurse
       objectReference: {fileID: 0}
     - target: {fileID: 4501247873427225174, guid: d290e166a43063241892d196dcd036b3,
         type: 3}

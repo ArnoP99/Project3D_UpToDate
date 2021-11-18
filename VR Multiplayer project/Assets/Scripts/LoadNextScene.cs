@@ -2,6 +2,7 @@ using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadNextScene : NetworkBehaviour
 {
@@ -12,17 +13,19 @@ public class LoadNextScene : NetworkBehaviour
     {
         if (other.tag == "Nurse")
         {
-            if (this == isServer)
-            {
-                NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-            }
+            //if (this == isServer)
+            //{
+            //    NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+            //}
+            SceneManager.LoadScene("ZiekenhuisKamer");
         }
         else if (other.tag == "Agressor")
         {
-            if (this == isServer)
-            {
+            //SceneManager.LoadScene("ZiekenhuisKamer");
+            //if (this == isServer)
+            //{
                 NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-            }
+            //}
         }
     }
 

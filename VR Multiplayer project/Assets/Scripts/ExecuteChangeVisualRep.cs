@@ -52,7 +52,7 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
         currentRot.x = player.transform.GetChild(0).rotation.x;
         currentRot.z = player.transform.GetChild(0).rotation.z;
         currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
-        currentPos.x = player.transform.GetChild(0).position.x;
+        currentPos.x = 0f;
 
         Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
         Instantiate(prefabNurse, currentPos, currentRot, visualRep.transform);
@@ -69,7 +69,8 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
         currentRot.x = player.transform.GetChild(0).rotation.x;
         currentRot.z = player.transform.GetChild(0).rotation.z;
         currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
-        currentPos.x = player.transform.GetChild(0).position.x;
+
+        currentPos.x = 0f;
         Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
         Instantiate(prefabAgressor, currentPos, currentRot, visualRep.transform);
         GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.

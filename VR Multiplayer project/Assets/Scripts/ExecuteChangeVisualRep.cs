@@ -63,6 +63,7 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     public void RpcUpdateAgressor(GameObject player)
     {
         GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
+        
         player.tag = "Agressor";
         currentPos.y = -0.72f;
         currentPos.z = -0.12f;
@@ -73,7 +74,8 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
         currentPos.x = 0f;
         Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
         Instantiate(prefabAgressor, visualRep.transform.position, visualRep.transform.rotation, visualRep.transform);
-        visualRep.transform.GetChild(0).gameObject.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
+        GameObject model = player.transform.GetChild(0).transform.GetChild(2).transform.GetChild(0).gameObject;
+        model.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
         GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.
     }
 }

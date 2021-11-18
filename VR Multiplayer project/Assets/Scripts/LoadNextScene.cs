@@ -13,21 +13,14 @@ public class LoadNextScene : NetworkBehaviour
     {
         if (other.tag == "Nurse")
         {
-            if (this == isServer)
-            {
-                RpcChangeScene();
-                //NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-            }
+            SceneManager.LoadScene("ZiekenhuisKamer");
 
-            
+
         }
         else if (other.tag == "Agressor")
         {
             //SceneManager.LoadScene("ZiekenhuisKamer");
-            if (this == isServer)
-            {
-                RpcChangeScene();
-            }
+            SceneManager.LoadScene("ZiekenhuisKamer");
         }
     }
 

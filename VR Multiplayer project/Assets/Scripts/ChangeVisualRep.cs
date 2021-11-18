@@ -8,8 +8,8 @@ public class ChangeVisualRep : MonoBehaviour
 
     public void Start()
     {
-        GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(false);
-        GameObject.FindGameObjectWithTag("PointerNurse").SetActive(false);
+        //GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(false);
+        //GameObject.FindGameObjectWithTag("PointerNurse").SetActive(false);
 
     }
     // Start is called before the first frame update

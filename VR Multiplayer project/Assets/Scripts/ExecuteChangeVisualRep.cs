@@ -72,8 +72,8 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
 
         currentPos.x = 0f;
         Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
-        Instantiate(prefabAgressor, currentPos, currentRot, visualRep.transform);
-        visualRep.transform.GetChild(0).position.Set(currentPos.x, currentPos.y, currentPos.z);
+        Instantiate(prefabAgressor, visualRep.transform.position, visualRep.transform.rotation, visualRep.transform);
+        //visualRep.transform.GetChild(0).position.Set(currentPos.x, currentPos.y, currentPos.z);
         GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.
     }
 }

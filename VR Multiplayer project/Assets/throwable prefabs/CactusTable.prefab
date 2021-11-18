@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 1209987652546546675}
   - component: {fileID: 8237135062152843402}
   - component: {fileID: 1999332006595853976}
-  - component: {fileID: 8425004877497833143}
+  - component: {fileID: 3098384585798844325}
   m_Layer: 9
   m_Name: CactusTable
   m_TagString: Untagged
@@ -308,8 +308,8 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!65 &8425004877497833143
-BoxCollider:
+--- !u!64 &3098384585798844325
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -318,6 +318,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1281198, y: 0.32295364, z: 0.121849105}
-  m_Center: {x: 0, y: 0.16949621, z: 0.0000000037252903}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 73ae9f6d553f7444ba753797d7fc2d04, type: 2}

@@ -5,15 +5,8 @@ using UnityEngine;
 
 public class LoadNextScene : NetworkBehaviour
 {
-    GameObject gameManager;
-
-    private void Start()
-    {
-        if (this == isServer)
-        {
-            gameManager = GameObject.Find("GameManager");
-        }
-    }
+    bool nurseCheck;
+    bool agressorCheck;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -21,33 +14,34 @@ public class LoadNextScene : NetworkBehaviour
         {
             if (this == isServer)
             {
-                gameManager.GetComponent<GameManager>().PrepNextScene(1);
+                NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
             }
         }
         else if (other.tag == "Agressor")
         {
             if (this == isServer)
             {
-                gameManager.GetComponent<GameManager>().PrepNextScene(2);
+                NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
             }
         }
     }
 
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Nurse")
-        {
-            if (this == isServer)
-            {
-                gameManager.GetComponent<GameManager>().PrepNextScene(1);
-            }
-        }
-        else if (other.tag == "Agressor")
-        {
-            if (this == isServer)
-            {
-                gameManager.GetComponent<GameManager>().PrepNextScene(2);
-            }
-        }
-    }
+    //public void OnTriggerExit(Collider other)
+    //{
+    //    if (other.tag == "Nurse")
+    //    {
+    //        if (this == isServer)
+    //        {
+    //            gameManager.GetComponent<GameManager>().PrepNextScene(1);
+    //        }
+    //    }
+    //    else if (other.tag == "Agressor")
+    //    {
+    //        if (this == isServer)
+    //        {
+
+    //            gameManager.GetComponent<GameManager>().PrepNextScene(2);
+    //        }
+    //    }
+    //}
 }

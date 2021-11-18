@@ -46,12 +46,14 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     public void RpcUpdateNurse(GameObject player)
     {
         GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
-        currentPos = player.transform.GetChild(0).position;
-        currentPos = player.transform.GetChild(0).position;
-        currentRot.x = player.transform.GetChild(0).rotation.x;
-        currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
-        currentRot.z = player.transform.GetChild(0).rotation.z;
         player.tag = "Nurse";
+        currentPos.y = -0.72f;
+        currentPos.z = -0.12f;
+        currentRot.x = player.transform.GetChild(0).rotation.x;
+        currentRot.z = player.transform.GetChild(0).rotation.z;
+        currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
+        currentPos.x = player.transform.GetChild(0).position.x;
+
         Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
         Instantiate(prefabNurse, currentPos, currentRot, visualRep.transform);
         GameManager.CheckForTwoPlayers(1); // Tell gamemanager an agressor has been initialized.
@@ -61,11 +63,13 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     public void RpcUpdateAgressor(GameObject player)
     {
         GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
-        currentPos = player.transform.GetChild(0).position;
-        currentRot.x = player.transform.GetChild(0).rotation.x;
-        currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
-        currentRot.z = player.transform.GetChild(0).rotation.z;
         player.tag = "Agressor";
+        currentPos.y = -0.72f;
+        currentPos.z = -0.12f;
+        currentRot.x = player.transform.GetChild(0).rotation.x;
+        currentRot.z = player.transform.GetChild(0).rotation.z;
+        currentRot.y = player.transform.GetChild(0).transform.GetChild(0).rotation.y;
+        currentPos.x = player.transform.GetChild(0).position.x;
         Destroy(visualRep.transform.gameObject.transform.GetChild(0).gameObject);
         Instantiate(prefabAgressor, currentPos, currentRot, visualRep.transform);
         GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.

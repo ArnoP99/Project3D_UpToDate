@@ -7,6 +7,7 @@ public class LoadNextScene : NetworkBehaviour
 {
 
     GameManager gamemanager;
+    int counter = 0;
 
     private void Start()
     {
@@ -16,11 +17,13 @@ public class LoadNextScene : NetworkBehaviour
     {
         if (other.tag == "Nurse")
         {
+            counter += 1;
             CmdNurseCheck();
 
         }
         else if (other.tag == "Agressor")
         {
+            counter += 1;
             CmdAgressorCheck();
         }
     }
@@ -30,12 +33,12 @@ public class LoadNextScene : NetworkBehaviour
         if (other.tag == "Nurse")
         {
             Debug.Log("NurseOffSpawn");
-            GameManager.PrepNextScene(1);
+            GameManager.PrepNextScene(1, counter);
         }
         else if (other.tag == "Agressor")
         {
             Debug.Log("AgressorOffSpawn");
-            GameManager.PrepNextScene(2);
+            GameManager.PrepNextScene(2,counter);
         }
     }
 
@@ -43,14 +46,14 @@ public class LoadNextScene : NetworkBehaviour
     public void CmdNurseCheck()
     {
         Debug.Log("NurseOnSpawn");
-        GameManager.PrepNextScene(1);
+        GameManager.PrepNextScene(1,counter);
     }
 
     [Command(requiresAuthority = false)]
     public void CmdAgressorCheck()
     {
         Debug.Log("AgressorOnSpawn");
-        GameManager.PrepNextScene(2);
+        GameManager.PrepNextScene(2,counter);
     }
 
 }

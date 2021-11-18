@@ -40,12 +40,12 @@ public class GameManager : NetworkBehaviour
     }
 
 
-    public static void PrepNextScene(int playerRole)
+    public static void PrepNextScene(int playerRole, int counter)
     {
         bool nurseOnSpawn = false;
         bool agressorOnSpawn = false;
-        
-        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+        Debug.Log(counter);
 
         if (playerRole == 1)
         {

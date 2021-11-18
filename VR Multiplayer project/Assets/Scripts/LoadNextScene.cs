@@ -17,14 +17,15 @@ public class LoadNextScene : NetworkBehaviour
             //{
             //    NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
             //}
-            SceneManager.LoadScene("ZiekenhuisKamer");
+
+            RpcChangeScene();
         }
         else if (other.tag == "Agressor")
         {
             //SceneManager.LoadScene("ZiekenhuisKamer");
             //if (this == isServer)
             //{
-                NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+            RpcChangeScene();
             //}
         }
     }
@@ -47,4 +48,10 @@ public class LoadNextScene : NetworkBehaviour
     //        }
     //    }
     //}
+
+    [ClientRpc]
+    public void RpcChangeScene()
+    {
+        NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+    }
 }

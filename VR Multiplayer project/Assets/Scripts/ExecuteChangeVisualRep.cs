@@ -51,7 +51,7 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
         visualRep.transform.GetChild(2).gameObject.SetActive(true);
         GameObject model = player.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject;
         model.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
-        GameManager.CheckForTwoPlayers(1); // Tell gamemanager an agressor has been initialized.
+        //GameManager.CheckForTwoPlayers(1); // Tell gamemanager an agressor has been initialized.
     }
 
     [ClientRpc]
@@ -63,6 +63,6 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
         visualRep.transform.gameObject.transform.GetChild(2).gameObject.SetActive(false);
         GameObject model = player.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject;
         model.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
-        GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.
+        //GameManager.CheckForTwoPlayers(2); // Tell gamemanager an agressor has been initialized.
     }
 }

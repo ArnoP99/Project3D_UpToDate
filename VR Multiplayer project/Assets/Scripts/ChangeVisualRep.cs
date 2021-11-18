@@ -9,10 +9,10 @@ public class ChangeVisualRep : MonoBehaviour
 
     public void Start()
     {
-        pointerAgressor = GameObject.FindGameObjectWithTag("PointerAgressor");
-        pointerAgressor.SetActive(false);
-        pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse");
-        pointerNurse.SetActive(false);
+        //pointerAgressor = GameObject.FindGameObjectWithTag("PointerAgressor");
+        //pointerAgressor.SetActive(false);
+        //pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse");
+        //pointerNurse.SetActive(false);
 
     }
     // Start is called before the first frame update
@@ -25,12 +25,12 @@ public class ChangeVisualRep : MonoBehaviour
             if (other.gameObject.tag == "AgressorButton")
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteAgressorChange(player);
-                GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(true);
+                //GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(true);
             }
             if (other.gameObject.tag == "NurseButton")
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteNurseChange(player);
-                GameObject.FindGameObjectWithTag("PointerNurse").SetActive(true);
+                //GameObject.FindGameObjectWithTag("PointerNurse").SetActive(true);
 
             }
         }

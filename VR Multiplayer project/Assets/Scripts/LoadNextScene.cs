@@ -17,12 +17,12 @@ public class LoadNextScene : NetworkBehaviour
         if (other.tag == "Nurse")
         {
             Debug.Log("NurseOnSpawn");
-            gamemanager.PrepNextScene(1);
+            GameManager.PrepNextScene(1);
         }
         else if (other.tag == "Agressor")
         {
             Debug.Log("AgressorOnSpawn");
-            gamemanager.PrepNextScene(2);
+            GameManager.PrepNextScene(2);
         }
     }
 
@@ -31,12 +31,12 @@ public class LoadNextScene : NetworkBehaviour
         if (other.tag == "Nurse")
         {
             Debug.Log("NurseOffSpawn");
-            gamemanager.PrepNextScene(1);
+            GameManager.PrepNextScene(1);
         }
         else if (other.tag == "Agressor")
         {
             Debug.Log("AgressorOffSpawn");
-            gamemanager.PrepNextScene(2);
+            GameManager.PrepNextScene(2);
         }
     }
 }

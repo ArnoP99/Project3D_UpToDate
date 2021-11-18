@@ -40,7 +40,7 @@ public class GameManager : NetworkBehaviour
     }
 
 
-    public void PrepNextScene(int playerRole)
+    public static void PrepNextScene(int playerRole)
     {
         bool nurseOnSpawn = false;
         bool agressorOnSpawn = false;
@@ -73,12 +73,12 @@ public class GameManager : NetworkBehaviour
         if (nurseOnSpawn == true && agressorOnSpawn == true)
         {
             Debug.Log("Networkserver active: " + NetworkServer.active);
-            Debug.Log("IsClient: " + (this == isClient));
-            Debug.Log("IsServer: " + (this == isServer));
+            //Debug.Log("IsClient: " + (this == isClient));
+            //Debug.Log("IsServer: " + (this == isServer));
 
             if (NetworkServer.active)
             {
-                networkManager.ServerChangeScene("ZiekenhuisKamer");
+                NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
             }
         }
     }

@@ -13,14 +13,22 @@ public class LoadNextScene : NetworkBehaviour
     {
         if (other.tag == "Nurse")
         {
-            SceneManager.LoadScene("ZiekenhuisKamer");
+            if (this == isServer)
+            {
+                //RpcChangeScene();
+                NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+            }
 
-
+            
         }
         else if (other.tag == "Agressor")
         {
             //SceneManager.LoadScene("ZiekenhuisKamer");
-            SceneManager.LoadScene("ZiekenhuisKamer");
+            if (this == isServer)
+            {
+                
+                NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+            }
         }
     }
 
@@ -46,6 +54,6 @@ public class LoadNextScene : NetworkBehaviour
     [ClientRpc]
     public void RpcChangeScene()
     {
-        SceneManager.LoadScene("ZiekenhuisKamer");
+
     }
 }

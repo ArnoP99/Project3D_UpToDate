@@ -54,6 +54,8 @@ public class PlayerConfiguration : NetworkBehaviour
                 TrackedPoseDriver.enabled = true;
                 myCamera.enabled = true;
                 myCamera.GetComponent<AudioListener>().enabled = true;
+                this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
+                this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
             }
             //When it is the local player and it is the server/PC enable the main camera
             else
@@ -85,8 +87,7 @@ public class PlayerConfiguration : NetworkBehaviour
             this.GetComponentInChildren<MeshRenderer>().enabled = false;
             this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
             this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
-            this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
-            this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+
         }
         this.transform.parent = GameObject.Find("Players").transform; //Set 'Players" gameobject as parent
 

@@ -46,6 +46,7 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     public void RpcUpdateNurse(GameObject player)
     {
         GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
+        player.tag = "Nurse";
         visualRep.transform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         visualRep.transform.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         visualRep.transform.GetChild(2).gameObject.SetActive(true);
@@ -58,6 +59,7 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     public void RpcUpdateAgressor(GameObject player)
     {
         GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;        
+        player.tag = "Agressor";
         visualRep.transform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         visualRep.transform.GetChild(1).gameObject.SetActive(true);
         visualRep.transform.gameObject.transform.GetChild(2).gameObject.SetActive(false);

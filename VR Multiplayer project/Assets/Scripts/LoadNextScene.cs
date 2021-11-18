@@ -50,10 +50,4 @@ public class LoadNextScene : NetworkBehaviour
     //        }
     //    }
     //}
-
-    [ClientRpc]
-    public void RpcChangeScene()
-    {
-
-    }
 }

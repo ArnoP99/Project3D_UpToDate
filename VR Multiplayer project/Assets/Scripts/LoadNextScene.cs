@@ -16,13 +16,12 @@ public class LoadNextScene : NetworkBehaviour
     {
         if (other.tag == "Nurse")
         {
-            Debug.Log("NurseOnSpawn");
-            GameManager.PrepNextScene(1);
+            CmdNurseCheck();
+
         }
         else if (other.tag == "Agressor")
         {
-            Debug.Log("AgressorOnSpawn");
-            GameManager.PrepNextScene(2);
+            CmdAgressorCheck();
         }
     }
 
@@ -39,4 +38,19 @@ public class LoadNextScene : NetworkBehaviour
             GameManager.PrepNextScene(2);
         }
     }
+
+    [Command(requiresAuthority = false)]
+    public void CmdNurseCheck()
+    {
+        Debug.Log("NurseOnSpawn");
+        GameManager.PrepNextScene(1);
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdAgressorCheck()
+    {
+        Debug.Log("AgressorOnSpawn");
+        GameManager.PrepNextScene(2);
+    }
+
 }

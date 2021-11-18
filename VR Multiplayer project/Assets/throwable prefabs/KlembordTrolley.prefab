@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1963018322473122302}
   - component: {fileID: 6277797672506744485}
   - component: {fileID: 514879232829903126}
+  - component: {fileID: -5868024961729751982}
   m_Layer: 9
   m_Name: KlembordTrolley
   m_TagString: Untagged
@@ -280,6 +281,19 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!65 &-5868024961729751982
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2812657546586002967}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11943819, y: 2.0000005, z: 1.4486182}
+  m_Center: {x: -0.026192147, y: -0.000000003888927, z: -0.000000002676058}
 --- !u!1 &3550311455951661111
 GameObject:
   m_ObjectHideFlags: 0

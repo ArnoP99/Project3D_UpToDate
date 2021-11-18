@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3412797397161351105}
   - component: {fileID: 5965911788449832879}
   - component: {fileID: 7296217269909441925}
-  - component: {fileID: 6201324936258026958}
+  - component: {fileID: 5541972132916530028}
   m_Layer: 9
   m_Name: TallGlassTable
   m_TagString: Untagged
@@ -285,8 +285,8 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!64 &6201324936258026958
-MeshCollider:
+--- !u!65 &5541972132916530028
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -295,7 +295,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1422996237714106537, guid: c6e28b6ed29d2254f96c316136195d38, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.002, y: 0.0020000006, z: 0.0022522497}
+  m_Center: {x: 0, y: 1.4226837e-17, z: 0.0010011249}

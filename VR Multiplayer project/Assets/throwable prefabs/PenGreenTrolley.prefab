@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 388829169080231099}
   - component: {fileID: 8688249699767635514}
   - component: {fileID: 2670224568742124691}
+  - component: {fileID: 2404013647547532605}
   m_Layer: 9
   m_Name: PenGreenTrolley
   m_TagString: Untagged
@@ -306,3 +307,16 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!65 &2404013647547532605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5871176936274135622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22396502, y: 2.176556, z: 0.2743981}
+  m_Center: {x: 0, y: 1.0891197, z: 0.025216503}

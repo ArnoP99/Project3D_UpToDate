@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3648604409209895269}
   - component: {fileID: 9027036376089171295}
   - component: {fileID: 6205873942369315623}
+  - component: {fileID: -8470031520294034764}
   m_Layer: 9
   m_Name: PenBlueTable
   m_TagString: Untagged
@@ -276,6 +277,19 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!65 &-8470031520294034764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276968184869606893}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22396506, y: 2.1765563, z: 0.27439806}
+  m_Center: {x: -1.5477318e-14, y: 1.0891198, z: 0.025216501}
 --- !u!1 &6368983563543762784
 GameObject:
   m_ObjectHideFlags: 0

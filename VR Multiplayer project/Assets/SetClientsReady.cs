@@ -7,17 +7,23 @@ public class SetClientsReady : NetworkBehaviour
 {
     private void Start()
     {
-        if (this == isServer)
+        GameObject nurse = GameObject.FindGameObjectWithTag("Nurse");
+        GameObject agressor = GameObject.FindGameObjectWithTag("Agressor");
+        if(nurse == isClient && nurse == isLocalPlayer)
         {
-            RpcSetClientsReady();
+            NetworkClient.Ready();
+        }
+        if (agressor == isClient && agressor == isLocalPlayer)
+        {
+            NetworkClient.Ready();
+        }
+
+        if(this == isServer)
+        {
+            NetworkServer.SpawnObjects();
         }
     }
 
 
-    [ClientRpc]
-    public void RpcSetClientsReady()
-    {
-        NetworkClient.ready = true;
-    }
 
 }

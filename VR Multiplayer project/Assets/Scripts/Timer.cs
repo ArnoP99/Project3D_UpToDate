@@ -1,11 +1,12 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class Timer : NetworkBehaviour
 {
-    float timeRemaining = 180;
+    float timeRemaining = 30;
     bool timerIsRunning = false;
 
     GameObject minutes0;
@@ -62,7 +63,10 @@ public class Timer : MonoBehaviour
         }
         else
         {
-
+            if(this == isServer)
+            {
+                NetworkManager.singleton.ServerChangeScene("Wachtkamer");
+            }
             timeRemaining = 0;
             timerIsRunning = false;
         }

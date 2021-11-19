@@ -63,10 +63,6 @@ public class Timer : NetworkBehaviour
         }
         else
         {
-            if(this == isServer)
-            {
-                NetworkManager.singleton.ServerChangeScene("Wachtkamer");
-            }
             timeRemaining = 0;
             timerIsRunning = false;
         }

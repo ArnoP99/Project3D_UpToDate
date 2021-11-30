@@ -11,6 +11,7 @@ public class LoadNextScene : NetworkBehaviour
 
     Scene scene;
 
+    float timeRemaining = 70;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -26,8 +27,10 @@ public class LoadNextScene : NetworkBehaviour
                 }
                 if (scene.name == "IntroductionRoom")
                 {
-                    NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-
+                    if (timeRemaining <= 0)
+                    {
+                        NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+                    }
                 }
 
             }
@@ -44,6 +47,14 @@ public class LoadNextScene : NetworkBehaviour
         //        NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
         //    }
         //}
+    }
+
+    private void Update()
+    {
+        if (scene.name == "IntroductionRoom")
+        {
+            timeRemaining -= Time.deltaTime;
+        }
     }
 
     //public void OnTriggerExit(Collider other)

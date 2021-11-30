@@ -856,7 +856,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 0
-  MaxDistance: 1
+  MaxDistance: 2.5
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -8873,7 +8873,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1803048916}
   - component: {fileID: 1803048921}
-  - component: {fileID: 1803048920}
   - component: {fileID: 1803048919}
   - component: {fileID: 1803048918}
   - component: {fileID: 1803048917}
@@ -8970,20 +8969,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1803048920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803048915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe68d9e5439c0994c85968a0da4496ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
 --- !u!33 &1803048921
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9045,7 +9030,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 0
-  MaxDistance: 1
+  MaxDistance: 2.5
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -10626,7 +10611,6 @@ GameObject:
   - component: {fileID: 2087238259}
   - component: {fileID: 2087238258}
   - component: {fileID: 2087238257}
-  - component: {fileID: 2087238256}
   - component: {fileID: 2087238255}
   m_Layer: 0
   m_Name: SpawnPointNurse
@@ -10667,20 +10651,6 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 
   hasSpawned: 0
---- !u!114 &2087238256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087238253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe68d9e5439c0994c85968a0da4496ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
 --- !u!65 &2087238257
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class LoadNextScene : NetworkBehaviour
             {
                 //RpcChangeScene();
                 //NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-                NetworkManager.singleton.ServerChangeScene("Introduction Room");
+                NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
             }
 
             
@@ -29,7 +29,7 @@ public class LoadNextScene : NetworkBehaviour
             {
                 
                 //NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-                NetworkManager.singleton.ServerChangeScene("Introduction Room");
+                NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
             }
         }
     }

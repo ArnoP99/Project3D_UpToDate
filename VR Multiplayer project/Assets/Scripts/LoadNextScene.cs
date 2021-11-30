@@ -16,7 +16,8 @@ public class LoadNextScene : NetworkBehaviour
             if (this == isServer)
             {
                 //RpcChangeScene();
-                NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+                //NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+                NetworkManager.singleton.ServerChangeScene("Introduction Room");
             }
 
             
@@ -27,7 +28,8 @@ public class LoadNextScene : NetworkBehaviour
             if (this == isServer)
             {
                 
-                NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+                //NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+                NetworkManager.singleton.ServerChangeScene("Introduction Room");
             }
         }
     }

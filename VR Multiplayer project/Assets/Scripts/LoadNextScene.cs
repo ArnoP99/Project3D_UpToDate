@@ -9,29 +9,41 @@ public class LoadNextScene : NetworkBehaviour
     bool nurseCheck;
     bool agressorCheck;
 
+    Scene scene;
+
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Nurse")
         {
             if (this == isServer)
             {
-                //RpcChangeScene();
-                //NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-                NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
+                scene = SceneManager.GetActiveScene();
+                if (scene.name == "Wachtkamer")
+                {
+
+                    NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
+                }
+                if (scene.name == "IntroductionRoom")
+                {
+                    NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+
+                }
+
             }
 
-            
+
         }
-        else if (other.tag == "Agressor")
-        {
-            //SceneManager.LoadScene("ZiekenhuisKamer");
-            if (this == isServer)
-            {
-                
-                //NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-                NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
-            }
-        }
+        //else if (other.tag == "Agressor")
+        //{
+        //    //SceneManager.LoadScene("ZiekenhuisKamer");
+        //    if (this == isServer)
+        //    {
+
+        //        //NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+        //        NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
+        //    }
+        //}
     }
 
     //public void OnTriggerExit(Collider other)

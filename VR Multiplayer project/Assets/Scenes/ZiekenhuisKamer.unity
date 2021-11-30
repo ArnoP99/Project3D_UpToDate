@@ -20068,7 +20068,7 @@ GameObject:
   - component: {fileID: 1700302309}
   - component: {fileID: 1700302308}
   - component: {fileID: 1700302311}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: TVRemoteCombined
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35034,7 +35034,7 @@ GameObject:
   - component: {fileID: 1198518112906823828}
   - component: {fileID: 3982601085960207454}
   - component: {fileID: 3190227380712086924}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Dienblad
   m_TagString: Untagged
   m_Icon: {fileID: 0}

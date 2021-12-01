@@ -10481,6 +10481,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 951582319}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &951582321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3339865742098485944, guid: 08c32c33d6d02774f9cb79ff93353e75,
+    type: 3}
+  m_PrefabInstance: {fileID: 951582319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &951582322
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951582321}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9111118, y: 4.169077, z: 1.7151052}
+  m_Center: {x: -0.08899108, y: 0.93595326, z: 0.015706265}
 --- !u!1 &963617666
 GameObject:
   m_ObjectHideFlags: 0
@@ -28992,7 +29011,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -41769,7 +41788,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

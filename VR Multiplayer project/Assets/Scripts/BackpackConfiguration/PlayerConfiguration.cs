@@ -45,21 +45,26 @@ public class PlayerConfiguration : NetworkBehaviour
         controllersToHMDLocal = this.GetComponentInChildren<ControllersToHMDLocal>();
         syncRotation = this.GetComponentInChildren<SyncRotation>();
 
+
+        // for hands, instantiate them with autohority after instantiating player (delete them from prefab, ...)
         if (isLocalPlayer)
         {
             //When it is the local player and isn't the server/PC enable the camera, the tracked pose driver of the camera
             if (NetworkConfiguration.GameSettings.ID != 0)
             {
+                Debug.Log("LocalPlayer && != server");
                 syncRotation.enabled = true;
                 TrackedPoseDriver.enabled = true;
                 myCamera.enabled = true;
                 myCamera.GetComponent<AudioListener>().enabled = true;
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
+                this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
             }
             //When it is the local player and it is the server/PC enable the main camera
             else
             {
+                Debug.Log("LocalPlayer && == server");
                 syncRotation.enabled = false;
                 controllersToHMDLocal.enabled = false;
                 myCamera.enabled = false;
@@ -75,10 +80,12 @@ public class PlayerConfiguration : NetworkBehaviour
         //When it isn't the local player dissable camera and audiolistener
         else
         {
+            Debug.Log("Not LocalPlayer");
             syncRotation.enabled = false;
             TrackedPoseDriver.enabled = false;
             myCamera.enabled = false;
             myCamera.GetComponent<AudioListener>().enabled = false;
+            this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
         }
 
         //Make server/PC player invisible and make hands invisible
@@ -87,6 +94,9 @@ public class PlayerConfiguration : NetworkBehaviour
             this.GetComponentInChildren<MeshRenderer>().enabled = false;
             this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
             this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
+            this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+            this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+            this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
 
         }
         this.transform.parent = GameObject.Find("Players").transform; //Set 'Players" gameobject as parent

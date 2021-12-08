@@ -8,7 +8,8 @@ public class GameManager : NetworkBehaviour
     private static GameManager instance = null;
     private static readonly object padlock = new object();
 
-    NetworkManager networkManager;
+    private bool nurseOnSpawn = false;
+    private bool agressorOnSpawn = false;
 
     private GameManager()
     {
@@ -31,44 +32,32 @@ public class GameManager : NetworkBehaviour
 
     void Start()
     {
-        networkManager = new NetworkManager();
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Update()
+    public void ChangeScene(int onSpawnCheck)
     {
-    }
-
-    // Check if there are 2 different players in the game (Nurse & Agressor) and if they are both present, start a new conversation.
-    public static void CheckForTwoPlayers(int button)
-    {
-        bool nursePlayer = false;
-        bool agressorPlayer = false;
-
-        if (button == 1)
+        if (onSpawnCheck == 1 && nurseOnSpawn == false)
         {
-            nursePlayer = true;
+            nurseOnSpawn = true;
         }
-        else if (button == 2)
+        else if (onSpawnCheck == 1 && nurseOnSpawn == true)
         {
-            agressorPlayer = true;
-        }
-        else
-        {
-            Debug.Log("Invalid number received from button! Check if the correct numbers are passed from each button ...");
+            nurseOnSpawn = false;
         }
 
-        /*if(nursePlayer == true && agressorPlayer == true)
+        if (onSpawnCheck == 2 && agressorOnSpawn == false)
         {
-            Debug.Log("Conversation Started.");
-            ConversationManager.StartConversation(nurse, agressor);
-        }*/
-
-        if (nursePlayer == true)
+            agressorOnSpawn = true;
+        }
+        else if (onSpawnCheck == 2 && agressorOnSpawn == true)
         {
-            Debug.Log("Conversation Started.");
-            ConversationManager.StartConversation();
+            agressorOnSpawn = false;
         }
 
+        if (nurseOnSpawn == true /*&& agressorOnSpawn == true*/ && this == isServer)
+        {
+            NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+        }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConversationElement : MonoBehaviour
+public class ConversationElement
 {
     public enum ElementState
     {
@@ -59,4 +59,13 @@ public class ConversationElement : MonoBehaviour
             return text;
         }
     }
+
+    public List<ConversationElement> ReactionElements
+    {
+        get
+        {
+            return reactionElements;
+        }
+    }
+
 }

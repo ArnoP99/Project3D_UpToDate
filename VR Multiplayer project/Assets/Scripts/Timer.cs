@@ -22,11 +22,6 @@ public class Timer : NetworkBehaviour
         minutes1 = GameObject.Find("Minutes1");
         seconds0 = GameObject.Find("Seconds0");
         seconds1 = GameObject.Find("Seconds1");
-
-        Debug.Log(minutes0);
-        Debug.Log(minutes1);
-        Debug.Log(seconds0);
-        Debug.Log(seconds1);
     }
 
     void Update()

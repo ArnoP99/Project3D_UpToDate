@@ -1,25 +1,29 @@
+using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ConversationManager : MonoBehaviour
+public class ConversationManager : NetworkBehaviour
 {
-
     private static ConversationManager instance = null;
     private static readonly object padlock = new object();
 
-    private List<Conversation> allConversations;
-    private Conversation activeConversation;
-    private static List<GameObject> conversationParticipants = new List<GameObject>();
-    private static GameObject activeParticipant;
+    public Conversation[] allConversations;
+    public int activeConversation;
+    public List<GameObject> conversationParticipants = new List<GameObject>();
+    public GameObject activeParticipant;
+    public List<ConversationElement> activeReactionElements = new List<ConversationElement>();
 
-    private static Conversation generalCheckUp;
 
-    private ConversationManager()
+    public Conversation generalCheckUpCv;
+    public Conversation timeForMedicationCv;
+    public Conversation helpButtonCv;
+
+    public ConversationManager()
     {
-
+        
     }
 
     public static ConversationManager Instance
@@ -30,7 +34,7 @@ public class ConversationManager : MonoBehaviour
             {
                 if (instance == null)
                 {
-                    instance = new ConversationManager();
+                    instance = GameObject.Find("ConversationManager").GetComponent<ConversationManager>();
                 }
                 return instance;
             }
@@ -40,30 +44,42 @@ public class ConversationManager : MonoBehaviour
     // Initialize different Conversations that will be used in the game
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        ConversationElementInitializer.SetReactionElements();
 
-        generalCheckUp = new Conversation();
+        allConversations = new Conversation[3];
 
-        generalCheckUp.StartElement = ConversationElementInitializer.GeneralCheckupConversation();
-        generalCheckUp.ActiveElement = generalCheckUp.StartElement;
+        activeConversation = -1;
+
+        generalCheckUpCv = new Conversation();
+        timeForMedicationCv = new Conversation();
+        helpButtonCv = new Conversation();
+
+        generalCheckUpCv.StartElement = ConversationElementInitializer.GeneralCheckupConversation();
+        generalCheckUpCv.ActiveElement = generalCheckUpCv.StartElement;
+
+        timeForMedicationCv.StartElement = ConversationElementInitializer.TimeForMedicationConversation();
+        timeForMedicationCv.ActiveElement = timeForMedicationCv.StartElement;
+
+        helpButtonCv.StartElement = ConversationElementInitializer.HelpButtonConversation();
+        helpButtonCv.ActiveElement = helpButtonCv.StartElement;
+
+        allConversations[0] = generalCheckUpCv;
+        allConversations[1] = timeForMedicationCv;
+        allConversations[2] = helpButtonCv;
     }
 
-    public static void StartConversation()
+    public void StartConversation(GameObject nurse)
     {
-            GameObject nurse = GameObject.FindGameObjectWithTag("Nurse").gameObject;
-            Debug.Log(nurse.tag);
-            conversationParticipants.Add(nurse);
+        conversationParticipants.Add(nurse);
+        activeParticipant = nurse;
 
-            activeParticipant = nurse;
-            nurse.gameObject.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).GetComponent<TextMeshPro>().text = generalCheckUp.StartElement.Text;
+        nurse.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(true);
+        nurse.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationElementInitializer.GeneralCheckupConversation().Text;
+        nurse.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationElementInitializer.TimeForMedicationConversation().Text;
+        nurse.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationElementInitializer.HelpButtonConversation().Text;
     }
 
     private void EndConversation(Conversation conversationToEnd)
-    {
-
-    }
-
-    private void ChooseConversation(Conversation chosenConversation)
     {
 
     }
@@ -73,6 +89,121 @@ public class ConversationManager : MonoBehaviour
         if (conversationToUpdate.CurrentState == Conversation.ConversationState.Ended)
         {
 
+        }
+    }
+
+    public void Update()
+    {
+    }
+
+    public void SetConversation(int choice)
+    {
+        if (this.isServer)
+        {
+            if (activeConversation == -1)
+            {
+                if (choice == 1)
+                {
+                    activeConversation = 1;
+                }
+                else if (choice == 2)
+                {
+                    activeConversation = 2;
+                }
+                else if (choice == 3)
+                {
+                    activeConversation = 3;
+                }
+                Debug.Log(choice);
+            }
+        }
+    }
+
+    public Conversation GetActiveConversation()
+    {
+        Debug.Log("Executed GAC");
+        if (activeConversation == 1)
+        {
+            Debug.Log(generalCheckUpCv.ToString());
+            return generalCheckUpCv;
+        }
+        else if (activeConversation == 2)
+        {
+            Debug.Log(timeForMedicationCv.ToString());
+            return timeForMedicationCv;
+        }
+        else if (activeConversation == 3)
+        {
+            Debug.Log(helpButtonCv.ToString());
+            return helpButtonCv;
+        }
+
+        Debug.Log("No active conversation found.");
+        return null;
+    }
+
+    //[Command(requiresAuthority = false)]
+    //public void CmdStartConversation(GameObject nurse)
+    //{
+    //    Debug.Log("During cmd: " + nurse);
+    //    TargetStartConversation(nurse.GetComponent<NetworkIdentity>().connectionToServer, nurse);
+    //    Debug.Log("After TargetRpc: " + nurse);
+    //}
+
+    //[TargetRpc]
+    //public void TargetStartConversation(NetworkConnection target, GameObject nurse)
+    //{
+    //    Debug.Log("During TargetRpc: " + nurse);
+
+    //}
+
+    //pass choice to server with an int and then from server to agressor
+
+    public Conversation GeneralCheckupConversation
+    {
+        get
+        {
+            return generalCheckUpCv;
+        }
+    }
+
+    public Conversation TimeForMedicationConversation
+    {
+        get
+        {
+            return timeForMedicationCv;
+        }
+    }
+
+    public Conversation HelpButtonConversation
+    {
+        get
+        {
+            return helpButtonCv;
+        }
+    }
+
+    public int ActiveConversation
+    {
+        get
+        {
+            return activeConversation;
+        }
+        set
+        {
+            activeConversation = value;
+        }
+    }
+
+    public List<ConversationElement> ActiveReactionElements
+    {
+        get
+        {
+            return activeReactionElements;
+        }
+        set
+        {
+            activeReactionElements = value;
         }
     }
 }

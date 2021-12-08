@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Conversation : MonoBehaviour
+public class Conversation 
 {
     public enum ConversationState
     {
@@ -18,10 +18,10 @@ public class Conversation : MonoBehaviour
         Anyone
     }
 
-    private ConversationElement startElement;
-    private ConversationElement activeElement;
-    private ConversationStartUser startingUser;
-    private ConversationState currentState;
+    public ConversationElement startElement;
+    public ConversationElement activeElement;
+    public ConversationStartUser startingUser;
+    public ConversationState currentState;
 
     public Conversation()
     {
@@ -29,7 +29,6 @@ public class Conversation : MonoBehaviour
         startElement = new ConversationElement();
         startingUser = ConversationStartUser.Nurse;
         activeElement = null;
-
     }
     
 

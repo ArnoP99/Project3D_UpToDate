@@ -5825,8 +5825,6 @@ MonoBehaviour:
   transport: {fileID: 686124236}
   networkAddress: 192.30.20.200
   maxConnections: 100
-  disconnectInactiveConnections: 0
-  disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 4254969925439542407, guid: be37277634450164a8c31f80665de95d,
     type: 3}
@@ -11175,7 +11173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1272198298
 Transform:
   m_ObjectHideFlags: 0

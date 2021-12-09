@@ -3,12 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class LoadNextScene : NetworkBehaviour
 {
     bool nurseCheck;
     bool agressorCheck;
-    Scene scene;
-    float timeRemaining = 10;
+
+    GameObject gameManager;
+
+    private void Start()
+    {
+        if (this == isServer)
+        {
+            gameManager = GameObject.Find("GameManager");
+        }
+    }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -16,53 +25,35 @@ public class LoadNextScene : NetworkBehaviour
         {
             if (this == isServer)
             {
-                scene = SceneManager.GetActiveScene();
-                if (scene.name == "Wachtkamer")
-                {
-                    NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
-                }
-                if (scene.name == "IntroductionRoom")
-                {
-                    if (timeRemaining <= 0)
-                    {
-                        NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-                    }
-                }
+                Debug.Log("NurseOnSpawn");
+                gameManager.GetComponent<GameManager>().ChangeScene(1);
             }
         }
-        //else if (other.tag == "Agressor")
-        //{
-        //    //SceneManager.LoadScene("ZiekenhuisKamer");
-        //    if (this == isServer)
-        //    {
-        //        //NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
-        //        NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
-        //    }
-        //}
-    }
-
-    private void Update()
-    {
-        if (scene.name == "IntroductionRoom")
+        else if (other.tag == "Agressor")
         {
-            timeRemaining -= Time.deltaTime;
+            if (this == isServer)
+            {
+                Debug.Log("AgressorOnSpawn");
+                gameManager.GetComponent<GameManager>().ChangeScene(2);
+            }
         }
     }
-    //public void OnTriggerExit(Collider other)
-    //{
-    //    if (other.tag == "Nurse")
-    //    {
-    //        if (this == isServer)
-    //        {
-    //            gameManager.GetComponent<GameManager>().PrepNextScene(1);
-    //        }
-    //    }
-    //    else if (other.tag == "Agressor")
-    //    {
-    //        if (this == isServer)
-    //        {
-    //            gameManager.GetComponent<GameManager>().PrepNextScene(2);
-    //        }
-    //    }
-    //}
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Nurse")
+        {
+            if (this == isServer)
+            {
+                gameManager.GetComponent<GameManager>().ChangeScene(1);
+            }
+        }
+        else if (other.tag == "Agressor")
+        {
+            if (this == isServer)
+            {
+                gameManager.GetComponent<GameManager>().ChangeScene(2);
+            }
+        }
+    }
 }

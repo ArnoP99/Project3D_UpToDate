@@ -34,7 +34,7 @@ public class ConversationManager : NetworkBehaviour
             {
                 if (instance == null)
                 {
-                    instance = GameObject.Find("ConversationManager").GetComponent<ConversationManager>();
+                    instance = new ConversationManager();
                 }
                 return instance;
             }

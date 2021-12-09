@@ -8,7 +8,7 @@ public class LoadNextScene : NetworkBehaviour
     bool nurseCheck;
     bool agressorCheck;
     Scene scene;
-    float timeRemaining = 70;
+    float timeRemaining = 10;
 
     public void OnTriggerEnter(Collider other)
     {

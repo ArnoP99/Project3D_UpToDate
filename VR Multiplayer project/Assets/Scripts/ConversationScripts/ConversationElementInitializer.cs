@@ -6,30 +6,30 @@ public class ConversationElementInitializer
 {
     private static ConversationElement startElement1 = new ConversationElement("Goedemiddag, alles in orde?", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Nurse/NurseVC_GoedeMiddag"));
     private static ConversationElement agressief1A = new ConversationElement("Neen, ik wil hier weg!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_NeeIkWilWeg"));
-    private static ConversationElement neutraal1A = new ConversationElement("Wanneer mag ik terug naar huis?", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Agressor);
-    private static ConversationElement defensief1A = new ConversationElement("Weet u al wanneer ik terug naar huis mag?", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Agressor);
+    private static ConversationElement neutraal1A = new ConversationElement("Wanneer mag ik terug naar huis?", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_WanneerMagIkNaarHuis"));
+    private static ConversationElement defensief1A = new ConversationElement("Weet u al wanneer ik terug naar huis mag?", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_WeetUAlWanneerIkTerugNaarHuisMag"));
 
-    private static ConversationElement agressief1B = new ConversationElement("Niemand houdt u tegen!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Nurse);
-    private static ConversationElement neutraal1B = new ConversationElement("Waarom wilt u weg?", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Nurse);
-    private static ConversationElement defensief1B = new ConversationElement("De dokter heeft gezegd dat je nog een paar dagen moet blijven.", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Nurse);
+    private static ConversationElement agressief1B = new ConversationElement("Niemand houdt u tegen!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Nurse/NurseVC_NietmandHoudtUTegen"));
+    private static ConversationElement neutraal1B = new ConversationElement("Waarom wilt u weg?", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Nurse/NurseVC_WaaromWiltUWeg"));
+    private static ConversationElement defensief1B = new ConversationElement("De dokter heeft gezegd dat je nog een paar dagen moet blijven.", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Nurse/NurseVC_NogEenPaarDagenBlijven"));
 
-    private static ConversationElement agressief1C1 = new ConversationElement("Nee ik wil hier nu weg!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Agressor);
-    private static ConversationElement defensief1C1 = new ConversationElement("Oke, een paar dagen moet nog wel lukken.", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Agressor);
+    private static ConversationElement agressief1C1 = new ConversationElement("Nee ik wil hier nu weg!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_NeeIkWilNUWeg"));
+    private static ConversationElement defensief1C1 = new ConversationElement("Oke, een paar dagen moet nog wel lukken.", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_OkePaarDagenMoetNogLukken"));
 
-    private static ConversationElement agressief1C2 = new ConversationElement("Ik ben het beu zit hier nu 2 weken en heb nog geen verbetering gezien kan het beter zelf doen!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Agressor);
-    private static ConversationElement neutraal1C2 = new ConversationElement("ik voel me in orde ik ben genezen waarom ben ik hier nog?", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Agressor);
+    private static ConversationElement agressief1C2 = new ConversationElement("Ik ben het beu zit hier nu 2 weken en heb nog geen verbetering gezien kan het beter zelf doen!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_IkBenHetBeuIkKanHetZelfBeter"));
+    private static ConversationElement neutraal1C2 = new ConversationElement("ik voel me in orde ik ben genezen waarom ben ik hier nog?", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_IkVoelMeGenezen"));
 
-    private static ConversationElement agressief1D1 = new ConversationElement("Als u denkt dat u het zelf beter kan doe maar.", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Nurse);
-    private static ConversationElement neutraal1D1 = new ConversationElement("Sorry meneer ik kan u niet laten gaan.", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Nurse);
+    private static ConversationElement agressief1D1 = new ConversationElement("Als u denkt dat u het zelf beter kan doe maar.", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Nurse/NurseVC_DenktDatUHetBeterKan"));
+    private static ConversationElement neutraal1D1 = new ConversationElement("Sorry meneer ik kan u niet laten gaan.", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Nurse/NurseVC_NietLatenGaan"));
 
-    private static ConversationElement agressief1D2 = new ConversationElement("Omdat ik het zeg!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Nurse);
-    private static ConversationElement neutraal1D2 = new ConversationElement("U bent toch al wat beter een paar dagen extra ter controle zal nog wel lukken, toch?", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Nurse);
+    private static ConversationElement agressief1D2 = new ConversationElement("Omdat ik het zeg!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Nurse/NurseVC_OmdatIkHetZeg"));
+    private static ConversationElement neutraal1D2 = new ConversationElement("U bent toch al wat beter een paar dagen extra ter controle zal nog wel lukken, toch?", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Nurse/NurseVC_NogEenPaarDagenBlijven"));
 
-    private static ConversationElement defensief1E = new ConversationElement("Oke, u hebt gelijk. Ik zal nog blijven.", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Agressor);
-    private static ConversationElement agressief1E = new ConversationElement("Ik hoef geen controle meer, laat me gewoon vertrekken!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Agressor);
+    private static ConversationElement defensief1E = new ConversationElement("Oke, u hebt gelijk. Ik zal nog blijven.", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_OkePaarDagenMoetNogLukken"));
+    private static ConversationElement agressief1E = new ConversationElement("Ik hoef geen controle meer, laat me gewoon vertrekken!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_HoefGeenControleMeer"));
 
-    private static ConversationElement startElement2 = new ConversationElement("Goedemidag, het is tijd voor uw medicatie.", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Nurse);
-    private static ConversationElement startElement3 = new ConversationElement("Is er een probleem? Ik zag dat u op het knopje voor hulp heeft geduwd.", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Nurse);
+    private static ConversationElement startElement2 = new ConversationElement("Goedemidag, het is tijd voor uw medicatie.", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_WeetUAlWanneerIkTerugNaarHuisMag"));
+    private static ConversationElement startElement3 = new ConversationElement("Is er een probleem? Ik zag dat u op het knopje voor hulp heeft geduwd.", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_WeetUAlWanneerIkTerugNaarHuisMag"));
 
     public static void SetReactionElements()
     {

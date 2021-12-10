@@ -24,7 +24,7 @@ public class HPReverbControls : NetworkBehaviour
     private void Start()
     {
         firstTime = true;
-        if (this.isServer)
+        if (this.isServer && this.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             audioSource = gameObject.GetComponent<AudioSource>();
         }

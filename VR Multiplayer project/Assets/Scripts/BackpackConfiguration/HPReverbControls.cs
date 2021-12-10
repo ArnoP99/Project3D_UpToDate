@@ -302,6 +302,7 @@ public class HPReverbControls : NetworkBehaviour
         {
             if (player.GetComponent<NetworkIdentity>().isServer)
             {
+                Debug.Log("audiosource set");
                 audioSource = player.GetComponent<AudioSource>();
             }
         }

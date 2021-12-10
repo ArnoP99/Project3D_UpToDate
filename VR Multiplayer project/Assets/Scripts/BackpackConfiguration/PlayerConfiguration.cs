@@ -12,6 +12,7 @@ public class PlayerConfiguration : NetworkBehaviour
     public ControllerConfiguration controllerConfiguration;
     public ControllersToHMDLocal controllersToHMDLocal;
     public SyncRotation syncRotation;
+    public AudioSource audioSource;
 
     public OptitrackRigidBody blaster;
 
@@ -44,6 +45,7 @@ public class PlayerConfiguration : NetworkBehaviour
         controllerConfiguration = GameObject.Find("Controllers").GetComponent<ControllerConfiguration>();
         controllersToHMDLocal = this.GetComponentInChildren<ControllersToHMDLocal>();
         syncRotation = this.GetComponentInChildren<SyncRotation>();
+        audioSource = this.GetComponentInChildren<AudioSource>();
 
 
         // for hands, instantiate them with autohority after instantiating player (delete them from prefab, ...)
@@ -56,10 +58,12 @@ public class PlayerConfiguration : NetworkBehaviour
                 syncRotation.enabled = true;
                 TrackedPoseDriver.enabled = true;
                 myCamera.enabled = true;
+                audioSource.enabled = false;
                 myCamera.GetComponent<AudioListener>().enabled = true;
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
-                //this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+                this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+                
             }
             //When it is the local player and it is the server/PC enable the main camera
             else
@@ -71,6 +75,7 @@ public class PlayerConfiguration : NetworkBehaviour
                 myCamera.GetComponent<AudioListener>().enabled = false;
                 GameObject.Find("Main camera").GetComponent<Camera>().enabled = true;
                 GameObject.Find("Main camera").GetComponent<AudioListener>().enabled = true;
+                
             }
 
             sentPlayerInfo(NetworkConfiguration.GameSettings.ID, NetworkConfiguration.GameSettings.Rigidbodybody); //Share player info with other devices
@@ -84,6 +89,7 @@ public class PlayerConfiguration : NetworkBehaviour
             syncRotation.enabled = false;
             TrackedPoseDriver.enabled = false;
             myCamera.enabled = false;
+            audioSource.enabled = false;
             myCamera.GetComponent<AudioListener>().enabled = false;
             this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
         }

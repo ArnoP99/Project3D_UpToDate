@@ -17,9 +17,13 @@ public class HPReverbControls : NetworkBehaviour
 
     bool firstTime;
 
+    AudioSource audioSource;
+
     private void Start()
     {
         firstTime = true;
+        audioSource = gameObject.GetComponent<AudioSource>();
+       
     }
     public void PressTrigger(InputAction.CallbackContext context)
     {
@@ -32,6 +36,11 @@ public class HPReverbControls : NetworkBehaviour
                 try
                 {
                     GetAgressorActiveChoice();
+                    if (this.isClient)
+                    {
+                        CmdPlayAudioOnServer();
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -45,6 +54,10 @@ public class HPReverbControls : NetworkBehaviour
                 try
                 {
                     GetNurseActiveChoice();
+                    if (this.isClient)
+                    {
+                        CmdPlayAudioOnServer();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -440,6 +453,13 @@ public class HPReverbControls : NetworkBehaviour
             }
         }
     }
+    [Command(requiresAuthority = false)]
+    public void CmdPlayAudioOnServer()
+    {
+        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+        audioSource.Play();
+    }
+
 }
 
 

@@ -22,7 +22,7 @@ public class ConversationElement
     private ElementState elementState;
     private List<ConversationElement> reactionElements = new List<ConversationElement>();
     private UserState userstate;
-    private AudioSource textToSpeech;
+    private AudioClip textToSpeech;
 
     public ConversationElement()
     {
@@ -38,7 +38,7 @@ public class ConversationElement
         textToSpeech = null;
     }
 
-    public ConversationElement(string m_text, ElementState m_elementState, UserState m_userState, AudioSource m_audio)
+    public ConversationElement(string m_text, ElementState m_elementState, UserState m_userState, AudioClip m_audio)
     {
         text = m_text;
         elementState = m_elementState;
@@ -65,6 +65,14 @@ public class ConversationElement
         get
         {
             return reactionElements;
+        }
+    }
+
+    public AudioClip TextToSpeech
+    {
+        get
+        {
+            return textToSpeech;
         }
     }
 

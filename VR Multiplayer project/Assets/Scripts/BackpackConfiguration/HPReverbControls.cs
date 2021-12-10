@@ -297,6 +297,22 @@ public class HPReverbControls : NetworkBehaviour
         Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
         ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
         Debug.Log("Target UAT: " + ConversationManager.Instance.ActiveReactionElements.Count);
+
+        foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (player.GetComponent<NetworkIdentity>().isServer)
+            {
+                audioSource = player.GetComponent<AudioSource>();
+            }
+        }
+
+        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+
+        Debug.Log("play audio starting");
+        Debug.Log(audioSource.isActiveAndEnabled);
+        audioSource.Play();
+        Debug.Log("play audio finished");
+
         textPopUp.SetActive(true);
 
         // als er geen 3 reacties zijn ... -> hier moeten we nog op controleren
@@ -334,6 +350,21 @@ public class HPReverbControls : NetworkBehaviour
         Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements.Count);
         ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
         Debug.Log("Target UNT: " + ConversationManager.Instance.ActiveReactionElements.Count);
+
+        foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (player.GetComponent<NetworkIdentity>().isServer)
+            {
+                audioSource = player.GetComponent<AudioSource>();
+            }
+        }
+
+        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+        
+        Debug.Log("play audio starting");
+        Debug.Log(audioSource.isActiveAndEnabled);
+        audioSource.Play();
+        Debug.Log("play audio finished");
         textPopUp.SetActive(true);
 
         // als er geen 3 reacties zijn ... -> hier moeten we nog op controleren

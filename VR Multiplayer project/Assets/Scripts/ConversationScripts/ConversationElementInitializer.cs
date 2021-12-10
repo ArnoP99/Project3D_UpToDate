@@ -5,7 +5,7 @@ using UnityEngine;
 public class ConversationElementInitializer
 {
     private static ConversationElement startElement1 = new ConversationElement("Goedemiddag, alles in orde?", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Nurse, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Nurse/NurseVC_GoedeMiddag"));
-    private static ConversationElement agressief1A = new ConversationElement("Neen, ik wil hier weg!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Agressor);
+    private static ConversationElement agressief1A = new ConversationElement("Neen, ik wil hier weg!", ConversationElement.ElementState.Agressive, ConversationElement.UserState.Agressor, Resources.Load<AudioClip>("AudioFiles/VoiceLines_Agressor/AgressorVC_NeeIkWilWeg"));
     private static ConversationElement neutraal1A = new ConversationElement("Wanneer mag ik terug naar huis?", ConversationElement.ElementState.Neutral, ConversationElement.UserState.Agressor);
     private static ConversationElement defensief1A = new ConversationElement("Weet u al wanneer ik terug naar huis mag?", ConversationElement.ElementState.Defensive, ConversationElement.UserState.Agressor);
 

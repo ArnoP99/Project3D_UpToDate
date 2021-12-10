@@ -285,7 +285,9 @@ public class HPReverbControls : NetworkBehaviour
         ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
         Debug.Log("Cmd UAT: " + ConversationManager.Instance.ActiveReactionElements.Count);
         NetworkIdentity AgressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+        NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
         TargetUpdateAgressorText(AgressorID.connectionToClient);
+        TargetPlayAudioOnSender(nurseID.connectionToClient);
     }
 
     [TargetRpc]
@@ -338,7 +340,9 @@ public class HPReverbControls : NetworkBehaviour
         ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
         Debug.Log("Cmd UNT: " + ConversationManager.Instance.ActiveReactionElements.Count);
         NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+        NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
         TargetUpdateNurseText(nurseID.connectionToClient);
+        TargetPlayAudioOnSender(agressorID.connectionToClient);
     }
 
     [TargetRpc]
@@ -362,7 +366,7 @@ public class HPReverbControls : NetworkBehaviour
         }
 
         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
-        
+
         Debug.Log("play audio starting");
         Debug.Log(audioSource.isActiveAndEnabled);
         audioSource.Play();
@@ -491,26 +495,23 @@ public class HPReverbControls : NetworkBehaviour
             }
         }
     }
-    [Command(requiresAuthority = false)]
-    public void CmdPlayAudioOnServer()
+    [TargetRpc]
+    public void TargetPlayAudioOnSender(NetworkConnection target)
     {
-    //    if (this.isServer)
-    //    {
-    //        if (firstTime == true)
-    //        {
-    //            audioSource.clip = ConversationElementInitializer.GeneralCheckupConversation().TextToSpeech;
-    //        }
-    //        else
-    //        {
-    //            audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
-    //        }
-    //        Debug.Log("play audio starting");
-    //        Debug.Log(audioSource.isActiveAndEnabled);
-    //        audioSource.Play();
-    //        Debug.Log("play audio finished");
-    //    }
+        foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (player.GetComponent<NetworkIdentity>().isServer)
+            {
+                audioSource = player.GetComponent<AudioSource>();
+            }
+        }
 
+        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
+        Debug.Log("play audio starting");
+        Debug.Log(audioSource.isActiveAndEnabled);
+        audioSource.Play();
+        Debug.Log("play audio finished");
     }
 
 }

@@ -305,7 +305,8 @@ public class HPReverbControls : NetworkBehaviour
                 audioSource = player.GetComponent<AudioSource>();
             }
         }
-
+        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
+        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
         Debug.Log("play audio starting");

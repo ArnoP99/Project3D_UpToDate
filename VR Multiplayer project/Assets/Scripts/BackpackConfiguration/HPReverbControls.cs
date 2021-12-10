@@ -24,10 +24,10 @@ public class HPReverbControls : NetworkBehaviour
     private void Start()
     {
         firstTime = true;
-        if (this.isServer && this.GetComponent<NetworkIdentity>().isLocalPlayer)
-        {
-            audioSource = gameObject.GetComponent<AudioSource>();
-        }
+        //if (this.isServer && this.GetComponent<NetworkIdentity>().isLocalPlayer)
+        //{
+        //    audioSource = gameObject.GetComponent<AudioSource>();
+        //}
 
     }
     public void PressTrigger(InputAction.CallbackContext context)
@@ -41,10 +41,10 @@ public class HPReverbControls : NetworkBehaviour
                 try
                 {
                     GetAgressorActiveChoice();
-                    if (this.isClient)
-                    {
-                        CmdPlayAudioOnServer();
-                    }
+                    //if (this.isClient)
+                    //{
+                    //    CmdPlayAudioOnServer();
+                    //}
 
                 }
                 catch (Exception ex)
@@ -59,10 +59,10 @@ public class HPReverbControls : NetworkBehaviour
                 try
                 {
                     GetNurseActiveChoice();
-                    if (this.isClient)
-                    {
-                        CmdPlayAudioOnServer();
-                    }
+                    //if (this.isClient)
+                    //{
+                    //    CmdPlayAudioOnServer();
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -461,21 +461,21 @@ public class HPReverbControls : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdPlayAudioOnServer()
     {
-        if (this.isServer)
-        {
-            if (firstTime == true)
-            {
-                audioSource.clip = ConversationElementInitializer.GeneralCheckupConversation().TextToSpeech;
-            }
-            else
-            {
-                audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
-            }
-            Debug.Log("play audio starting");
-            Debug.Log(audioSource.isActiveAndEnabled);
-            audioSource.Play();
-            Debug.Log("play audio finished");
-        }
+    //    if (this.isServer)
+    //    {
+    //        if (firstTime == true)
+    //        {
+    //            audioSource.clip = ConversationElementInitializer.GeneralCheckupConversation().TextToSpeech;
+    //        }
+    //        else
+    //        {
+    //            audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+    //        }
+    //        Debug.Log("play audio starting");
+    //        Debug.Log(audioSource.isActiveAndEnabled);
+    //        audioSource.Play();
+    //        Debug.Log("play audio finished");
+    //    }
 
 
     }

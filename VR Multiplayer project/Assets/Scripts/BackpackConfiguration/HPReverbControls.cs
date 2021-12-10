@@ -24,7 +24,10 @@ public class HPReverbControls : NetworkBehaviour
     private void Start()
     {
         firstTime = true;
-        audioSource = gameObject.GetComponent<AudioSource>();
+        if (this.isServer)
+        {
+            audioSource = gameObject.GetComponent<AudioSource>();
+        }
 
     }
     public void PressTrigger(InputAction.CallbackContext context)
@@ -469,9 +472,9 @@ public class HPReverbControls : NetworkBehaviour
                 audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
             }
             Debug.Log("play audio starting");
+            Debug.Log(audioSource.isActiveAndEnabled);
             audioSource.Play();
             Debug.Log("play audio finished");
-
         }
 
 

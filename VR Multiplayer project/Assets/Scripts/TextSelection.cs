@@ -12,7 +12,7 @@ public class TextSelection : MonoBehaviour
         {
             if (other.transform.parent.gameObject.tag == "ChoicePopUp")
             {
-                other.gameObject.GetComponent<TextMeshPro>().color = Color.red;
+                other.gameObject.GetComponent<TextMeshPro>().color = new Color(0,180,207);
 
             }
         }

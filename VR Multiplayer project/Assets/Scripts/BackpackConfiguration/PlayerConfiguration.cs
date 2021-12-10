@@ -59,7 +59,7 @@ public class PlayerConfiguration : NetworkBehaviour
                 myCamera.GetComponent<AudioListener>().enabled = true;
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
-                this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+                //this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
             }
             //When it is the local player and it is the server/PC enable the main camera
             else

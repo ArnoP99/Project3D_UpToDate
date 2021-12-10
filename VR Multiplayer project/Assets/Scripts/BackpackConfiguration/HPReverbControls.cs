@@ -23,7 +23,7 @@ public class HPReverbControls : NetworkBehaviour
     {
         firstTime = true;
         audioSource = gameObject.GetComponent<AudioSource>();
-       
+
     }
     public void PressTrigger(InputAction.CallbackContext context)
     {
@@ -441,7 +441,7 @@ public class HPReverbControls : NetworkBehaviour
                 ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[2];
             }
         }
-        else if(ConversationManager.Instance.ActiveReactionElements.Count == 2)
+        else if (ConversationManager.Instance.ActiveReactionElements.Count == 2)
         {
             if (activeChoice == 1)
             {
@@ -456,8 +456,17 @@ public class HPReverbControls : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdPlayAudioOnServer()
     {
-        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+        if (firstTime == true)
+        {
+            audioSource.clip = ConversationElementInitializer.GeneralCheckupConversation().TextToSpeech;
+        }
+        else
+        {
+            audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+        }
+
         audioSource.Play();
+
     }
 
 }

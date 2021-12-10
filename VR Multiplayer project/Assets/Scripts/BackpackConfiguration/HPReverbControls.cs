@@ -17,6 +17,8 @@ public class HPReverbControls : NetworkBehaviour
 
     bool firstTime;
 
+    Color selectColor = new Color(0,180,207);
+
     AudioSource audioSource;
 
     private void Start()
@@ -107,7 +109,7 @@ public class HPReverbControls : NetworkBehaviour
         nurse = GameObject.FindGameObjectWithTag("Nurse");
         textPopUp = nurse.transform.parent.transform.GetChild(3).gameObject;
 
-        if (textPopUp.transform.GetChild(0).GetComponent<TextMeshPro>().color == Color.red && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
+        if (textPopUp.transform.GetChild(0).GetComponent<TextMeshPro>().color == selectColor && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(0).gameObject;
             textPopUp.SetActive(false);
@@ -128,7 +130,7 @@ public class HPReverbControls : NetworkBehaviour
                 firstTime = false;
             }
         }
-        else if (textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color == Color.red && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
+        else if (textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color == selectColor && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(1).gameObject;
             textPopUp.SetActive(false);
@@ -149,7 +151,7 @@ public class HPReverbControls : NetworkBehaviour
                 firstTime = false;
             }
         }
-        else if (textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color == Color.red && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
+        else if (textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color == selectColor && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(2).gameObject;
             textPopUp.SetActive(false);
@@ -181,7 +183,7 @@ public class HPReverbControls : NetworkBehaviour
         agressor = GameObject.FindGameObjectWithTag("Agressor");
         textPopUp = agressor.transform.parent.transform.GetChild(3).gameObject;
 
-        if (textPopUp.transform.GetChild(0).GetComponent<TextMeshPro>().color == Color.red && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
+        if (textPopUp.transform.GetChild(0).GetComponent<TextMeshPro>().color == selectColor && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(0).gameObject;
             textPopUp.SetActive(false);
@@ -196,7 +198,7 @@ public class HPReverbControls : NetworkBehaviour
                 CmdUpdateNurseText();
             }
         }
-        else if (textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color == Color.red && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
+        else if (textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color == selectColor && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(1).gameObject;
             textPopUp.SetActive(false);
@@ -211,7 +213,7 @@ public class HPReverbControls : NetworkBehaviour
                 CmdUpdateNurseText();
             }
         }
-        else if (textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color == Color.red && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
+        else if (textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color == selectColor && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(2).gameObject;
             textPopUp.SetActive(false);

@@ -72,6 +72,7 @@ public class PlayerConfiguration : NetworkBehaviour
                 syncRotation.enabled = false;
                 controllersToHMDLocal.enabled = false;
                 myCamera.enabled = false;
+                audioSource.enabled = false;
                 myCamera.GetComponent<AudioListener>().enabled = false;
                 GameObject.Find("Main camera").GetComponent<Camera>().enabled = true;
                 GameObject.Find("Main camera").GetComponent<AudioListener>().enabled = true;
@@ -89,7 +90,7 @@ public class PlayerConfiguration : NetworkBehaviour
             syncRotation.enabled = false;
             TrackedPoseDriver.enabled = false;
             myCamera.enabled = false;
-            audioSource.enabled = false;
+            audioSource.enabled = true;
             myCamera.GetComponent<AudioListener>().enabled = false;
             this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
         }

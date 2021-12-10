@@ -359,12 +359,14 @@ public class HPReverbControls : NetworkBehaviour
 
         foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if (player.GetComponent<NetworkIdentity>().isServer)
+            if (player.GetComponent<NetworkIdentity>().isLocalPlayer == false && player.GetComponent<NetworkIdentity>().netId == 15)
             {
+                Debug.Log("audiosource set");
                 audioSource = player.GetComponent<AudioSource>();
             }
         }
-
+        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
+        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
         Debug.Log("play audio starting");
@@ -500,12 +502,14 @@ public class HPReverbControls : NetworkBehaviour
     {
         foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if (player.GetComponent<NetworkIdentity>().isServer)
+            if (player.GetComponent<NetworkIdentity>().isLocalPlayer == false && player.GetComponent<NetworkIdentity>().netId == 15)
             {
+                Debug.Log("audiosource set");
                 audioSource = player.GetComponent<AudioSource>();
             }
         }
-
+        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
+        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
         Debug.Log("play audio starting");

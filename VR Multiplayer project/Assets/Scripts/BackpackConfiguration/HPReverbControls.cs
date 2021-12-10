@@ -17,7 +17,7 @@ public class HPReverbControls : NetworkBehaviour
 
     bool firstTime;
 
-    Color selectColor = new Color(0,180,207);
+    Color selectColor = new Color(0, 180, 207);
 
     AudioSource audioSource;
 
@@ -458,16 +458,22 @@ public class HPReverbControls : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdPlayAudioOnServer()
     {
-        if (firstTime == true)
+        if (this.isServer)
         {
-            audioSource.clip = ConversationElementInitializer.GeneralCheckupConversation().TextToSpeech;
-        }
-        else
-        {
-            audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+            if (firstTime == true)
+            {
+                audioSource.clip = ConversationElementInitializer.GeneralCheckupConversation().TextToSpeech;
+            }
+            else
+            {
+                audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+            }
+            Debug.Log("play audio starting");
+            audioSource.Play();
+            Debug.Log("play audio finished");
+
         }
 
-        audioSource.Play();
 
     }
 

@@ -79,10 +79,11 @@ public class HPReverbControls : NetworkBehaviour
 
     private void Update()
     {
+        scene = SceneManager.GetActiveScene();
         if (lastAudioPlayed && this.isServer)
         {
             timeRemaining -= Time.deltaTime;
-            if (timeRemaining <= 0)
+            if (timeRemaining <= 0 && scene.name == "ZiekenhuisKamer")
             {
                 NetworkManager.singleton.ServerChangeScene("EndRoom");
             }
@@ -140,7 +141,7 @@ public class HPReverbControls : NetworkBehaviour
                 }
 
             }
-            else
+            else if(firstTime)
             {
                 CmdUpdateAgressorText();
                 firstTime = false;
@@ -164,7 +165,7 @@ public class HPReverbControls : NetworkBehaviour
                     CmdUpdateAgressorText();
                 }
             }
-            else
+            else if (firstTime)
             {
                 CmdUpdateAgressorText();
                 firstTime = false;
@@ -188,7 +189,7 @@ public class HPReverbControls : NetworkBehaviour
                     CmdUpdateAgressorText();
                 }
             }
-            else
+            else if (firstTime)
             {
                 CmdUpdateAgressorText();
                 firstTime = false;

@@ -135,10 +135,7 @@ public class HPReverbControls : NetworkBehaviour
             }
             else
             {
-                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
-                {
-                    CmdUpdateAgressorText();
-                }
+                CmdUpdateAgressorText();
                 firstTime = false;
             }
         }
@@ -162,10 +159,7 @@ public class HPReverbControls : NetworkBehaviour
             }
             else
             {
-                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
-                {
-                    CmdUpdateAgressorText();
-                }
+                CmdUpdateAgressorText();
                 firstTime = false;
             }
         }
@@ -189,10 +183,7 @@ public class HPReverbControls : NetworkBehaviour
             }
             else
             {
-                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
-                {
-                    CmdUpdateAgressorText();
-                }
+                CmdUpdateAgressorText();
                 firstTime = false;
             }
         }

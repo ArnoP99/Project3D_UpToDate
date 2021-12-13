@@ -8,7 +8,7 @@ public class LoadNextScene : NetworkBehaviour
 {
     bool nurseCheck;
     bool agressorCheck;
-    float timeRemaining = 70;
+    float timeRemaining = 15; // normaal 70, slechts 10 om te testen
 
     Scene scene;
 

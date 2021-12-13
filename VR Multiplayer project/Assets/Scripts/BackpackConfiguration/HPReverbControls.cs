@@ -335,44 +335,47 @@ public class HPReverbControls : NetworkBehaviour
     [TargetRpc]
     public void TargetUpdateAgressorText(NetworkConnection target)
     {
-        agressor = GameObject.FindGameObjectWithTag("Agressor").gameObject;
-        textPopUp = agressor.transform.parent.transform.GetChild(3).gameObject;
-        Debug.Log(ConversationManager.Instance.ActiveReactionElements.Count);
-        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
-        ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
-        Debug.Log("Target UAT: " + ConversationManager.Instance.ActiveReactionElements.Count);
-
-        foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
+        if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Continue)
         {
-            if (player.GetComponent<NetworkIdentity>().isLocalPlayer == false && player.GetComponent<NetworkIdentity>().netId == 15)
+            agressor = GameObject.FindGameObjectWithTag("Agressor").gameObject;
+            textPopUp = agressor.transform.parent.transform.GetChild(3).gameObject;
+            Debug.Log(ConversationManager.Instance.ActiveReactionElements.Count);
+            Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
+            ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
+            Debug.Log("Target UAT: " + ConversationManager.Instance.ActiveReactionElements.Count);
+
+            foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                Debug.Log("audiosource set");
-                audioSource = player.GetComponent<AudioSource>();
+                if (player.GetComponent<NetworkIdentity>().isLocalPlayer == false && player.GetComponent<NetworkIdentity>().netId == 15)
+                {
+                    Debug.Log("audiosource set");
+                    audioSource = player.GetComponent<AudioSource>();
+                }
             }
-        }
-        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
-        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
-        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+            Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
+            Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
+            audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
-        Debug.Log("play audio starting");
-        Debug.Log(audioSource.isActiveAndEnabled);
-        audioSource.Play();
-        Debug.Log("play audio finished");
+            Debug.Log("play audio starting");
+            Debug.Log(audioSource.isActiveAndEnabled);
+            audioSource.Play();
+            Debug.Log("play audio finished");
 
-        textPopUp.SetActive(true);
+            textPopUp.SetActive(true);
 
-        // als er geen 3 reacties zijn ... -> hier moeten we nog op controleren
-        if (ConversationManager.Instance.ActiveReactionElements.Count == 3)
-        {
-            textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
-            textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
-            textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[2].Text;
-        }
-        else if (ConversationManager.Instance.ActiveReactionElements.Count == 2)
-        {
-            textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
-            textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = " ";
-            textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
+            // als er geen 3 reacties zijn ... -> hier moeten we nog op controleren
+            if (ConversationManager.Instance.ActiveReactionElements.Count == 3)
+            {
+                textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
+                textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
+                textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[2].Text;
+            }
+            else if (ConversationManager.Instance.ActiveReactionElements.Count == 2)
+            {
+                textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
+                textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = " ";
+                textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
+            }
         }
     }
 
@@ -390,47 +393,49 @@ public class HPReverbControls : NetworkBehaviour
     [TargetRpc]
     public void TargetUpdateNurseText(NetworkConnection target)
     {
-        nurse = GameObject.FindGameObjectWithTag("Nurse").gameObject;
-        textPopUp = nurse.transform.parent.transform.GetChild(3).gameObject;
-        Debug.Log(ConversationManager.Instance.ActiveReactionElements.Count);
-        Debug.Log(ConversationManager.Instance.GetActiveConversation());
-        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
-        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements.Count);
-        ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
-        Debug.Log("Target UNT: " + ConversationManager.Instance.ActiveReactionElements.Count);
-
-        foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
+        if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Continue)
         {
-            if (player.GetComponent<NetworkIdentity>().isLocalPlayer == false && player.GetComponent<NetworkIdentity>().netId == 15)
+            nurse = GameObject.FindGameObjectWithTag("Nurse").gameObject;
+            textPopUp = nurse.transform.parent.transform.GetChild(3).gameObject;
+            Debug.Log(ConversationManager.Instance.ActiveReactionElements.Count);
+            Debug.Log(ConversationManager.Instance.GetActiveConversation());
+            Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
+            Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements.Count);
+            ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
+            Debug.Log("Target UNT: " + ConversationManager.Instance.ActiveReactionElements.Count);
+
+            foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                Debug.Log("audiosource set");
-                audioSource = player.GetComponent<AudioSource>();
+                if (player.GetComponent<NetworkIdentity>().isLocalPlayer == false && player.GetComponent<NetworkIdentity>().netId == 15)
+                {
+                    Debug.Log("audiosource set");
+                    audioSource = player.GetComponent<AudioSource>();
+                }
+            }
+            Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
+            Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
+            audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+
+            Debug.Log("play audio starting");
+            Debug.Log(audioSource.isActiveAndEnabled);
+            audioSource.Play();
+            Debug.Log("play audio finished");
+            textPopUp.SetActive(true);
+
+            // als er geen 3 reacties zijn ... -> hier moeten we nog op controleren
+            if (ConversationManager.Instance.ActiveReactionElements.Count == 3)
+            {
+                textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
+                textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
+                textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[2].Text;
+            }
+            else if (ConversationManager.Instance.ActiveReactionElements.Count == 2)
+            {
+                textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
+                textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = " ";
+                textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
             }
         }
-        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
-        Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
-        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
-
-        Debug.Log("play audio starting");
-        Debug.Log(audioSource.isActiveAndEnabled);
-        audioSource.Play();
-        Debug.Log("play audio finished");
-        textPopUp.SetActive(true);
-
-        // als er geen 3 reacties zijn ... -> hier moeten we nog op controleren
-        if (ConversationManager.Instance.ActiveReactionElements.Count == 3)
-        {
-            textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
-            textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
-            textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[2].Text;
-        }
-        else if (ConversationManager.Instance.ActiveReactionElements.Count == 2)
-        {
-            textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
-            textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = " ";
-            textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
-        }
-
     }
 
     [Command(requiresAuthority = false)]

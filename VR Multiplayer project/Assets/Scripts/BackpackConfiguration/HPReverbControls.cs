@@ -21,6 +21,8 @@ public class HPReverbControls : NetworkBehaviour
 
     AudioSource audioSource;
 
+    Scene scene;
+
     private void Start()
     {
         firstTime = true;
@@ -125,11 +127,18 @@ public class HPReverbControls : NetworkBehaviour
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
             {
                 CmdUpdateActiveElement(1);
-                CmdUpdateAgressorText();
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                {
+                    CmdUpdateAgressorText();
+                }
+
             }
             else
             {
-                CmdUpdateAgressorText();
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                {
+                    CmdUpdateAgressorText();
+                }
                 firstTime = false;
             }
         }
@@ -146,11 +155,17 @@ public class HPReverbControls : NetworkBehaviour
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
             {
                 CmdUpdateActiveElement(2);
-                CmdUpdateAgressorText();
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                {
+                    CmdUpdateAgressorText();
+                }
             }
             else
             {
-                CmdUpdateAgressorText();
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                {
+                    CmdUpdateAgressorText();
+                }
                 firstTime = false;
             }
         }
@@ -167,11 +182,17 @@ public class HPReverbControls : NetworkBehaviour
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
             {
                 CmdUpdateActiveElement(3);
-                CmdUpdateAgressorText();
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                {
+                    CmdUpdateAgressorText();
+                }
             }
             else
             {
-                CmdUpdateAgressorText();
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                {
+                    CmdUpdateAgressorText();
+                }
                 firstTime = false;
             }
         }
@@ -198,7 +219,10 @@ public class HPReverbControls : NetworkBehaviour
                 ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
                 Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
                 CmdUpdateActiveElement(1);
-                CmdUpdateNurseText();
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                {
+                    CmdUpdateNurseText();
+                }
             }
         }
         else if (textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color == selectColor && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
@@ -213,7 +237,10 @@ public class HPReverbControls : NetworkBehaviour
                 ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
                 Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
                 CmdUpdateActiveElement(2);
-                CmdUpdateNurseText();
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                {
+                    CmdUpdateNurseText();
+                }
             }
         }
         else if (textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color == selectColor && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
@@ -228,7 +255,10 @@ public class HPReverbControls : NetworkBehaviour
                 ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
                 Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
                 CmdUpdateActiveElement(3);
-                CmdUpdateNurseText();
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                {
+                    CmdUpdateNurseText();
+                }
             }
         }
         else
@@ -394,8 +424,10 @@ public class HPReverbControls : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdUpdateActiveElement(int activeChoice)
     {
+
         if (this.isServer)
         {
+
             ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
             Debug.Log("Cmd UAE: " + ConversationManager.Instance.ActiveReactionElements.Count);
             if (ConversationManager.Instance.ActiveReactionElements.Count == 3)
@@ -426,9 +458,24 @@ public class HPReverbControls : NetworkBehaviour
             }
             Debug.Log("Updated active element on server");
             NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-            NetworkIdentity AgressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+            NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
             TargetUpdateActiveElementNurse(nurseID.connectionToClient, activeChoice);
-            TargetUpdateActiveElementAgressor(AgressorID.connectionToClient, activeChoice);
+            TargetUpdateActiveElementAgressor(agressorID.connectionToClient, activeChoice);
+
+            if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Ended)
+            {
+
+                TargetPlayAudioOnSender(agressorID.connectionToClient);
+                TargetPlayAudioOnSender(nurseID.connectionToClient);
+                NetworkManager.singleton.ServerChangeScene("EndRoom");
+            }
+
+            if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Phase2)
+            {
+                Debug.Log("phase 2 started");
+            }
+
+
         }
     }
 
@@ -515,6 +562,10 @@ public class HPReverbControls : NetworkBehaviour
         Debug.Log("play audio starting");
         Debug.Log(audioSource.isActiveAndEnabled);
         audioSource.Play();
+        while (audioSource.isPlaying)
+        {
+            Debug.Log("Playing audio");
+        }
         Debug.Log("play audio finished");
     }
 

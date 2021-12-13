@@ -18,11 +18,19 @@ public class ConversationElement
         Anyone
     }
 
+    public enum ActiveState
+    {
+        Ended,
+        Phase2,
+        Continue
+    }
+
     private string text;
     private ElementState elementState;
     private List<ConversationElement> reactionElements = new List<ConversationElement>();
     private UserState userstate;
     private AudioClip textToSpeech;
+    private ActiveState activeState;
 
     public ConversationElement()
     {
@@ -38,13 +46,14 @@ public class ConversationElement
         textToSpeech = null;
     }
 
-    public ConversationElement(string m_text, ElementState m_elementState, UserState m_userState, AudioClip m_audio)
+    public ConversationElement(string m_text, ElementState m_elementState, UserState m_userState, AudioClip m_audio , ActiveState m_activeState)
     {
         text = m_text;
         elementState = m_elementState;
         reactionElements = new List<ConversationElement>();
         userstate = m_userState;
         textToSpeech = m_audio;
+        activeState = m_activeState;
     }
 
     public void AddElementToReactions(ConversationElement reactie)
@@ -73,6 +82,14 @@ public class ConversationElement
         get
         {
             return textToSpeech;
+        }
+    }
+
+    public ActiveState AState
+    {
+        get
+        {
+            return activeState;
         }
     }
 

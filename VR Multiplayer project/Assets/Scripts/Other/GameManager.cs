@@ -35,7 +35,7 @@ public class GameManager : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void ChangeScene(int onSpawnCheck)
+    public void GoToHospitalRoom(int onSpawnCheck)
     {
         if (onSpawnCheck == 1 && nurseOnSpawn == false)
         {
@@ -55,9 +55,35 @@ public class GameManager : NetworkBehaviour
             agressorOnSpawn = false;
         }
 
-        if (nurseOnSpawn == true /*&& agressorOnSpawn == true*/ && this == isServer)
+        if (nurseOnSpawn == true && agressorOnSpawn == true && this == isServer)
         {
             NetworkManager.singleton.ServerChangeScene("ZiekenhuisKamer");
+        }
+    }
+
+    public void GoToIntroductionRoom(int onSpawnCheck)
+    {
+        if (onSpawnCheck == 1 && nurseOnSpawn == false)
+        {
+            nurseOnSpawn = true;
+        }
+        else if (onSpawnCheck == 1 && nurseOnSpawn == true)
+        {
+            nurseOnSpawn = false;
+        }
+
+        if (onSpawnCheck == 2 && agressorOnSpawn == false)
+        {
+            agressorOnSpawn = true;
+        }
+        else if (onSpawnCheck == 2 && agressorOnSpawn == true)
+        {
+            agressorOnSpawn = false;
+        }
+
+        if (nurseOnSpawn == true && agressorOnSpawn == true && this == isServer)
+        {
+            NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
         }
     }
 }

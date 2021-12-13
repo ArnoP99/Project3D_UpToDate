@@ -8,6 +8,9 @@ public class LoadNextScene : NetworkBehaviour
 {
     bool nurseCheck;
     bool agressorCheck;
+    float timeRemaining = 70;
+
+    Scene scene;
 
     GameObject gameManager;
 
@@ -19,14 +22,34 @@ public class LoadNextScene : NetworkBehaviour
         }
     }
 
+    private void Update()
+    {
+        scene = SceneManager.GetActiveScene();
+
+        if (scene.name == "IntroductionRoom")
+        {
+            timeRemaining -= Time.deltaTime;
+
+        }
+    }
+
+
     public void OnTriggerEnter(Collider other)
     {
+
         if (other.tag == "Nurse")
         {
             if (this == isServer)
             {
                 Debug.Log("NurseOnSpawn");
-                gameManager.GetComponent<GameManager>().ChangeScene(1);
+                if (scene.name == "Wachtkamer")
+                {
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(1);
+                }
+                if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
+                {
+                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(1);
+                }
             }
         }
         else if (other.tag == "Agressor")
@@ -34,7 +57,14 @@ public class LoadNextScene : NetworkBehaviour
             if (this == isServer)
             {
                 Debug.Log("AgressorOnSpawn");
-                gameManager.GetComponent<GameManager>().ChangeScene(2);
+                if(scene.name == "Wachtkamer")
+                {
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2);
+                }
+                if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
+                {
+                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(2);
+                }
             }
         }
     }
@@ -45,14 +75,28 @@ public class LoadNextScene : NetworkBehaviour
         {
             if (this == isServer)
             {
-                gameManager.GetComponent<GameManager>().ChangeScene(1);
+                if (scene.name == "Wachtkamer")
+                {
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(1);
+                }
+                if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
+                {
+                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(1);
+                }
             }
         }
         else if (other.tag == "Agressor")
         {
             if (this == isServer)
             {
-                gameManager.GetComponent<GameManager>().ChangeScene(2);
+                if (scene.name == "Wachtkamer")
+                {
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2);
+                }
+                if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
+                {
+                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(2);
+                }
             }
         }
     }

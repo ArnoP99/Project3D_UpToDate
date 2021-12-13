@@ -576,6 +576,13 @@ public class HPReverbControls : NetworkBehaviour
         Debug.Log(audioSource.isActiveAndEnabled);
         audioSource.Play();
         Debug.Log("play audio finished");
+        if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Ended || ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
+        {
+            foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+            }
+        }
     }
 
 }

@@ -44,11 +44,11 @@ public class LoadNextScene : NetworkBehaviour
                 Debug.Log("NurseOnSpawn");
                 if (scene.name == "Wachtkamer")
                 {
-                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(1);
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(1,1);
                 }
                 if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
                 {
-                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(1);
+                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(1,1);
                 }
             }
         }
@@ -59,11 +59,11 @@ public class LoadNextScene : NetworkBehaviour
                 Debug.Log("AgressorOnSpawn");
                 if(scene.name == "Wachtkamer")
                 {
-                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2);
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2,1);
                 }
                 if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
                 {
-                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(2);
+                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(2,1);
                 }
             }
         }
@@ -77,11 +77,11 @@ public class LoadNextScene : NetworkBehaviour
             {
                 if (scene.name == "Wachtkamer")
                 {
-                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(1);
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(1,0);
                 }
                 if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
                 {
-                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(1);
+                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(1,0);
                 }
             }
         }
@@ -91,11 +91,11 @@ public class LoadNextScene : NetworkBehaviour
             {
                 if (scene.name == "Wachtkamer")
                 {
-                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2);
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2,0);
                 }
                 if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
                 {
-                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(2);
+                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(2,0);
                 }
             }
         }

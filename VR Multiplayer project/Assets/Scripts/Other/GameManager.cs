@@ -35,22 +35,22 @@ public class GameManager : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void GoToHospitalRoom(int onSpawnCheck)
+    public void GoToHospitalRoom(int onSpawnCheck, int active)
     {
-        if (onSpawnCheck == 1 && nurseOnSpawn == false)
+        if (onSpawnCheck == 1 && active == 1)
         {
             nurseOnSpawn = true;
         }
-        else if (onSpawnCheck == 1 && nurseOnSpawn == true)
+        else if (onSpawnCheck == 1 && active == 0)
         {
             nurseOnSpawn = false;
         }
 
-        if (onSpawnCheck == 2 && agressorOnSpawn == false)
+        if (onSpawnCheck == 2 && active == 1)
         {
             agressorOnSpawn = true;
         }
-        else if (onSpawnCheck == 2 && agressorOnSpawn == true)
+        else if (onSpawnCheck == 2 && active == 0)
         {
             agressorOnSpawn = false;
         }
@@ -61,22 +61,22 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-    public void GoToIntroductionRoom(int onSpawnCheck)
+    public void GoToIntroductionRoom(int onSpawnCheck, int active)
     {
-        if (onSpawnCheck == 1 && nurseOnSpawn == false)
+        if (onSpawnCheck == 1 && active == 1)
         {
             nurseOnSpawn = true;
         }
-        else if (onSpawnCheck == 1 && nurseOnSpawn == true)
+        else if (onSpawnCheck == 1 && active == 0)
         {
             nurseOnSpawn = false;
         }
 
-        if (onSpawnCheck == 2 && agressorOnSpawn == false)
+        if (onSpawnCheck == 2 && active == 1)
         {
             agressorOnSpawn = true;
         }
-        else if (onSpawnCheck == 2 && agressorOnSpawn == true)
+        else if (onSpawnCheck == 2 && active == 0)
         {
             agressorOnSpawn = false;
         }
@@ -85,5 +85,6 @@ public class GameManager : NetworkBehaviour
         {
             NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
         }
+        //on enter true on exit false
     }
 }

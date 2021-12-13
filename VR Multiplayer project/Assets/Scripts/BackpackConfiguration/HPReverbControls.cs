@@ -14,6 +14,9 @@ public class HPReverbControls : NetworkBehaviour
     public GameObject textPopUp;
     public GameObject activeChoice;
     public bool triggerValue = true;
+    public bool lastAudioPlayed = false;
+
+    float timeRemaining = 10;
 
     bool firstTime;
 
@@ -76,9 +79,13 @@ public class HPReverbControls : NetworkBehaviour
 
     private void Update()
     {
-        if (ConversationManager.Instance != null)
+        if (lastAudioPlayed && this.isServer)
         {
-            Debug.Log(ConversationManager.Instance.GetActiveConversation());
+            timeRemaining -= Time.deltaTime;
+            if (timeRemaining <= 0)
+            {
+                NetworkManager.singleton.ServerChangeScene("EndRoom");
+            }
         }
     }
 
@@ -458,7 +465,7 @@ public class HPReverbControls : NetworkBehaviour
 
                 TargetPlayAudioOnSender(agressorID.connectionToClient);
                 TargetPlayAudioOnSender(nurseID.connectionToClient);
-                NetworkManager.singleton.ServerChangeScene("EndRoom");
+                lastAudioPlayed = true;
             }
 
             if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Phase2)
@@ -553,10 +560,6 @@ public class HPReverbControls : NetworkBehaviour
         Debug.Log("play audio starting");
         Debug.Log(audioSource.isActiveAndEnabled);
         audioSource.Play();
-        while (audioSource.isPlaying)
-        {
-            Debug.Log("Playing audio");
-        }
         Debug.Log("play audio finished");
     }
 

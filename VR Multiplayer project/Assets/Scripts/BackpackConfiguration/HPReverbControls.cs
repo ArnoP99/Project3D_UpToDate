@@ -135,11 +135,12 @@ public class HPReverbControls : NetworkBehaviour
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
             {
                 CmdUpdateActiveElement(1);
+                Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
                     CmdUpdateAgressorText();
                 }
-
+                Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
             }
             else if(firstTime)
             {
@@ -160,10 +161,12 @@ public class HPReverbControls : NetworkBehaviour
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
             {
                 CmdUpdateActiveElement(2);
+                Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
                     CmdUpdateAgressorText();
                 }
+                Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
             }
             else if (firstTime)
             {
@@ -184,10 +187,12 @@ public class HPReverbControls : NetworkBehaviour
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
             {
                 CmdUpdateActiveElement(3);
+                Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
                     CmdUpdateAgressorText();
                 }
+                Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
             }
             else if (firstTime)
             {

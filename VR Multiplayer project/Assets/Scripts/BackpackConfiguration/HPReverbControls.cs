@@ -139,7 +139,6 @@ public class HPReverbControls : NetworkBehaviour
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
                     CmdUpdateActiveElement(1);
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
                     CmdUpdateAgressorText();
                 }
                 Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
@@ -167,7 +166,6 @@ public class HPReverbControls : NetworkBehaviour
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
                     CmdUpdateActiveElement(2);
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[2];
                     CmdUpdateAgressorText();
                 }
                 Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
@@ -195,7 +193,6 @@ public class HPReverbControls : NetworkBehaviour
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
                     CmdUpdateActiveElement(3);
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[3];
                     CmdUpdateAgressorText();
                 }
                 Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
@@ -232,7 +229,6 @@ public class HPReverbControls : NetworkBehaviour
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
                     CmdUpdateActiveElement(1);
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
                     CmdUpdateNurseText();
                 }
             }
@@ -252,7 +248,6 @@ public class HPReverbControls : NetworkBehaviour
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
                     CmdUpdateActiveElement(2);
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[2];
                     CmdUpdateNurseText();
                 }
             }
@@ -272,7 +267,6 @@ public class HPReverbControls : NetworkBehaviour
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
                     CmdUpdateActiveElement(3);
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[3];
                     CmdUpdateNurseText();
                 }
             }
@@ -475,8 +469,8 @@ public class HPReverbControls : NetworkBehaviour
             Debug.Log("Updated active element on server");
             NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
             NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-            //TargetUpdateActiveElementNurse(nurseID.connectionToClient, activeChoice);
-            //TargetUpdateActiveElementAgressor(agressorID.connectionToClient, activeChoice);
+            TargetUpdateActiveElementNurse(nurseID.connectionToClient, activeChoice);
+            TargetUpdateActiveElementAgressor(agressorID.connectionToClient, activeChoice);
 
             if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Ended)
             {

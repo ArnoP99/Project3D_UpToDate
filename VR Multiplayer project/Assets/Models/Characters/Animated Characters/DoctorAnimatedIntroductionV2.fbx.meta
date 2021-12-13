@@ -26,7 +26,7 @@ ModelImporter:
     second: metarig.012|EyeBrow.011Action.001
   - first:
       74: -2649199643437358025
-    second: metarig.012|metarig.002Action.005
+    second: DoctorIntroductionAnimation
   - first:
       74: 7984237178338250735
     second: metarig.012|metarig.002Action.006
@@ -65,7 +65,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: metarig.012|metarig.002Action.005
+      name: DoctorIntroductionAnimation
       takeName: metarig.012|metarig.002Action.005
       internalID: 0
       firstFrame: 0

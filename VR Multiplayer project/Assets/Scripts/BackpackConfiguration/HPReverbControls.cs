@@ -134,16 +134,16 @@ public class HPReverbControls : NetworkBehaviour
 
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
             {
-
+                CmdUpdateActiveElement(1);
                 Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
-                    CmdUpdateActiveElement(1);
+
                     CmdUpdateAgressorText();
                 }
                 Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
             }
-            else if(firstTime)
+            else if (firstTime)
             {
                 CmdUpdateAgressorText();
                 firstTime = false;
@@ -161,11 +161,11 @@ public class HPReverbControls : NetworkBehaviour
 
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
             {
-
+                CmdUpdateActiveElement(2);
                 Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
-                    CmdUpdateActiveElement(2);
+
                     CmdUpdateAgressorText();
                 }
                 Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
@@ -192,11 +192,11 @@ public class HPReverbControls : NetworkBehaviour
                 Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
-         
+
                     CmdUpdateAgressorText();
 
                 }
-   
+
                 Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
             }
             else if (firstTime)
@@ -227,10 +227,10 @@ public class HPReverbControls : NetworkBehaviour
                 Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
                 ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
                 Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
-
+                CmdUpdateActiveElement(1);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
-                    CmdUpdateActiveElement(1);
+
                     CmdUpdateNurseText();
                 }
             }
@@ -246,10 +246,10 @@ public class HPReverbControls : NetworkBehaviour
                 Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
                 ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
                 Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
-
+                CmdUpdateActiveElement(2);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
-                    CmdUpdateActiveElement(2);
+
                     CmdUpdateNurseText();
                 }
             }
@@ -265,10 +265,10 @@ public class HPReverbControls : NetworkBehaviour
                 Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
                 ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
                 Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
-
+                CmdUpdateActiveElement(3);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
-                    CmdUpdateActiveElement(3);
+
                     CmdUpdateNurseText();
                 }
             }

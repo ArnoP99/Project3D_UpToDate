@@ -16,7 +16,7 @@ public class HPReverbControls : NetworkBehaviour
     public bool triggerValue = true;
     public bool lastAudioPlayed = false;
 
-    float timeRemaining = 10;
+    float timeRemaining = 5; //moet eventueel nog meer of minder
 
     bool firstTime;
 

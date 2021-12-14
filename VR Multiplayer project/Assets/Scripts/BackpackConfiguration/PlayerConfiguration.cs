@@ -62,6 +62,8 @@ public class PlayerConfiguration : NetworkBehaviour
                 myCamera.GetComponent<AudioListener>().enabled = true;
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
+                this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
+                this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
                 this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
                 
             }
@@ -93,6 +95,8 @@ public class PlayerConfiguration : NetworkBehaviour
             audioSource.enabled = true;
             myCamera.GetComponent<AudioListener>().enabled = false;
             this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+            this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
+            this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
         }
 
         //Make server/PC player invisible and make hands invisible

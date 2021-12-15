@@ -93,4 +93,11 @@ public class ConversationElement
         }
     }
 
+    public ElementState EState
+    {
+        get
+        {
+            return elementState;
+        }
+    }
 }

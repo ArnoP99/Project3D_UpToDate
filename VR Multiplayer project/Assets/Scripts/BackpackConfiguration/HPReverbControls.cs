@@ -363,17 +363,82 @@ public class HPReverbControls : NetworkBehaviour
 
             textPopUp.SetActive(true);
 
-            // als er geen 3 reacties zijn ... -> hier moeten we nog op controleren
             if (ConversationManager.Instance.ActiveReactionElements.Count == 3)
             {
+                if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
+                // -------------------------------------------------------------------------------------------------------------------------------------------------------
+                if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
+                // -------------------------------------------------------------------------------------------------------------------------------------------------------
+                if (ConversationManager.Instance.ActiveReactionElements[2].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[2].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[2].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[2].Text;
             }
             else if (ConversationManager.Instance.ActiveReactionElements.Count == 2)
             {
+                if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
-                textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = " ";
+
+                textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+
+                textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = "";
+
+                if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
             }
         }
@@ -422,17 +487,82 @@ public class HPReverbControls : NetworkBehaviour
             Debug.Log("play audio finished");
             textPopUp.SetActive(true);
 
-            // als er geen 3 reacties zijn ... -> hier moeten we nog op controleren
             if (ConversationManager.Instance.ActiveReactionElements.Count == 3)
             {
+                if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
+                // -------------------------------------------------------------------------------------------------------------------------------------------------------
+                if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
+                // -------------------------------------------------------------------------------------------------------------------------------------------------------
+                if (ConversationManager.Instance.ActiveReactionElements[2].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[2].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[2].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[2].Text;
             }
             else if (ConversationManager.Instance.ActiveReactionElements.Count == 2)
             {
+                if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[0].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
-                textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = " ";
+
+                textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+
+                textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = "";
+
+                if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Agressive)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Defensive)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Defensive");
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Neutral)
+                {
+                    textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                }
                 textPopUp.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
             }
         }

@@ -11,14 +11,15 @@ public class HPReverbControls : NetworkBehaviour
 {
     public GameObject nurse;
     public GameObject agressor;
+
     public GameObject textPopUp;
     public GameObject activeChoice;
-    public bool triggerValue = true;
+
     public bool lastAudioPlayed = false;
 
     float timeRemaining = 5; //moet eventueel nog meer of minder
 
-    bool firstTime;
+    bool firstTime = true;
 
     Color selectColor = new Color(0, 180, 207);
 
@@ -28,29 +29,17 @@ public class HPReverbControls : NetworkBehaviour
 
     private void Start()
     {
-        firstTime = true;
-        //if (this.isServer && this.GetComponent<NetworkIdentity>().isLocalPlayer)
-        //{
-        //    audioSource = gameObject.GetComponent<AudioSource>();
-        //}
-
     }
+
     public void PressTrigger(InputAction.CallbackContext context)
     {
-        Debug.Log("Trigger Pressed");
         if (context.performed)
         {
             if (this.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor")
             {
-                Debug.Log("Agressor kiest optie");
                 try
                 {
                     GetAgressorActiveChoice();
-                    //if (this.isClient)
-                    //{
-                    //    CmdPlayAudioOnServer();
-                    //}
-
                 }
                 catch (Exception ex)
                 {
@@ -60,14 +49,9 @@ public class HPReverbControls : NetworkBehaviour
 
             if (this.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse")
             {
-                Debug.Log("Nurse kiest optie");
                 try
                 {
                     GetNurseActiveChoice();
-                    //if (this.isClient)
-                    //{
-                    //    CmdPlayAudioOnServer();
-                    //}
                 }
                 catch (Exception ex)
                 {
@@ -92,29 +76,10 @@ public class HPReverbControls : NetworkBehaviour
 
     public void Joystick(InputAction.CallbackContext context)
     {
-        //Debug.Log("Joystick");
     }
 
     public void PrimaryButton(InputAction.CallbackContext context)
     {
-        //Debug.Log("PrimaryButton Pressed");
-
-        //if (triggerValue == true)
-        //{
-        //    this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<BoxCollider>().isTrigger = false;
-
-        //    this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<BoxCollider>().isTrigger = false;
-
-        //    triggerValue = false;
-        //}
-        //else if (triggerValue == false)
-        //{
-        //    this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<BoxCollider>().isTrigger = true;
-
-        //    this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<BoxCollider>().isTrigger = true;
-
-        //    triggerValue = true;
-        //}
     }
 
     public void GetNurseActiveChoice()
@@ -378,7 +343,7 @@ public class HPReverbControls : NetworkBehaviour
                     textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
                 }
                 textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
-                // -------------------------------------------------------------------------------------------------------------------------------------------------------
+
                 if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Agressive)
                 {
                     textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
@@ -392,7 +357,7 @@ public class HPReverbControls : NetworkBehaviour
                     textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
                 }
                 textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
-                // -------------------------------------------------------------------------------------------------------------------------------------------------------
+
                 if (ConversationManager.Instance.ActiveReactionElements[2].EState == ConversationElement.ElementState.Agressive)
                 {
                     textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
@@ -502,7 +467,7 @@ public class HPReverbControls : NetworkBehaviour
                     textPopUp.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
                 }
                 textPopUp.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[0].Text;
-                // -------------------------------------------------------------------------------------------------------------------------------------------------------
+
                 if (ConversationManager.Instance.ActiveReactionElements[1].EState == ConversationElement.ElementState.Agressive)
                 {
                     textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");
@@ -516,7 +481,7 @@ public class HPReverbControls : NetworkBehaviour
                     textPopUp.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
                 }
                 textPopUp.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationManager.Instance.ActiveReactionElements[1].Text;
-                // -------------------------------------------------------------------------------------------------------------------------------------------------------
+
                 if (ConversationManager.Instance.ActiveReactionElements[2].EState == ConversationElement.ElementState.Agressive)
                 {
                     textPopUp.transform.GetChild(2).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Agressive");

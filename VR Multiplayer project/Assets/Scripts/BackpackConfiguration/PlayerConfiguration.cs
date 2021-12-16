@@ -81,9 +81,6 @@ public class PlayerConfiguration : NetworkBehaviour
                 controllersToHMDLocal.enabled = false;
                 myCamera.enabled = false;
                 audioSource.enabled = false;
-                TrackedPoseDriverPlayerCamera.enabled = false;
-                TrackedPoseDriverLeftController.enabled = false;
-                TrackedPoseDriverRightController.enabled = false;
                 myCamera.GetComponent<AudioListener>().enabled = false;
                 GameObject.Find("Main camera").GetComponent<Camera>().enabled = true;
                 GameObject.Find("Main camera").GetComponent<AudioListener>().enabled = true;

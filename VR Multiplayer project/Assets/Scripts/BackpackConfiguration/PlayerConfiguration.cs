@@ -57,8 +57,8 @@ public class PlayerConfiguration : NetworkBehaviour
             if (NetworkConfiguration.GameSettings.ID != 0)
             {
                 Debug.Log("LocalPlayer && != server");
-                TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
-                TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<TrackedPoseDriver>();
+                TrackedPoseDriverLeftController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
+                TrackedPoseDriverRightController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<TrackedPoseDriver>();
                 syncRotation.enabled = true;
                 TrackedPoseDriverPlayerCamera.enabled = true;
                 TrackedPoseDriverLeftController.enabled = true;
@@ -94,8 +94,8 @@ public class PlayerConfiguration : NetworkBehaviour
         //When it isn't the local player dissable camera and audiolistener
         else
         {
-            TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
-            TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<TrackedPoseDriver>();
+            TrackedPoseDriverLeftController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
+            TrackedPoseDriverRightController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<TrackedPoseDriver>();
             Debug.Log("Not LocalPlayer");
             syncRotation.enabled = false;
             TrackedPoseDriverPlayerCamera.enabled = false;

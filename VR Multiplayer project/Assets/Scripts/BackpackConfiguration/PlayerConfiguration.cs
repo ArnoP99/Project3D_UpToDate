@@ -41,9 +41,9 @@ public class PlayerConfiguration : NetworkBehaviour
     protected void SetUpPlayer()
     {
         optitrackrigidHmd = this.GetComponentInChildren<OptitrackHmd>();
-        TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TrackedPoseDriver>();
-        TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<TrackedPoseDriver>();
-        TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.GetComponent<TrackedPoseDriver>();
+        TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
+        TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
+        TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<TrackedPoseDriver>();
         myCamera = this.GetComponentInChildren<Camera>();
         optitrackClient = GameObject.Find("OptitrackClient").GetComponent<OptitrackStreamingClient>();
         controllerConfiguration = GameObject.Find("Controllers").GetComponent<ControllerConfiguration>();

@@ -22,7 +22,9 @@ public class PlayerConfiguration : NetworkBehaviour
     [SyncVar]
     public int PlayerRigidbodyID;
 
-    public TrackedPoseDriver TrackedPoseDriver;
+    public TrackedPoseDriver TrackedPoseDriverPlayerCamera;
+    public TrackedPoseDriver TrackedPoseDriverLeftController;
+    public TrackedPoseDriver TrackedPoseDriverRightController;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,9 @@ public class PlayerConfiguration : NetworkBehaviour
     protected void SetUpPlayer()
     {
         optitrackrigidHmd = this.GetComponentInChildren<OptitrackHmd>();
-        TrackedPoseDriver = this.GetComponentInChildren<TrackedPoseDriver>();
+        TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TrackedPoseDriver>();
+        TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<TrackedPoseDriver>();
+        TrackedPoseDriverPlayerCamera = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.GetComponent<TrackedPoseDriver>();
         myCamera = this.GetComponentInChildren<Camera>();
         optitrackClient = GameObject.Find("OptitrackClient").GetComponent<OptitrackStreamingClient>();
         controllerConfiguration = GameObject.Find("Controllers").GetComponent<ControllerConfiguration>();
@@ -56,7 +60,9 @@ public class PlayerConfiguration : NetworkBehaviour
             {
                 Debug.Log("LocalPlayer && != server");
                 syncRotation.enabled = true;
-                TrackedPoseDriver.enabled = true;
+                TrackedPoseDriverPlayerCamera.enabled = true;
+                TrackedPoseDriverLeftController.enabled = true;
+                TrackedPoseDriverRightController.enabled = true;
                 myCamera.enabled = true;
                 audioSource.enabled = false;
                 myCamera.GetComponent<AudioListener>().enabled = true;
@@ -75,6 +81,9 @@ public class PlayerConfiguration : NetworkBehaviour
                 controllersToHMDLocal.enabled = false;
                 myCamera.enabled = false;
                 audioSource.enabled = false;
+                TrackedPoseDriverPlayerCamera.enabled = false;
+                TrackedPoseDriverLeftController.enabled = false;
+                TrackedPoseDriverRightController.enabled = false;
                 myCamera.GetComponent<AudioListener>().enabled = false;
                 GameObject.Find("Main camera").GetComponent<Camera>().enabled = true;
                 GameObject.Find("Main camera").GetComponent<AudioListener>().enabled = true;
@@ -90,7 +99,9 @@ public class PlayerConfiguration : NetworkBehaviour
         {
             Debug.Log("Not LocalPlayer");
             syncRotation.enabled = false;
-            TrackedPoseDriver.enabled = false;
+            TrackedPoseDriverPlayerCamera.enabled = false;
+            TrackedPoseDriverLeftController.enabled = false;
+            TrackedPoseDriverRightController.enabled = false;
             myCamera.enabled = false;
             audioSource.enabled = true;
             myCamera.GetComponent<AudioListener>().enabled = false;

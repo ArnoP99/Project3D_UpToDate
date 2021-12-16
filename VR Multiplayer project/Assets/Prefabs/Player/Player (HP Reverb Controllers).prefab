@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 330052651957864881}
   - component: {fileID: 7530562036941770164}
   - component: {fileID: 6657182055027919203}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightController
   m_TagString: RightController
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   - component: {fileID: 2877170624313112122}
   - component: {fileID: 8187436613791605388}
   - component: {fileID: 2897523665964195256}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftController
   m_TagString: LeftController
   m_Icon: {fileID: 0}
@@ -922,7 +922,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 100
-  field of view: 70
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1398,7 +1398,9 @@ MonoBehaviour:
   blaster: {fileID: 0}
   PlayerID: -1
   PlayerRigidbodyID: 0
-  TrackedPoseDriver: {fileID: 0}
+  TrackedPoseDriverPlayerCamera: {fileID: 0}
+  TrackedPoseDriverLeftController: {fileID: 0}
+  TrackedPoseDriverRightController: {fileID: 0}
 --- !u!114 &-5248235596319893062
 MonoBehaviour:
   m_ObjectHideFlags: 0

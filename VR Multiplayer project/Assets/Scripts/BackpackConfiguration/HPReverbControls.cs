@@ -82,34 +82,35 @@ public class HPReverbControls : NetworkBehaviour
     public void PrimaryButton(InputAction.CallbackContext context)
     {
     }
+    public void GripButtonReleased(InputAction.CallbackContext context)
+    {
 
-    public void GripButton(InputAction.CallbackContext context)
+        Debug.Log("Gripbutton released");
+        if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+        {
+            this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, gameObject);
+        }
+        else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+        {
+            this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, gameObject);
+        }
+
+    }
+
+    public void GripButtonPressed(InputAction.CallbackContext context)
     {
         Debug.Log("Gripbutton Pressed");
-        if (context.started)
+
+        if (context.control.device.name == "HPReverbG2ControllerOpenXR")
         {
-            Debug.Log("Gripbutton Pressed inside");
-            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(0, gameObject);
-            }
-            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(1, gameObject);
-            }
+            this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(0, gameObject);
         }
-        if (context.canceled)
+        else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
         {
-            Debug.Log("Gripbutton released");
-            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, gameObject);
-            }
-            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, gameObject);
-            }
+            this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(1, gameObject);
         }
+
+
     }
 
     public void GetNurseActiveChoice()

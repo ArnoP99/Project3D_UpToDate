@@ -83,12 +83,12 @@ public class AssignAuth : NetworkBehaviour
     {
         if (hand == 0)
         {
-            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
             RpcHandGoesPoof(0, player);
         }
         else if (hand == 1)
         {
-            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
             RpcHandGoesPoof(1, player);
         }
     }
@@ -98,12 +98,12 @@ public class AssignAuth : NetworkBehaviour
     {
         if (hand == 0)
         {
-            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
             RpcHandComesBack(0, player);
         }
         else if (hand == 1)
         {
-            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
             RpcHandComesBack(1, player);
         }
 
@@ -115,11 +115,11 @@ public class AssignAuth : NetworkBehaviour
 
         if (hand == 0)
         {
-            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
         }
         else if (hand == 1)
         {
-            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
@@ -128,11 +128,11 @@ public class AssignAuth : NetworkBehaviour
     {
         if (hand == 0)
         {
-            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
         }
         else if (hand == 1)
         {
-            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 }

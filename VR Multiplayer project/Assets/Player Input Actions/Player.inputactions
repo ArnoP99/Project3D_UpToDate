@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "GripButton",
+                    "type": "Button",
+                    "id": "17e2360c-94dc-460a-9277-3ee1107dfaea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -124,6 +132,28 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "PrimaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d08c0b63-d351-47dd-a250-043495e4af5a",
+                    "path": "<HPMixedRealityController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "GripButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e1bd40e-45a7-4e2e-be54-ae6aa70ece2a",
+                    "path": "<HPMixedRealityController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "GripButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

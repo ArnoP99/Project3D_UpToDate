@@ -1500,6 +1500,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 84bb05f0-9114-4e25-8678-e3037368bdaf
     m_ActionName: Player/PrimaryButton
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4254969925439542407}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 17e2360c-94dc-460a-9277-3ee1107dfaea
+    m_ActionName: Player/GripButton
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: XR
   m_DefaultActionMap: Player

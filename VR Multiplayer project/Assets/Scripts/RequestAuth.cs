@@ -18,6 +18,7 @@ public class RequestAuth : MonoBehaviour
     {
         if (other.gameObject.layer == 9)
         {
+            this.transform.GetChild(0).gameObject.SetActive(false);
             try
             {
                 player.GetComponent<AssignAuth>().ExecuteCmdRemoveAuthority(other.GetComponent<NetworkIdentity>());
@@ -32,5 +33,6 @@ public class RequestAuth : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
+        this.transform.GetChild(0).gameObject.SetActive(true);
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 using Mirror;
 using UnityEngine.SpatialTracking;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerConfiguration : NetworkBehaviour
 {
@@ -25,6 +26,9 @@ public class PlayerConfiguration : NetworkBehaviour
     public TrackedPoseDriver TrackedPoseDriverPlayerCamera;
     public TrackedPoseDriver TrackedPoseDriverLeftController;
     public TrackedPoseDriver TrackedPoseDriverRightController;
+
+    public XRController XRControllerLeft;
+    public XRController XRControllerRight;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,10 +63,14 @@ public class PlayerConfiguration : NetworkBehaviour
                 Debug.Log("LocalPlayer && != server");
                 TrackedPoseDriverLeftController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
                 TrackedPoseDriverRightController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<TrackedPoseDriver>();
+                XRControllerLeft = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<XRController>();
+                XRControllerRight = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<XRController>();
                 syncRotation.enabled = true;
                 TrackedPoseDriverPlayerCamera.enabled = true;
                 TrackedPoseDriverLeftController.enabled = true;
                 TrackedPoseDriverRightController.enabled = true;
+                XRControllerLeft.enabled = true;
+                XRControllerRight.enabled = true;
                 myCamera.enabled = true;
                 audioSource.enabled = false;
                 myCamera.GetComponent<AudioListener>().enabled = true;
@@ -94,6 +102,8 @@ public class PlayerConfiguration : NetworkBehaviour
         //When it isn't the local player dissable camera and audiolistener
         else
         {
+            XRControllerLeft = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<XRController>();
+            XRControllerRight = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<XRController>();
             TrackedPoseDriverLeftController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
             TrackedPoseDriverRightController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<TrackedPoseDriver>();
             Debug.Log("Not LocalPlayer");
@@ -101,6 +111,8 @@ public class PlayerConfiguration : NetworkBehaviour
             TrackedPoseDriverPlayerCamera.enabled = false;
             TrackedPoseDriverLeftController.enabled = false;
             TrackedPoseDriverRightController.enabled = false;
+            XRControllerLeft.enabled = false;
+            XRControllerRight.enabled = false;
             myCamera.enabled = false;
             audioSource.enabled = true;
             myCamera.GetComponent<AudioListener>().enabled = false;

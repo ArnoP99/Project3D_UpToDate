@@ -1120,20 +1120,20 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
-  sendInterval: 0.05
+  sendInterval: 0.025
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
   interpolatePosition: 1
   interpolateRotation: 1
-  interpolateScale: 1
+  interpolateScale: 0
   bufferTimeMultiplier: 3
   bufferSizeLimit: 64
   catchupThreshold: 6
   catchupMultiplier: 0.1
   showGizmos: 0
   showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  overlayColor: {r: 1, g: 0, b: 0, a: 0.5}
 --- !u!114 &7376718872259482869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,13 +1149,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
-  sendInterval: 0.05
+  sendInterval: 0.025
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
   interpolatePosition: 1
   interpolateRotation: 1
-  interpolateScale: 1
+  interpolateScale: 0
   bufferTimeMultiplier: 3
   bufferSizeLimit: 64
   catchupThreshold: 6
@@ -1179,13 +1179,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
-  sendInterval: 0.05
+  sendInterval: 0.025
   syncPosition: 0
   syncRotation: 1
   syncScale: 0
   interpolatePosition: 1
   interpolateRotation: 1
-  interpolateScale: 1
+  interpolateScale: 0
   bufferTimeMultiplier: 3
   bufferSizeLimit: 64
   catchupThreshold: 6
@@ -1209,13 +1209,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
-  sendInterval: 0.02
+  sendInterval: 0.025
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
   interpolatePosition: 1
   interpolateRotation: 1
-  interpolateScale: 1
+  interpolateScale: 0
   bufferTimeMultiplier: 5
   bufferSizeLimit: 64
   catchupThreshold: 8
@@ -1245,7 +1245,7 @@ MonoBehaviour:
   syncScale: 0
   interpolatePosition: 1
   interpolateRotation: 1
-  interpolateScale: 1
+  interpolateScale: 0
   bufferTimeMultiplier: 5
   bufferSizeLimit: 64
   catchupThreshold: 8
@@ -1269,13 +1269,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 0
-  sendInterval: 0.05
+  sendInterval: 0.025
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
   interpolatePosition: 1
   interpolateRotation: 1
-  interpolateScale: 1
+  interpolateScale: 0
   bufferTimeMultiplier: 3
   bufferSizeLimit: 64
   catchupThreshold: 6
@@ -1299,13 +1299,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 0
-  sendInterval: 0.05
+  sendInterval: 0.025
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
   interpolatePosition: 1
   interpolateRotation: 1
-  interpolateScale: 1
+  interpolateScale: 0
   bufferTimeMultiplier: 3
   bufferSizeLimit: 64
   catchupThreshold: 6
@@ -1329,13 +1329,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
-  sendInterval: 0.02
+  sendInterval: 0.025
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
   interpolatePosition: 1
   interpolateRotation: 1
-  interpolateScale: 1
+  interpolateScale: 0
   bufferTimeMultiplier: 5
   bufferSizeLimit: 64
   catchupThreshold: 8
@@ -1359,7 +1359,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
-  sendInterval: 0.02
+  sendInterval: 0.025
   syncPosition: 1
   syncRotation: 1
   syncScale: 0

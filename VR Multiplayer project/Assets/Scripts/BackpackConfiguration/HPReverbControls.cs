@@ -85,8 +85,10 @@ public class HPReverbControls : NetworkBehaviour
 
     public void GripButton(InputAction.CallbackContext context)
     {
+        Debug.Log("Gripbutton Pressed");
         if (context.started)
         {
+            Debug.Log("Gripbutton Pressed inside");
             if (context.control.device.name == "HPReverbG2ControllerOpenXR")
             {
                 this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(0, gameObject);
@@ -98,6 +100,7 @@ public class HPReverbControls : NetworkBehaviour
         }
         if (context.performed)
         {
+            Debug.Log("Gripbutton released");
             if (context.control.device.name == "HPReverbG2ControllerOpenXR")
             {
                 this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, gameObject);

@@ -28,27 +28,28 @@ public class SyncRotation : NetworkBehaviour
 
     void Update()
     {
-        if (playerCamera != null)
+        if (this.isClient && this.isServer == false)
         {
             rot = new Vector3(0, playerCamera.transform.eulerAngles.y, 0);
-        }
-        rot1 = new Vector3(0, 0, 0);
-        rot2 = new Vector3(0, 120, 0);
-        rot3 = new Vector3(0, 240, 0);
 
-        visualRepresentation.transform.eulerAngles = rot;
+            rot1 = new Vector3(0, 0, 0);
+            rot2 = new Vector3(0, 120, 0);
+            rot3 = new Vector3(0, 240, 0);
 
-        if (playerCamera.transform.eulerAngles.y < 60 || playerCamera.transform.eulerAngles.y > 300)
-        {
-            textPlayer.transform.eulerAngles = rot1;
-        }
-        else if (playerCamera.transform.eulerAngles.y > 60 && playerCamera.transform.eulerAngles.y < 180)
-        {
-            textPlayer.transform.eulerAngles = rot2;
-        }
-        else if (playerCamera.transform.eulerAngles.y > 180 && playerCamera.transform.eulerAngles.y < 300)
-        {
-            textPlayer.transform.eulerAngles = rot3;
+            visualRepresentation.transform.eulerAngles = rot;
+
+            if (playerCamera.transform.eulerAngles.y < 60 || playerCamera.transform.eulerAngles.y > 300)
+            {
+                textPlayer.transform.eulerAngles = rot1;
+            }
+            else if (playerCamera.transform.eulerAngles.y > 60 && playerCamera.transform.eulerAngles.y < 180)
+            {
+                textPlayer.transform.eulerAngles = rot2;
+            }
+            else if (playerCamera.transform.eulerAngles.y > 180 && playerCamera.transform.eulerAngles.y < 300)
+            {
+                textPlayer.transform.eulerAngles = rot3;
+            }
         }
     }
 }

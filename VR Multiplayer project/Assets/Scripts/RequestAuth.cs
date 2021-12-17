@@ -19,6 +19,7 @@ public class RequestAuth : MonoBehaviour
         if (other.gameObject.layer == 9)
         {
             this.transform.GetChild(0).gameObject.SetActive(false);
+            Debug.Log("TriggerEntered For Object: " + player.GetComponent<NetworkIdentity>().netId);
             try
             {
                 player.GetComponent<AssignAuth>().ExecuteCmdRemoveAuthority(other.GetComponent<NetworkIdentity>());

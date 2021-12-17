@@ -98,7 +98,7 @@ public class HPReverbControls : NetworkBehaviour
                 this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(1, gameObject);
             }
         }
-        if (context.performed)
+        if (context.canceled)
         {
             Debug.Log("Gripbutton released");
             if (context.control.device.name == "HPReverbG2ControllerOpenXR")

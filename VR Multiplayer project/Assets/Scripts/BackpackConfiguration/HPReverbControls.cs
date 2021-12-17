@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class HPReverbControls : NetworkBehaviour
 {
@@ -80,6 +81,13 @@ public class HPReverbControls : NetworkBehaviour
 
     public void PrimaryButton(InputAction.CallbackContext context)
     {
+    }
+
+    public void GripButton(InputAction.CallbackContext context)
+    {
+
+        Debug.Log("device name: " + context.control.device.name);
+
     }
 
     public void GetNurseActiveChoice()

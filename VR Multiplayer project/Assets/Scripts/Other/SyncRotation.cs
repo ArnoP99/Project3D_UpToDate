@@ -28,7 +28,7 @@ public class SyncRotation : NetworkBehaviour
 
     void Update()
     {
-        if (this.isClient && this.isServer == false)
+        if (playerCamera != null && visualRepresentation != null && textPlayer != null)
         {
             rot = new Vector3(0, playerCamera.transform.eulerAngles.y, 0);
 

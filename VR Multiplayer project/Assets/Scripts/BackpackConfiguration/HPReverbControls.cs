@@ -85,9 +85,28 @@ public class HPReverbControls : NetworkBehaviour
 
     public void GripButton(InputAction.CallbackContext context)
     {
-
-        Debug.Log("device name: " + context.control.device.name);
-
+        if (context.started)
+        {
+            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(0, gameObject);
+            }
+            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(1, gameObject);
+            }
+        }
+        if (context.performed)
+        {
+            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, gameObject);
+            }
+            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, gameObject);
+            }
+        }
     }
 
     public void GetNurseActiveChoice()

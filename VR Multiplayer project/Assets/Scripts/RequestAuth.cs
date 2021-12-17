@@ -18,14 +18,6 @@ public class RequestAuth : MonoBehaviour
     {
         if (other.gameObject.layer == 9)
         {
-            if (this.tag == "LeftController")
-            {
-                player.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(0, player);
-            }
-            else if (this.tag == "RightController")
-            {
-                player.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(1, player);
-            }
             try
             {
                 player.GetComponent<AssignAuth>().ExecuteCmdRemoveAuthority(other.GetComponent<NetworkIdentity>());
@@ -40,13 +32,5 @@ public class RequestAuth : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (this.tag == "LeftController")
-        {
-            player.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, player);
-        }
-        else if (this.tag == "RightController")
-        {
-            player.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, player);
-        }
     }
 }

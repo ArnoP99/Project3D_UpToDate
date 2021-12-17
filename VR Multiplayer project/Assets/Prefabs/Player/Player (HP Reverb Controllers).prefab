@@ -83,7 +83,7 @@ MonoBehaviour:
   m_PoseSource: 5
   m_PoseProviderComponent: {fileID: 0}
   m_TrackingType: 0
-  m_UpdateType: 1
+  m_UpdateType: 0
   m_UseRelativeTransform: 0
 --- !u!114 &4453248782723660291
 MonoBehaviour:
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae26e19cd956134bbdf3c6f65bf393a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UpdateTrackingType: 1
+  m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: -8679921383154817045, guid: 5b1aba4eebb77d24d8d2e6f7149dc379,
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_PoseSource: 4
   m_PoseProviderComponent: {fileID: 0}
   m_TrackingType: 0
-  m_UpdateType: 1
+  m_UpdateType: 0
   m_UseRelativeTransform: 0
 --- !u!114 &7425463085798346783
 MonoBehaviour:
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae26e19cd956134bbdf3c6f65bf393a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UpdateTrackingType: 1
+  m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: -8679921383154817045, guid: 5b1aba4eebb77d24d8d2e6f7149dc379,
@@ -1401,6 +1401,8 @@ MonoBehaviour:
   TrackedPoseDriverPlayerCamera: {fileID: 0}
   TrackedPoseDriverLeftController: {fileID: 0}
   TrackedPoseDriverRightController: {fileID: 0}
+  XRControllerLeft: {fileID: 0}
+  XRControllerRight: {fileID: 0}
 --- !u!114 &-5248235596319893062
 MonoBehaviour:
   m_ObjectHideFlags: 0

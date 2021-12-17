@@ -83,7 +83,7 @@ MonoBehaviour:
   m_PoseSource: 5
   m_PoseProviderComponent: {fileID: 0}
   m_TrackingType: 0
-  m_UpdateType: 0
+  m_UpdateType: 1
   m_UseRelativeTransform: 0
 --- !u!114 &4453248782723660291
 MonoBehaviour:
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_PoseSource: 4
   m_PoseProviderComponent: {fileID: 0}
   m_TrackingType: 0
-  m_UpdateType: 0
+  m_UpdateType: 1
   m_UseRelativeTransform: 0
 --- !u!114 &7425463085798346783
 MonoBehaviour:

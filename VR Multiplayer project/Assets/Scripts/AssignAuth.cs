@@ -5,7 +5,28 @@ using UnityEngine;
 
 public class AssignAuth : NetworkBehaviour
 {
+    public void ExecuteCmdHandGoesPoof(int hand, GameObject player)
+    {
+        if (this == isClient && this != isServer && this == isLocalPlayer && hand == 0)
+        {
+            CmdHandGoesPoof(0, player);
+        }
+        else if (this == isClient && this != isServer && this == isLocalPlayer && hand == 1)
+        {
+            CmdHandGoesPoof(1, player);
+        }
+    }
 
+    public void ExecuteCmdHandComesBack(int hand, GameObject player)
+    {
+        if (this == isClient && this != isServer && this == isLocalPlayer&& hand == 0)
+        {
+            CmdHandComesBack(0, player);
+        }else if (this == isClient && this != isServer && this == isLocalPlayer && hand == 1)
+        {
+            CmdHandComesBack(1, player);
+        }
+    }
     // Function where we can check if player isClient and isLocalPlayer and not isServer before executing CmdAssignAuthority
     public void ExecuteCmdAssignAuthority(NetworkIdentity objectID)
     {
@@ -43,17 +64,75 @@ public class AssignAuth : NetworkBehaviour
     }
 
 
-    [Command (requiresAuthority = false)]
+    [Command(requiresAuthority = false)]
     public void CmdAssignAuthority(NetworkIdentity objectID, NetworkIdentity playerID)
     {
         //Debug.Log("Authority Assigned to: " + this);
         objectID.AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
     }
 
-    [Command (requiresAuthority = false)]
+    [Command(requiresAuthority = false)]
     public void CmdRemoveAuthority(NetworkIdentity objectID)
     {
         //Debug.Log("Authority Removed from object.");
         objectID.RemoveClientAuthority();
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdHandGoesPoof(int hand, GameObject player)
+    {
+        if (hand == 0)
+        {
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+            RpcHandGoesPoof(0, player);
+        }
+        else if (hand == 1)
+        {
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+            RpcHandGoesPoof(1, player);
+        }
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdHandComesBack(int hand, GameObject player)
+    {
+        if (hand == 0)
+        {
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
+            RpcHandComesBack(0, player);
+        }
+        else if (hand == 1)
+        {
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            RpcHandComesBack(1, player);
+        }
+
+    }
+
+    [ClientRpc]
+    public void RpcHandGoesPoof(int hand, GameObject player)
+    {
+
+        if (hand == 0)
+        {
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else if (hand == 1)
+        {
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+
+    [ClientRpc]
+    public void RpcHandComesBack(int hand, GameObject player)
+    {
+        if (hand == 0)
+        {
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else if (hand == 1)
+        {
+            player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 }

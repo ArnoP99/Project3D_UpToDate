@@ -28,7 +28,10 @@ public class SyncRotation : NetworkBehaviour
 
     void Update()
     {
-        rot = new Vector3(0, playerCamera.transform.eulerAngles.y, 0);
+        if (playerCamera != null)
+        {
+            rot = new Vector3(0, playerCamera.transform.eulerAngles.y, 0);
+        }
         rot1 = new Vector3(0, 0, 0);
         rot2 = new Vector3(0, 120, 0);
         rot3 = new Vector3(0, 240, 0);

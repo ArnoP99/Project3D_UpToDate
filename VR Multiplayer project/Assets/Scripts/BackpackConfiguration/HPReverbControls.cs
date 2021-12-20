@@ -79,27 +79,28 @@ public class HPReverbControls : NetworkBehaviour
 
     public void Joystick(InputAction.CallbackContext context)
     {
-        Vector2 joyUp = new Vector2(0f, 1f);
-        Vector2 joyDown = new Vector2(0f, -1f);
+        Vector2 joyUp = new Vector2(0.0f, 1.0f);
+        Vector2 joyDown = new Vector2(0.0f, -1.0f);
 
-        Vector2 joyLeft = new Vector2(-1f, 0f);
-        Vector2 joyRight = new Vector2(1f, 0f);
+        Vector2 joyLeft = new Vector2(-1.0f, 0.0f);
+        Vector2 joyRight = new Vector2(1.0f, 0.0f);
 
         Debug.Log(context.ReadValue<Vector2>());
 
-        if (context.ReadValue<Vector2>().Equals(joyUp))
+        if (context.ReadValue<Vector2>() == joyUp)
         {
             Debug.Log("joystick naar boven");
-        } else if (context.ReadValue<Vector2>().Equals(joyDown))
+        }
+        else if (context.ReadValue<Vector2>()== joyDown)
         {
             Debug.Log("joystick naar beneden");
         }
 
-        if (context.ReadValue<Vector2>().Equals(joyRight))
+        if (context.ReadValue<Vector2>()== joyRight)
         {
             Debug.Log("joystick naar rechts");
         }
-        else if (context.ReadValue<Vector2>().Equals(joyLeft))
+        else if (context.ReadValue<Vector2>() == joyLeft)
         {
             Debug.Log("joystick naar links");
         }

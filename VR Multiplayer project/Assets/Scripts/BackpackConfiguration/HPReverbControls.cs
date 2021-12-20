@@ -84,28 +84,7 @@ public class HPReverbControls : NetworkBehaviour
     }
     public void GripButtonReleased(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            Debug.Log("Gripbutton released");
-            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, gameObject);
-            }
-            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, gameObject);
-            }
-        }
 
-        if (context.performed)
-        {
-            Debug.Log("Context performed");
-        }
-
-        if (context.canceled)
-        {
-            Debug.Log("Context Canceled");
-        }
 
     }
 
@@ -134,10 +113,16 @@ public class HPReverbControls : NetworkBehaviour
 
         if (context.canceled)
         {
-            Debug.Log("Context Canceled");
+            Debug.Log("Gripbutton released");
+            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, gameObject);
+            }
+            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, gameObject);
+            }
         }
-
-
     }
 
     public void GetNurseActiveChoice()

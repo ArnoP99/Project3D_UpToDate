@@ -1504,7 +1504,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -5248235596319893062}
         m_TargetAssemblyTypeName: HPReverbControls, Assembly-CSharp
-        m_MethodName: GripButtonPressed
+        m_MethodName: GripButton
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1516,22 +1516,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 17e2360c-94dc-460a-9277-3ee1107dfaea
     m_ActionName: Player/GripButton
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -5248235596319893062}
-        m_TargetAssemblyTypeName: HPReverbControls, Assembly-CSharp
-        m_MethodName: GripButtonReleased
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 9b7efa86-ef1b-4e94-893d-5765a839ea83
-    m_ActionName: Player/GripButtonReleased
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: XR
   m_DefaultActionMap: Player

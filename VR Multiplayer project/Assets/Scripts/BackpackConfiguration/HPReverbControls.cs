@@ -84,30 +84,57 @@ public class HPReverbControls : NetworkBehaviour
     }
     public void GripButtonReleased(InputAction.CallbackContext context)
     {
-
-        Debug.Log("Gripbutton released");
-        if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+        if (context.started)
         {
-            this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, gameObject);
+            Debug.Log("Gripbutton released");
+            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, gameObject);
+            }
+            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, gameObject);
+            }
         }
-        else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+
+        if (context.performed)
         {
-            this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, gameObject);
+            Debug.Log("Context performed");
+        }
+
+        if (context.canceled)
+        {
+            Debug.Log("Context Canceled");
         }
 
     }
 
+
     public void GripButtonPressed(InputAction.CallbackContext context)
     {
-        Debug.Log("Gripbutton Pressed");
 
-        if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+
+        if (context.started)
         {
-            this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(0, gameObject);
+            Debug.Log("Gripbutton Pressed");
+            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(0, gameObject);
+            }
+            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+            {
+                this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(1, gameObject);
+            }
         }
-        else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+
+        if (context.performed)
         {
-            this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(1, gameObject);
+            Debug.Log("Context performed");
+        }
+
+        if (context.canceled)
+        {
+            Debug.Log("Context Canceled");
         }
 
 

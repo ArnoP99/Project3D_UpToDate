@@ -35,7 +35,7 @@ public class HPReverbControls : NetworkBehaviour
 
     private void Start()
     {
-         handAnimator = gameObject.GetComponent<Animator>();
+        handAnimator = gameObject.GetComponent<Animator>();
     }
 
     public void PressTrigger(InputAction.CallbackContext context)
@@ -107,9 +107,11 @@ public class HPReverbControls : NetworkBehaviour
         {
             handAnimator.SetTrigger("TrCloseFist");
             fist = true;
-        } else if(temp.y > joyDown && fist == true)
+        }
+        else if (temp.y > joyDown && fist == true)
         {
             handAnimator.SetTrigger("TrOpenFist");
+            fist = false;
         }
 
         //if (temp.x > joyRight)

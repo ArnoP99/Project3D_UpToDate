@@ -91,8 +91,8 @@ public class HPReverbControls : NetworkBehaviour
 
     public void GripButtonPressed(InputAction.CallbackContext context)
     {
-        Debug.Log(context.ReadValue<bool>());
-        if (context.ReadValue<bool>())
+        Debug.Log(context.ReadValue<float>() == 1);
+        if (context.ReadValue<float>() == 1)
         {
             Debug.Log("Context performed");
             Debug.Log("Gripbutton Pressed");

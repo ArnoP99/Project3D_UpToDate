@@ -81,10 +81,9 @@ public class HPReverbControls : NetworkBehaviour
 
     public void PrimaryButton(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            Debug.Log("started");
-        }
+     
+            Debug.Log(context.ReadValue<double>());
+        
 
         if (context.performed)
         {

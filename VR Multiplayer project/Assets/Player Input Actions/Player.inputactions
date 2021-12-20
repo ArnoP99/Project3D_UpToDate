@@ -138,7 +138,7 @@
                 {
                     "name": "",
                     "id": "d08c0b63-d351-47dd-a250-043495e4af5a",
-                    "path": "<HPMixedRealityController>{LeftHand}/gripPressed",
+                    "path": "<XRController>{LeftHand}/gripButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
@@ -149,7 +149,7 @@
                 {
                     "name": "",
                     "id": "1e1bd40e-45a7-4e2e-be54-ae6aa70ece2a",
-                    "path": "<HPMixedRealityController>{RightHand}/gripPressed",
+                    "path": "<XRController>{RightHand}/gripButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",

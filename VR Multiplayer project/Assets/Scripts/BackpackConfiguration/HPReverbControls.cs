@@ -85,6 +85,8 @@ public class HPReverbControls : NetworkBehaviour
         Vector2 joyLeft = new Vector2(-1f, 0f);
         Vector2 joyRight = new Vector2(1f, 0f);
 
+        Debug.Log(context.ReadValue<Vector2>());
+
         if (context.ReadValue<Vector2>().Equals(joyUp))
         {
             Debug.Log("joystick naar boven");

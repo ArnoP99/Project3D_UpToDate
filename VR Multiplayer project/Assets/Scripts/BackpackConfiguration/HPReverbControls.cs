@@ -79,37 +79,37 @@ public class HPReverbControls : NetworkBehaviour
 
     public void Joystick(InputAction.CallbackContext context)
     {
-        Vector2 joyUp = new Vector2(0.0f, 1.0f);
-        Vector2 joyDown = new Vector2(0.0f, -1.0f);
+        int joyUp = 1;
+        int joyDown = -1;
 
-        Vector2 joyLeft = new Vector2(-1.0f, 0.0f);
-        Vector2 joyRight = new Vector2(1.0f, 0.0f);
+        int joyLeft = -1;
+        int joyRight = 1;
 
         Debug.Log(context.ReadValue<Vector2>());
 
         Vector2 temp = context.ReadValue<Vector2>();
 
-        Debug.Log("U" + (temp == joyUp));
-        Debug.Log("D" + (temp == joyDown));
-        Debug.Log("L" + (temp == joyLeft));
-        Debug.Log("R" + (temp == joyRight));
-        if (temp ==  joyUp)
-        {
-            Debug.Log("joystick naar boven");
-        }
-        else if (temp == joyDown)
-        {
-            Debug.Log("joystick naar beneden");
-        }
+        Debug.Log("U" + ((int)temp.y == joyUp));
+        Debug.Log("D" + ((int)temp.y == joyDown));
+        Debug.Log("L" + ((int)temp.x == joyLeft));
+        Debug.Log("R" + ((int)temp.x == joyRight));
+        //if (temp.  joyUp)
+        //{
+        //    Debug.Log("joystick naar boven");
+        //}
+        //else if (temp == joyDown)
+        //{
+        //    Debug.Log("joystick naar beneden");
+        //}
 
-        if (temp == joyRight)
-        {
-            Debug.Log("joystick naar rechts");
-        }
-        else if (temp == joyLeft)
-        {
-            Debug.Log("joystick naar links");
-        }
+        //if (temp == joyRight)
+        //{
+        //    Debug.Log("joystick naar rechts");
+        //}
+        //else if (temp == joyLeft)
+        //{
+        //    Debug.Log("joystick naar links");
+        //}
     }
 
     //public void PrimaryButton(InputAction.CallbackContext context)

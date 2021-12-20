@@ -28,22 +28,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "PrimaryButton",
-                    "type": "Button",
-                    "id": "84bb05f0-9114-4e25-8678-e3037368bdaf",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "GripButton",
-                    "type": "Button",
-                    "id": "17e2360c-94dc-460a-9277-3ee1107dfaea",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -105,55 +89,11 @@
                 {
                     "name": "",
                     "id": "7aafd24d-0c4e-428d-a2ff-c06f5e0f59fe",
-                    "path": "<XRController>{LeftHand}/thumbstick",
+                    "path": "<HPMixedRealityController>{RightHand}/thumbstick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "LeftJoystick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a2ddf8d4-b81f-4e5a-9948-52e3f438733b",
-                    "path": "<HPMixedRealityController>{LeftHand}/primaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "PrimaryButton",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cd66536d-a207-43d6-b636-296c7170a7e1",
-                    "path": "<HPMixedRealityController>{RightHand}/primaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "PrimaryButton",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d08c0b63-d351-47dd-a250-043495e4af5a",
-                    "path": "<HPMixedRealityController>{LeftHand}/gripPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "GripButton",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1e1bd40e-45a7-4e2e-be54-ae6aa70ece2a",
-                    "path": "<HPMixedRealityController>{RightHand}/gripPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "GripButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

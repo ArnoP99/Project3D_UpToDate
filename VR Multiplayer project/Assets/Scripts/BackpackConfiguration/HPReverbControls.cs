@@ -79,41 +79,17 @@ public class HPReverbControls : NetworkBehaviour
 
     public void Joystick(InputAction.CallbackContext context)
     {
+        Debug.Log(context.ReadValue<Vector2>());
     }
 
-    public void PrimaryButton(InputAction.CallbackContext context)
-    {
-    }
+    //public void PrimaryButton(InputAction.CallbackContext context)
+    //{
+    //}
 
-    public void GripButton(InputAction.CallbackContext context)
-    {
-        if (gripButtonPressed == false)
-        {
-            Debug.Log("Gripbutton Pressed");
-            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(0, gameObject);
-            }
-            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(1, gameObject);
-            }
-            gripButtonPressed = true;
-        }
-        else if (gripButtonPressed == true)
-        {
-            Debug.Log("Gripbutton released");
-            if (context.control.device.name == "HPReverbG2ControllerOpenXR")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(0, gameObject);
-            }
-            else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
-            {
-                this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, gameObject);
-            }
-            gripButtonPressed = false;
-        }
-    }
+    //public void GripButton(InputAction.CallbackContext context)
+    //{
+
+    //}
 
     public void GetNurseActiveChoice()
     {

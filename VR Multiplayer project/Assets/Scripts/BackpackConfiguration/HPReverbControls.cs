@@ -87,20 +87,22 @@ public class HPReverbControls : NetworkBehaviour
 
         Debug.Log(context.ReadValue<Vector2>());
 
-        if (context.ReadValue<Vector2>() == joyUp)
+        Vector2 temp = context.ReadValue<Vector2>();
+
+        if (temp ==  joyUp)
         {
             Debug.Log("joystick naar boven");
         }
-        else if (context.ReadValue<Vector2>()== joyDown)
+        else if (temp == joyDown)
         {
             Debug.Log("joystick naar beneden");
         }
 
-        if (context.ReadValue<Vector2>()== joyRight)
+        if (temp == joyRight)
         {
             Debug.Log("joystick naar rechts");
         }
-        else if (context.ReadValue<Vector2>() == joyLeft)
+        else if (temp == joyLeft)
         {
             Debug.Log("joystick naar links");
         }

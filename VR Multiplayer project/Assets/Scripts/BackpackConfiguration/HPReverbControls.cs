@@ -22,6 +22,8 @@ public class HPReverbControls : NetworkBehaviour
 
     bool firstTime = true;
 
+    bool gripButtonPressed = false;
+
     Color selectColor = new Color(0, 180, 207);
 
     AudioSource audioSource;
@@ -81,25 +83,11 @@ public class HPReverbControls : NetworkBehaviour
 
     public void PrimaryButton(InputAction.CallbackContext context)
     {
-     
-            Debug.Log(context.ReadValue<double>());
-        
-
-        if (context.performed)
-        {
-            Debug.Log("performed");
-        }
-
-        if (context.canceled)
-        {
-            Debug.Log("canceled");
-        }
     }
 
     public void GripButton(InputAction.CallbackContext context)
     {
-        Debug.Log(context.ReadValue<float>() == 1);
-        if (context.performed)
+        if (gripButtonPressed == false)
         {
             Debug.Log("Gripbutton Pressed");
             if (context.control.device.name == "HPReverbG2ControllerOpenXR")
@@ -110,8 +98,9 @@ public class HPReverbControls : NetworkBehaviour
             {
                 this.GetComponent<AssignAuth>().ExecuteCmdHandGoesPoof(1, gameObject);
             }
+            gripButtonPressed = true;
         }
-        else if (context.canceled)
+        else if (gripButtonPressed == true)
         {
             Debug.Log("Gripbutton released");
             if (context.control.device.name == "HPReverbG2ControllerOpenXR")
@@ -122,6 +111,7 @@ public class HPReverbControls : NetworkBehaviour
             {
                 this.GetComponent<AssignAuth>().ExecuteCmdHandComesBack(1, gameObject);
             }
+            gripButtonPressed = false;
         }
     }
 

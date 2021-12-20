@@ -31,9 +31,9 @@
                 },
                 {
                     "name": "PrimaryButton",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "84bb05f0-9114-4e25-8678-e3037368bdaf",
-                    "expectedControlType": "Double",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -138,8 +138,8 @@
                 {
                     "name": "",
                     "id": "d08c0b63-d351-47dd-a250-043495e4af5a",
-                    "path": "<XRController>{LeftHand}/gripButton",
-                    "interactions": "Hold(duration=1E+11)",
+                    "path": "<HPMixedRealityController>{LeftHand}/gripPressed",
+                    "interactions": "",
                     "processors": "",
                     "groups": "XR",
                     "action": "GripButton",
@@ -149,8 +149,8 @@
                 {
                     "name": "",
                     "id": "1e1bd40e-45a7-4e2e-be54-ae6aa70ece2a",
-                    "path": "<XRController>{RightHand}/gripButton",
-                    "interactions": "Hold(duration=1E+15)",
+                    "path": "<HPMixedRealityController>{RightHand}/gripPressed",
+                    "interactions": "",
                     "processors": "",
                     "groups": "XR",
                     "action": "GripButton",

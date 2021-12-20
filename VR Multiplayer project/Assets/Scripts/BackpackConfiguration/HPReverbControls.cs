@@ -81,12 +81,26 @@ public class HPReverbControls : NetworkBehaviour
 
     public void PrimaryButton(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            Debug.Log("started");
+        }
+
+        if (context.performed)
+        {
+            Debug.Log("performed");
+        }
+
+        if (context.canceled)
+        {
+            Debug.Log("canceled");
+        }
     }
 
     public void GripButton(InputAction.CallbackContext context)
     {
         Debug.Log(context.ReadValue<float>() == 1);
-        if (context.started)
+        if (context.performed)
         {
             Debug.Log("Gripbutton Pressed");
             if (context.control.device.name == "HPReverbG2ControllerOpenXR")

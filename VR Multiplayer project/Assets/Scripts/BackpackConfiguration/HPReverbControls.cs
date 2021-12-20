@@ -16,13 +16,16 @@ public class HPReverbControls : NetworkBehaviour
     public GameObject textPopUp;
     public GameObject activeChoice;
 
+    public Animator handAnimator;
+
     public bool lastAudioPlayed = false;
 
     float timeRemaining = 5; //moet eventueel nog meer of minder
 
     bool firstTime = true;
 
-    bool gripButtonPressed = false;
+    bool fist = false;
+    bool pointFinger = false;
 
     Color selectColor = new Color(0, 180, 207);
 
@@ -32,6 +35,7 @@ public class HPReverbControls : NetworkBehaviour
 
     private void Start()
     {
+         handAnimator = gameObject.GetComponent<Animator>();
     }
 
     public void PressTrigger(InputAction.CallbackContext context)
@@ -82,28 +86,40 @@ public class HPReverbControls : NetworkBehaviour
         float joyUp = 0.7f;
         float joyDown = -0.7f;
 
-        float joyLeft = -0.7f;
-        float joyRight = 0.7f;
+
+
+        //float joyLeft = -0.7f;
+        //float joyRight = 0.7f;
 
         Vector2 temp = context.ReadValue<Vector2>();
 
-        if (temp.y > joyUp)
+        if (temp.y > joyUp && pointFinger == false)
         {
-            Debug.Log("joystick naar boven");
+            handAnimator.SetTrigger("TrPointFinger");
+            pointFinger = true;
         }
-        else if (temp.y < joyDown)
+        else if (pointFinger == true && temp.y < joyUp)
         {
-            Debug.Log("joystick naar beneden");
+            handAnimator.SetTrigger("TrPointFingerToNeutral");
+            pointFinger = false;
+        }
+        if (temp.y < joyDown && fist == false)
+        {
+            handAnimator.SetTrigger("TrCloseFist");
+            fist = true;
+        } else if(temp.y > joyDown && fist == true)
+        {
+            handAnimator.SetTrigger("TrOpenFist");
         }
 
-        if (temp.x > joyRight)
-        {
-            Debug.Log("joystick naar rechts");
-        }
-        else if (temp.x < joyLeft)
-        {
-            Debug.Log("joystick naar links");
-        }
+        //if (temp.x > joyRight)
+        //{
+        //    Debug.Log("joystick naar rechts");
+        //}
+        //else if (temp.x < joyLeft)
+        //{
+        //    Debug.Log("joystick naar links");
+        //}
     }
 
     //public void PrimaryButton(InputAction.CallbackContext context)

@@ -8,7 +8,7 @@ ModelImporter:
     second: metarig.003|metarig.003Action
   - first:
       74: 4378222827420444973
-    second: metarig.003|metarig.003|metarig.003|metarigAction|metarig.003|metarigAction
+    second: Neutraal
   - first:
       74: 760912128967566068
     second: Neutraal -> Vuist
@@ -79,7 +79,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.003|metarig.003|metarig.003|metarigAction|metarig.003|metarigAction
+      name: Neutraal
       takeName: metarig.003|metarig.003|metarig.003|metarigAction|metarig.003|metarigAction
       internalID: 0
       firstFrame: 0
@@ -277,7 +277,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.001
+    globalScale: 0.1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

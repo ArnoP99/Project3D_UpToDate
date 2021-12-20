@@ -1066,6 +1066,7 @@ GameObject:
   - component: {fileID: 5502666571924201948}
   - component: {fileID: 6573560629407152156}
   - component: {fileID: 1933227609133953532}
+  - component: {fileID: 2917005825518078040}
   m_Layer: 12
   m_Name: Player (HP Reverb Controllers)
   m_TagString: Player
@@ -1494,7 +1495,7 @@ MonoBehaviour:
     m_ActionName: Player/PrimaryButton
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: XR
-  m_DefaultActionMap: f68fa58d-61b9-4676-95c3-b4b1c1226a40
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &8735425951221177279
@@ -1639,6 +1640,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &2917005825518078040
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254969925439542407}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f49cc3d6645bfe04ea6eff4701b1e397, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5628025244299396110
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,7 +97,7 @@
                     "path": "<HPMixedRealityController>{LeftHand}/thumbstick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
+                    "groups": "",
                     "action": "LeftJoystick",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -108,7 +108,7 @@
                     "path": "<HPMixedRealityController>{RightHand}/thumbstick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
+                    "groups": "",
                     "action": "LeftJoystick",
                     "isComposite": false,
                     "isPartOfComposite": false

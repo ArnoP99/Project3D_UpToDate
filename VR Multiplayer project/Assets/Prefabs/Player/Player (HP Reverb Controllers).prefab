@@ -1482,43 +1482,19 @@ MonoBehaviour:
     m_ActionName: Player/LeftJoystick
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 55cdca12-e537-4e55-9412-bc27e76fbfbb
+    m_ActionId: bc9457b7-3ad1-4631-aaec-770c165786e1
+    m_ActionName: Player/GripButton
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce1c92fc-9117-43de-9357-37dcdfb0a47a
     m_ActionName: Player/MoveLeft
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -5248235596319893062}
-        m_TargetAssemblyTypeName: HPReverbControls, Assembly-CSharp
-        m_MethodName: PrimaryButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 84bb05f0-9114-4e25-8678-e3037368bdaf
+      m_Calls: []
+    m_ActionId: a4508d24-c0a7-4863-9544-3b7c7f72ab94
     m_ActionName: Player/PrimaryButton
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -5248235596319893062}
-        m_TargetAssemblyTypeName: HPReverbControls, Assembly-CSharp
-        m_MethodName: GripButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 17e2360c-94dc-460a-9277-3ee1107dfaea
-    m_ActionName: Player/GripButton
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: XR
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: f68fa58d-61b9-4676-95c3-b4b1c1226a40
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &8735425951221177279

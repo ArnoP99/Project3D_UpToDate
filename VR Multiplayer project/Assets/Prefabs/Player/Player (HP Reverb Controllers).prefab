@@ -1422,6 +1422,7 @@ MonoBehaviour:
   agressor: {fileID: 0}
   textPopUp: {fileID: 0}
   activeChoice: {fileID: 0}
+  handAnimator: {fileID: 0}
   lastAudioPlayed: 0
 --- !u!114 &-8557955457647793105
 MonoBehaviour:
@@ -1650,7 +1651,7 @@ Animator:
   m_GameObject: {fileID: 4254969925439542407}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f49cc3d6645bfe04ea6eff4701b1e397, type: 2}
+  m_Controller: {fileID: 9100000, guid: 14978d5f1f4983e479b2e5b4cf1e09b5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

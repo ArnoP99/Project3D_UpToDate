@@ -16,7 +16,8 @@ public class HPReverbControls : NetworkBehaviour
     public GameObject textPopUp;
     public GameObject activeChoice;
 
-    public Animator handAnimator;
+    public Animator handAnimatorLeft;
+    public Animator handAnimatorRight;
 
     public bool lastAudioPlayed = false;
 
@@ -35,7 +36,8 @@ public class HPReverbControls : NetworkBehaviour
 
     private void Start()
     {
-        handAnimator = gameObject.GetComponent<Animator>();
+        handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+        handAnimatorRight = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
     }
 
     public void PressTrigger(InputAction.CallbackContext context)
@@ -68,7 +70,7 @@ public class HPReverbControls : NetworkBehaviour
         }
 
 
-        
+
     }
 
     private void Update()
@@ -82,23 +84,29 @@ public class HPReverbControls : NetworkBehaviour
                 NetworkManager.singleton.ServerChangeScene("EndRoom");
             }
         }
-       
-      
+
+
     }
 
     public void Joystick(InputAction.CallbackContext context)
     {
-        float joyUp = 0.7f;
-        float joyDown = -0.7f;
-
-
+        if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+        {
+            Vector2 temp = context.ReadValue<Vector2>();
+            handAnimatorLeft.SetFloat("JoystickH", temp.y);
+            Debug.Log(temp.y);
+        }
+        else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+        {
+            Vector2 temp = context.ReadValue<Vector2>();
+            handAnimatorRight.SetFloat("JoystickH", temp.y);
+            Debug.Log(temp.y);
+        }
 
         //float joyLeft = -0.7f;
         //float joyRight = 0.7f;
 
-        Vector2 temp = context.ReadValue<Vector2>();
-        handAnimator.SetFloat("JoystickH", temp.y);
-        Debug.Log(temp.y);
+
 
         //if (temp.y > joyUp && pointFinger == false)
         //{

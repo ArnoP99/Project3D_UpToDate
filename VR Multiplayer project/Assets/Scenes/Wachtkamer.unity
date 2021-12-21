@@ -7710,10 +7710,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfController: 1
-  HPReverbLeftHand: {fileID: 8738209478801471298, guid: aa41b101cfc5a52488dbfac900ed3527,
-    type: 3}
-  HPReverbRightHand: {fileID: 8738209478801471298, guid: aa41b101cfc5a52488dbfac900ed3527,
-    type: 3}
+  HPReverbLeftHand: {fileID: 0}
+  HPReverbRightHand: {fileID: 0}
   blasterController: {fileID: 4153755584183520291, guid: 28465064f14cbd34f96b8f13a6d5b087,
     type: 3}
   blasterRigidBody: {fileID: 8413760600699441452, guid: d41b7dbd8b41e3b4b8f7473ebd7f1393,

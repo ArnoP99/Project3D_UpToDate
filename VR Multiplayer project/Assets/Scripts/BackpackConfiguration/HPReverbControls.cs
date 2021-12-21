@@ -83,7 +83,7 @@ public class HPReverbControls : NetworkBehaviour
                 NetworkManager.singleton.ServerChangeScene("EndRoom");
             }
         }
-
+        try { 
         if (checkControllerInstantiation == false || checkControllerInstantiation1 == false)
         {
             if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
@@ -96,6 +96,10 @@ public class HPReverbControls : NetworkBehaviour
                 handAnimatorRight = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
                 checkControllerInstantiation1 = true;
             }
+        }
+        }catch(Exception ex)
+        {
+            Debug.Log(ex);
         }
 
 

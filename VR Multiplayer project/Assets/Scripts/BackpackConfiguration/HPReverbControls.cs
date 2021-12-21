@@ -83,42 +83,44 @@ public class HPReverbControls : NetworkBehaviour
                 NetworkManager.singleton.ServerChangeScene("EndRoom");
             }
         }
-        try { 
-        if (checkControllerInstantiation == false || checkControllerInstantiation1 == false)
-        {
-            if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
-            {
-                handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
-                checkControllerInstantiation = true;
-            }
-            else if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>())
-            {
-                handAnimatorRight = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
-                checkControllerInstantiation1 = true;
-            }
-        }
-        }catch(Exception ex)
-        {
-            Debug.Log(ex);
-        }
+        //try
+        //{
+        //    if (checkControllerInstantiation == false || checkControllerInstantiation1 == false)
+        //    {
+        //        if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
+        //        {
+        //            handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+        //            checkControllerInstantiation = true;
+        //        }
+        //        else if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>())
+        //        {
+        //            handAnimatorRight = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+        //            checkControllerInstantiation1 = true;
+        //        }
+        //    }
+        //}
+        //catch (Exception ex)
+        //{
+        //    Debug.Log(ex);
+        //}
 
 
     }
 
     public void Joystick(InputAction.CallbackContext context)
     {
-        if (context.control.device.name == "HPReverbG2ControllerOpenXR")
-        {
-            Vector2 temp = context.ReadValue<Vector2>();
-            handAnimatorLeft.SetFloat("JoystickH", temp.y);
-            Debug.Log(temp.y);
-        }
-        else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
-        {
-            Vector2 temp = context.ReadValue<Vector2>();
-            handAnimatorRight.SetFloat("JoystickH", temp.y);
-            Debug.Log(temp.y);
-        }
+        //if (context.control.device.name == "HPReverbG2ControllerOpenXR")
+        //{
+        //    Vector2 temp = context.ReadValue<Vector2>();
+        //    handAnimatorLeft.SetFloat("JoystickH", temp.y);
+        //    Debug.Log(temp.y);
+        //}
+        //else if (context.control.device.name == "HPReverbG2ControllerOpenXR1")
+        //{
+        //    Vector2 temp = context.ReadValue<Vector2>();
+        //    handAnimatorRight.SetFloat("JoystickH", temp.y);
+        //    Debug.Log(temp.y);
+        //}
 
         //float joyLeft = -0.7f;
         //float joyRight = 0.7f;

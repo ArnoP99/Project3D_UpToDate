@@ -25,8 +25,8 @@ public class HPReverbControls : NetworkBehaviour
 
     bool firstTime = true;
 
-    bool fist = false;
-    bool pointFinger = false;
+    bool checkControllerInstantiation = false;
+    bool checkControllerInstantiation1 = false;
 
     Color selectColor = new Color(0, 180, 207);
 
@@ -36,8 +36,7 @@ public class HPReverbControls : NetworkBehaviour
 
     private void Start()
     {
-        handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
-        handAnimatorRight = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+
     }
 
     public void PressTrigger(InputAction.CallbackContext context)
@@ -82,6 +81,20 @@ public class HPReverbControls : NetworkBehaviour
             if (timeRemaining <= 0 && scene.name == "ZiekenhuisKamer")
             {
                 NetworkManager.singleton.ServerChangeScene("EndRoom");
+            }
+        }
+
+        if (checkControllerInstantiation == false || checkControllerInstantiation1 == false)
+        {
+            if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
+            {
+                handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+                checkControllerInstantiation = true;
+            }
+            else if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>())
+            {
+                handAnimatorRight = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+                checkControllerInstantiation1 = true;
             }
         }
 

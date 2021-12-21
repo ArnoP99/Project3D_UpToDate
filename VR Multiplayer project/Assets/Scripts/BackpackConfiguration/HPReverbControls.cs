@@ -98,6 +98,7 @@ public class HPReverbControls : NetworkBehaviour
 
         Vector2 temp = context.ReadValue<Vector2>();
         handAnimator.SetFloat("JoystickH", temp.y);
+        Debug.Log(temp.y);
 
         //if (temp.y > joyUp && pointFinger == false)
         //{

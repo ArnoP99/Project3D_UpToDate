@@ -66,6 +66,9 @@ public class HPReverbControls : NetworkBehaviour
                 }
             }
         }
+
+
+        
     }
 
     private void Update()
@@ -79,6 +82,8 @@ public class HPReverbControls : NetworkBehaviour
                 NetworkManager.singleton.ServerChangeScene("EndRoom");
             }
         }
+       
+      
     }
 
     public void Joystick(InputAction.CallbackContext context)
@@ -92,27 +97,28 @@ public class HPReverbControls : NetworkBehaviour
         //float joyRight = 0.7f;
 
         Vector2 temp = context.ReadValue<Vector2>();
+        handAnimator.SetFloat("JoystickH", temp.y);
 
-        if (temp.y > joyUp && pointFinger == false)
-        {
-            handAnimator.SetTrigger("TrPointFinger");
-            pointFinger = true;
-        }
-        else if (pointFinger == true && temp.y < joyUp)
-        {
-            handAnimator.SetTrigger("TrPointFingerToNeutral");
-            pointFinger = false;
-        }
-        if (temp.y < joyDown && fist == false)
-        {
-            handAnimator.SetTrigger("TrCloseFist");
-            fist = true;
-        }
-        else if (temp.y > joyDown && fist == true)
-        {
-            handAnimator.SetTrigger("TrOpenFist");
-            fist = false;
-        }
+        //if (temp.y > joyUp && pointFinger == false)
+        //{
+        //    handAnimator.SetTrigger("TrPointFinger");
+        //    pointFinger = true;
+        //}
+        //else if (pointFinger == true && temp.y < joyUp)
+        //{
+        //    handAnimator.SetTrigger("TrPointFingerToNeutral");
+        //    pointFinger = false;
+        //}
+        //if (temp.y < joyDown && fist == false)
+        //{
+        //    handAnimator.SetTrigger("TrCloseFist");
+        //    fist = true;
+        //}
+        //else if (temp.y > joyDown && fist == true)
+        //{
+        //    handAnimator.SetTrigger("TrOpenFist");
+        //    fist = false;
+        //}
 
         //if (temp.x > joyRight)
         //{

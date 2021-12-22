@@ -670,7 +670,7 @@ public class HPReverbControls : NetworkBehaviour
 
                 TargetPlayAudioOnSender(agressorID.connectionToClient);
                 TargetPlayAudioOnSender(nurseID.connectionToClient);
-                audioSource.clip = null;
+                audioSource.volume = 0;
                 lastAudioPlayed = true;
             }
 
@@ -678,7 +678,7 @@ public class HPReverbControls : NetworkBehaviour
             {
                 TargetPlayAudioOnSender(agressorID.connectionToClient);
                 TargetPlayAudioOnSender(nurseID.connectionToClient);
-                audioSource.clip = null;
+                audioSource.volume = 0;
             }
 
 

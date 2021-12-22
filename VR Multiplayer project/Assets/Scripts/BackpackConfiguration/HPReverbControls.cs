@@ -175,6 +175,7 @@ public class HPReverbControls : NetworkBehaviour
         if (textPopUp.transform.GetChild(0).GetComponent<TextMeshPro>().color == selectColor && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(0).gameObject;
+            textPopUp.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.white;
             textPopUp.SetActive(false);
 
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && ConversationManager.Instance.ActiveConversation == -1)
@@ -202,6 +203,7 @@ public class HPReverbControls : NetworkBehaviour
         else if (textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color == selectColor && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(1).gameObject;
+            textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color = Color.white;
             textPopUp.SetActive(false);
 
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && ConversationManager.Instance.ActiveConversation == -1)
@@ -229,6 +231,7 @@ public class HPReverbControls : NetworkBehaviour
         else if (textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color == selectColor && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(2).gameObject;
+            textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color = Color.white;
             textPopUp.SetActive(false);
 
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && ConversationManager.Instance.ActiveConversation == -1)
@@ -269,6 +272,7 @@ public class HPReverbControls : NetworkBehaviour
         if (textPopUp.transform.GetChild(0).GetComponent<TextMeshPro>().color == selectColor && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(0).gameObject;
+            textPopUp.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.white;
             textPopUp.SetActive(false);
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true)
             {
@@ -288,6 +292,7 @@ public class HPReverbControls : NetworkBehaviour
         else if (textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color == selectColor && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(1).gameObject;
+            textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color = Color.white;
             textPopUp.SetActive(false);
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true)
             {
@@ -307,6 +312,7 @@ public class HPReverbControls : NetworkBehaviour
         else if (textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color == selectColor && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
             activeChoice = textPopUp.transform.GetChild(2).gameObject;
+            textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color = Color.white;
             textPopUp.SetActive(false);
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true)
             {
@@ -664,6 +670,7 @@ public class HPReverbControls : NetworkBehaviour
 
                 TargetPlayAudioOnSender(agressorID.connectionToClient);
                 TargetPlayAudioOnSender(nurseID.connectionToClient);
+                audioSource.clip = null;
                 lastAudioPlayed = true;
             }
 
@@ -671,6 +678,7 @@ public class HPReverbControls : NetworkBehaviour
             {
                 TargetPlayAudioOnSender(agressorID.connectionToClient);
                 TargetPlayAudioOnSender(nurseID.connectionToClient);
+                audioSource.clip = null;
             }
 
 

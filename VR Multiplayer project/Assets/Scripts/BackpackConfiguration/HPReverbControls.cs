@@ -67,9 +67,6 @@ public class HPReverbControls : NetworkBehaviour
                 }
             }
         }
-
-
-
     }
 
     private void Update()
@@ -672,7 +669,8 @@ public class HPReverbControls : NetworkBehaviour
 
             if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Phase2)
             {
-                Debug.Log("phase 2 started");
+                TargetPlayAudioOnSender(agressorID.connectionToClient);
+                TargetPlayAudioOnSender(nurseID.connectionToClient);
             }
 
 

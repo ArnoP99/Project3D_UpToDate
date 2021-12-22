@@ -1422,7 +1422,10 @@ MonoBehaviour:
   agressor: {fileID: 0}
   textPopUp: {fileID: 0}
   activeChoice: {fileID: 0}
-  handAnimator: {fileID: 0}
+  handAnimatorLeft: {fileID: -982839197397537761, guid: 30536946d530b154894d699a737c89fd,
+    type: 3}
+  handAnimatorRight: {fileID: -982839197397537761, guid: 30536946d530b154894d699a737c89fd,
+    type: 3}
   lastAudioPlayed: 0
 --- !u!114 &-8557955457647793105
 MonoBehaviour:

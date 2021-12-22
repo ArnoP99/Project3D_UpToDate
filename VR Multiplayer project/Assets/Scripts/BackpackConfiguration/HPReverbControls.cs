@@ -86,28 +86,26 @@ public class HPReverbControls : NetworkBehaviour
 
 
 
-        try
-        {
-            if (checkControllerInstantiation == false || checkControllerInstantiation1 == false && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
-            {
-                if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
-                {
-                    handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
-                    checkControllerInstantiation = true;
-                }
-                else if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
-                {
-                    handAnimatorRight = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
-                    checkControllerInstantiation1 = true;
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-        }
-
-
+    //    try
+    //    {
+    //        if (checkControllerInstantiation == false || checkControllerInstantiation1 == false && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
+    //        {
+    //            if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
+    //            {
+    //                handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+    //                checkControllerInstantiation = true;
+    //            }
+    //            else if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
+    //            {
+    //                handAnimatorRight = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+    //                checkControllerInstantiation1 = true;
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Debug.Log(ex);
+    //    }
     }
 
     public void Joystick(InputAction.CallbackContext context)

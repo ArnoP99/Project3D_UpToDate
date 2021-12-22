@@ -112,13 +112,13 @@ public class HPReverbControls : NetworkBehaviour
 
     public void Joystick(InputAction.CallbackContext context)
     {
-        if (context.control.device.name == "HPReverbG2ControllerOpenXR" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
+        if (context.control.device.name == "HPReverbG2ControllerOpenXR1" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
         {
             Vector2 temp = context.ReadValue<Vector2>();
             handAnimatorLeft.SetFloat("JoystickH", temp.y);
             Debug.Log(temp.y);
         }
-        else if (context.control.device.name == "HPReverbG2ControllerOpenXR1" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
+        else if (context.control.device.name == "HPReverbG2ControllerOpenXR" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
         {
             Vector2 temp = context.ReadValue<Vector2>();
             handAnimatorRight.SetFloat("JoystickH", temp.y);

@@ -679,6 +679,12 @@ public class HPReverbControls : NetworkBehaviour
                 TargetPlayAudioOnSender(agressorID.connectionToClient);
                 TargetPlayAudioOnSender(nurseID.connectionToClient);
                 audioSource.volume = 0;
+                
+                GameObject timer = GameObject.Find("Timer");
+                timer.GetComponent<Timer>().TimerIsRunning = true;
+
+
+
             }
 
 

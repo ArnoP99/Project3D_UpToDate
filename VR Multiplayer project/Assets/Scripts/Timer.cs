@@ -16,8 +16,6 @@ public class Timer : NetworkBehaviour
 
     private void Start()
     {
-        // Starts the timer automatically
-        timerIsRunning = true;
         minutes0 = GameObject.Find("Minutes0");
         minutes1 = GameObject.Find("Minutes1");
         seconds0 = GameObject.Find("Seconds0");
@@ -41,7 +39,7 @@ public class Timer : NetworkBehaviour
                 else if (minutes < 10)
                 {
                     minutes1.GetComponent<TextMeshPro>().text = minutes.ToString().Substring(0, 1);
-                    minutes0.GetComponent<TextMeshPro>().text =  "0";
+                    minutes0.GetComponent<TextMeshPro>().text = "0";
                 }
 
                 if (seconds > 10)
@@ -62,5 +60,17 @@ public class Timer : NetworkBehaviour
             timerIsRunning = false;
         }
     }
+
+    public bool TimerIsRunning
+    {
+
+        get { return timerIsRunning; }
+
+        set { timerIsRunning = value; }
+
+    }
+
+
+
 }
 

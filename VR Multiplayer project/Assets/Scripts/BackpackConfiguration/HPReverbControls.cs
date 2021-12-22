@@ -110,20 +110,20 @@ public class HPReverbControls : NetworkBehaviour
 
     public void Joystick(InputAction.CallbackContext context)
     {
-        if (context.control.device.name == "HPReverbG2ControllerOpenXR1" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
-        {
-            Vector2 temp = context.ReadValue<Vector2>();
-            handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
-            handAnimatorLeft.SetFloat("JoystickH", temp.y);
-            Debug.Log(temp.y);
-        }
-        else if (context.control.device.name == "HPReverbG2ControllerOpenXR" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
-        {
-            Vector2 temp = context.ReadValue<Vector2>();
-            handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
-            handAnimatorRight.SetFloat("JoystickH", temp.y);
-            Debug.Log(temp.y);
-        }
+        //if (context.control.device.name == "HPReverbG2ControllerOpenXR1" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
+        //{
+        //    Vector2 temp = context.ReadValue<Vector2>();
+        //    handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+        //    handAnimatorLeft.SetFloat("JoystickH", temp.y);
+        //    Debug.Log(temp.y);
+        //}
+        //else if (context.control.device.name == "HPReverbG2ControllerOpenXR" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
+        //{
+        //    Vector2 temp = context.ReadValue<Vector2>();
+        //    handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+        //    handAnimatorRight.SetFloat("JoystickH", temp.y);
+        //    Debug.Log(temp.y);
+        //}
 
         //float joyLeft = -0.7f;
         //float joyRight = 0.7f;

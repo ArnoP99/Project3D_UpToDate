@@ -97,7 +97,7 @@ public class HPReverbControls : NetworkBehaviour
     //            }
     //            else if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
     //            {
-    //                handAnimatorRight = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+    //                 handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
     //                checkControllerInstantiation1 = true;
     //            }
     //        }
@@ -113,12 +113,14 @@ public class HPReverbControls : NetworkBehaviour
         if (context.control.device.name == "HPReverbG2ControllerOpenXR1" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
         {
             Vector2 temp = context.ReadValue<Vector2>();
+            handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
             handAnimatorLeft.SetFloat("JoystickH", temp.y);
             Debug.Log(temp.y);
         }
         else if (context.control.device.name == "HPReverbG2ControllerOpenXR" && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
         {
             Vector2 temp = context.ReadValue<Vector2>();
+            handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
             handAnimatorRight.SetFloat("JoystickH", temp.y);
             Debug.Log(temp.y);
         }

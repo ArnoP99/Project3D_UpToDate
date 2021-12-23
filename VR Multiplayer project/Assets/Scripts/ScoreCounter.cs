@@ -53,6 +53,7 @@ public class ScoreCounter : MonoBehaviour
     private void sendScoreToPlayer(int score, string activePlayer)
     {
         GameObject player = GameObject.FindGameObjectWithTag(activePlayer);
+        Debug.Log("player: " + player.tag);
 
         if (player.tag == "Nurse")
         {

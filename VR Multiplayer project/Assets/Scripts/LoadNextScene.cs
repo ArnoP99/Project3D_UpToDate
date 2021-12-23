@@ -60,7 +60,8 @@ public class LoadNextScene : NetworkBehaviour
                 Debug.Log("AgressorOnSpawn");
                 if (scene.name == "Wachtkamer")
                 {
-                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2, 1);
+                    //gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2, 1);
+                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(2, 1);
                 }
                 if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
                 {

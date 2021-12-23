@@ -30,32 +30,38 @@ public class Timer : NetworkBehaviour
     {
         if (timerIsRunning)
         {
-            Debug.Log("timer started");
+
             if (timeRemaining > 0)
             {
                 float minutes = Mathf.FloorToInt(timeRemaining / 60);
                 float seconds = Mathf.FloorToInt(timeRemaining % 60);
                 timeRemaining -= Time.deltaTime;
+                Debug.Log("timer started");
+
                 if (minutes > 10)
                 {
                     minutes0.GetComponent<TextMeshPro>().text = minutes.ToString().Substring(0, 1);
                     minutes1.GetComponent<TextMeshPro>().text = minutes.ToString().Substring(1, 1);
+
                 }
                 else if (minutes < 10)
                 {
                     minutes1.GetComponent<TextMeshPro>().text = minutes.ToString().Substring(0, 1);
                     minutes0.GetComponent<TextMeshPro>().text = "0";
+                    Debug.Log(timeRemaining);
                 }
 
                 if (seconds > 10)
                 {
                     seconds0.GetComponent<TextMeshPro>().text = seconds.ToString().Substring(0, 1);
                     seconds1.GetComponent<TextMeshPro>().text = seconds.ToString().Substring(1, 1);
+
                 }
                 else if (seconds < 10)
                 {
                     seconds0.GetComponent<TextMeshPro>().text = "0";
                     seconds1.GetComponent<TextMeshPro>().text = seconds.ToString().Substring(0, 1);
+                    Debug.Log(timeRemaining);
                 }
             }
         }

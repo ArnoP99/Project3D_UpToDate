@@ -19,40 +19,38 @@ public class ScoreCounter : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (this == isClient && this != isServer && this == isLocalPlayer)
+
+        if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {
-            if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
-            {
-                s_agressorScore += 10;
-                sendScoreToPlayer(1);
-            }
-            else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
-            {
-                s_nurseScore += 10;
-                sendScoreToPlayer(0);
-            }
+            s_agressorScore += 10;
+            sendScoreToPlayer(1);
         }
+        else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
+        {
+            s_nurseScore += 10;
+            sendScoreToPlayer(0);
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {
-        if (this == isClient && this != isServer && this == isLocalPlayer)
+
+        if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {
-            if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
+            if (s_agressorScore > 0)
             {
-                if (s_agressorScore > 0)
-                {
-                    s_agressorScore -= 10;
-                    sendScoreToPlayer(1);
-                }
+                s_agressorScore -= 10;
+                sendScoreToPlayer(1);
             }
-            else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
+        }
+        else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
+        {
+            if (s_nurseScore > 0)
             {
-                if (s_nurseScore > 0)
-                {
-                    s_nurseScore -= 10;
-                    sendScoreToPlayer(0);
-                }
+                s_nurseScore -= 10;
+                sendScoreToPlayer(0);
             }
+
         }
     }
 
@@ -63,13 +61,19 @@ public class ScoreCounter : NetworkBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Nurse");
             Debug.Log("player: " + player.tag);
-            player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(s_nurseScore, 0);
+            if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
+            {
+                player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(s_nurseScore, 0);
+            }
         }
         else if (activePlayer == 1)
         {
             player = GameObject.FindGameObjectWithTag("Agressor");
             Debug.Log("player: " + player.tag);
-            player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(s_agressorScore, 1);
+            if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
+            {
+                player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(s_agressorScore, 1);
+            }
         }
     }
 }

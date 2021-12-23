@@ -17049,6 +17049,7 @@ GameObject:
   - component: {fileID: 666108369741189874}
   - component: {fileID: 177239783555647562}
   - component: {fileID: 177239783555647561}
+  - component: {fileID: 177239783555647563}
   m_Layer: 0
   m_Name: ItemBoxNurseV2
   m_TagString: NurseBox
@@ -17068,6 +17069,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0f42d8c99a77e4b96fb80b7de130bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!65 &177239783555647562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17081,6 +17084,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7354348, y: 2.6892257, z: 0.8627849}
   m_Center: {x: -0.013443574, y: 1.839623, z: -0.40854412}
+--- !u!114 &177239783555647563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177239783555647560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 1632071862
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &188214033039499226
 GameObject:
   m_ObjectHideFlags: 0
@@ -21555,6 +21575,8 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652882269208}
   - component: {fileID: 919132148897689251}
+  - component: {fileID: 919132148897689253}
+  - component: {fileID: 919132148897689252}
   m_Layer: 0
   m_Name: NightTable
   m_TagString: AgressorBox
@@ -21575,6 +21597,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.53504336, y: 1.2726053, z: 0.83689517}
   m_Center: {x: 1.1531789, y: 0.6999752, z: -0.2139883}
+--- !u!114 &919132148897689252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148897689250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0f42d8c99a77e4b96fb80b7de130bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+--- !u!114 &919132148897689253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148897689250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 3432512691
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &919132148903542387
 GameObject:
   m_ObjectHideFlags: 0

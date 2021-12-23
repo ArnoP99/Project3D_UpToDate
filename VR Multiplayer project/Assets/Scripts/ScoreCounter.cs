@@ -57,11 +57,13 @@ public class ScoreCounter : MonoBehaviour
 
         if (player.tag == "Nurse")
         {
+            Debug.Log("assignauth exist?: " + player.GetComponent<AssignAuth>() != null);
             player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(score, 0);
 
         }
         else if (player.tag == "Agressor")
         {
+            Debug.Log("assignauth exist?: " + player.GetComponent<AssignAuth>() != null);
             player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(score, 1);
         }
     }

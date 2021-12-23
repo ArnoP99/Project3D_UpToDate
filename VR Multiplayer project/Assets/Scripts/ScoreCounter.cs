@@ -10,7 +10,7 @@ public class ScoreCounter : MonoBehaviour
 
     int s_nurseScore = 0;
 
-
+    GameObject player;
 
     void Start()
     {
@@ -21,12 +21,12 @@ public class ScoreCounter : MonoBehaviour
         if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {
             s_agressorScore += 10;
-            sendScoreToPlayer(s_agressorScore, "Agressor");
+            sendScoreToPlayer(1);
         }
         else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
         {
             s_nurseScore += 10;
-            sendScoreToPlayer(s_nurseScore, "Nurse");
+            sendScoreToPlayer(0);
         }
     }
 
@@ -37,7 +37,7 @@ public class ScoreCounter : MonoBehaviour
             if (s_agressorScore > 0)
             {
                 s_agressorScore -= 10;
-                sendScoreToPlayer(s_agressorScore, "Agressor");
+                sendScoreToPlayer(1);
             }
         }
         else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
@@ -45,26 +45,25 @@ public class ScoreCounter : MonoBehaviour
             if (s_nurseScore > 0)
             {
                 s_nurseScore -= 10;
-                sendScoreToPlayer(s_nurseScore, "Nurse");
+                sendScoreToPlayer(0);
             }
         }
     }
 
-    private void sendScoreToPlayer(int score, string activePlayer)
+    private void sendScoreToPlayer(int activePlayer)
     {
-        GameObject player = GameObject.FindGameObjectWithTag(activePlayer);
-        Debug.Log("player: " + player.tag);
 
-        if (player.tag == "Nurse")
+        if (activePlayer == 0)
         {
-            Debug.Log("assignauth exist?: " + player.GetComponent<AssignAuth>() != null);
-            player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(score, 0);
-
+            player = GameObject.FindGameObjectWithTag("Nurse");
+            Debug.Log("player: " + player.tag);
+            player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(s_nurseScore, 0);
         }
-        else if (player.tag == "Agressor")
+        else if (activePlayer == 1)
         {
-            Debug.Log("assignauth exist?: " + player.GetComponent<AssignAuth>() != null);
-            player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(score, 1);
+            player = GameObject.FindGameObjectWithTag("Agressor");
+            Debug.Log("player: " + player.tag);
+            player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(s_agressorScore, 1);
         }
     }
 }

@@ -61,7 +61,7 @@ public class ScoreCounter : NetworkBehaviour
 
         if (activePlayer == 0)
         {
-            player = GameObject.FindGameObjectWithTag("Nurse");
+            player = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject;
             Debug.Log("player: " + player.tag);
             if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
             {
@@ -70,7 +70,7 @@ public class ScoreCounter : NetworkBehaviour
         }
         else if (activePlayer == 1)
         {
-            player = GameObject.FindGameObjectWithTag("Agressor");
+            player = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject; 
             Debug.Log("player: " + player.tag);
             if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
             {

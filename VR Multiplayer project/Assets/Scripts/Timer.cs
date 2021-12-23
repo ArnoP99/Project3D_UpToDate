@@ -26,6 +26,7 @@ public class Timer : NetworkBehaviour
     {
         if (timerIsRunning)
         {
+            Debug.Log("timer started");
             if (timeRemaining > 0)
             {
                 float minutes = Mathf.FloorToInt(timeRemaining / 60);

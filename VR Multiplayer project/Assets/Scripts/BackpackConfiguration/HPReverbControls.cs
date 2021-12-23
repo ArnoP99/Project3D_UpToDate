@@ -682,7 +682,7 @@ public class HPReverbControls : NetworkBehaviour
                 
                 GameObject timer = GameObject.Find("Timer");
                 timer.GetComponent<Timer>().TimerIsRunning = true;
-
+                Debug.Log("timer: " + timer);
 
 
             }

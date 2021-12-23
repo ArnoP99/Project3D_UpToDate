@@ -80,12 +80,20 @@ public class AssignAuth : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdSendPlayerScore(int score, int player)
     {
+        NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+        NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+
         if (player == 0)
         {
             GameObject nurseBar = GameObject.Find("NurseBar");
             nurseBar.GetComponent<ScoreBar>().SetScore(score);
             nurseScore = score;
             Debug.Log("Nurse score: " + nurseScore);
+            if (this.isServer)
+            {
+                TargetSendPlayerScore(nurseID.connectionToClient, nurseScore, agressorScore);
+                TargetSendPlayerScore(agressorID.connectionToClient, nurseScore, agressorScore);
+            }
         }
         else if (player == 1)
         {
@@ -93,13 +101,12 @@ public class AssignAuth : NetworkBehaviour
             agressorBar.GetComponent<ScoreBar>().SetScore(score);
             agressorScore = score;
             Debug.Log("Agressor score: " + agressorScore);
+            if (this.isServer)
+            {
+                TargetSendPlayerScore(nurseID.connectionToClient, nurseScore, agressorScore);
+                TargetSendPlayerScore(agressorID.connectionToClient, nurseScore, agressorScore);
+            }
         }
-
-        NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-        NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-
-        TargetSendPlayerScore(nurseID.connectionToClient, nurseScore, agressorScore);
-        TargetSendPlayerScore(agressorID.connectionToClient, nurseScore, agressorScore);
     }
 
     [TargetRpc]
@@ -107,6 +114,9 @@ public class AssignAuth : NetworkBehaviour
     {
         GameObject nurseBar = GameObject.Find("NurseBar");
         GameObject agressorBar = GameObject.Find("AgressorBar");
+
+        Debug.Log("NurseScore" + nurseScore);
+        Debug.Log("AgressorScore" + agressorScore);
 
         nurseBar.GetComponent<ScoreBar>().SetScore(nurseScore);
         agressorBar.GetComponent<ScoreBar>().SetScore(agressorScore);

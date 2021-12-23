@@ -19,10 +19,11 @@ public class AssignAuth : NetworkBehaviour
 
     public void ExecuteCmdHandComesBack(int hand, GameObject player)
     {
-        if (this == isClient && this != isServer && this == isLocalPlayer&& hand == 0)
+        if (this == isClient && this != isServer && this == isLocalPlayer && hand == 0)
         {
             CmdHandComesBack(0, player);
-        }else if (this == isClient && this != isServer && this == isLocalPlayer && hand == 1)
+        }
+        else if (this == isClient && this != isServer && this == isLocalPlayer && hand == 1)
         {
             CmdHandComesBack(1, player);
         }
@@ -62,6 +63,28 @@ public class AssignAuth : NetworkBehaviour
             CmdRemoveAuthority(objectID);
         }
     }
+
+    public void ExecuteCmdSendPlayerScore(int score, int player)
+    {
+        if (this == isClient && this != isServer && this == isLocalPlayer)
+        {
+            CmdSendPlayerScore(score, player);
+        }
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdSendPlayerScore(int score, int player)
+    {
+        if (player == 0)
+        {
+            Debug.Log("Nurse score: " + score);
+        }
+        else if (player == 1)
+        {
+            Debug.Log("Agressor score: " + score);
+        }
+    }
+
 
 
     [Command(requiresAuthority = false)]

@@ -6,17 +6,14 @@ using UnityEngine;
 public class ScoreCounter : MonoBehaviour
 {
     int s_agressorScore = 0;
-    GameObject agressorScore;
+
 
     int s_nurseScore = 0;
-    GameObject nurseScore;
+
 
 
     void Start()
     {
-        agressorScore = GameObject.Find("ScoreNumberAgressor");
-        nurseScore = GameObject.Find("ScoreNumberNurse");
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,12 +21,12 @@ public class ScoreCounter : MonoBehaviour
         if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {
             s_agressorScore += 10;
-            agressorScore.GetComponent<TextMeshPro>().text = s_agressorScore.ToString();
+            sendScoreToPlayer(s_agressorScore, "Agressor");
         }
         else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
         {
             s_nurseScore += 10;
-            nurseScore.GetComponent<TextMeshPro>().text = s_nurseScore.ToString();
+            sendScoreToPlayer(s_nurseScore, "Nurse");
         }
     }
 
@@ -40,7 +37,7 @@ public class ScoreCounter : MonoBehaviour
             if (s_agressorScore > 0)
             {
                 s_agressorScore -= 10;
-                agressorScore.GetComponent<TextMeshPro>().text = s_agressorScore.ToString();
+                sendScoreToPlayer(s_agressorScore, "Agressor");
             }
         }
         else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
@@ -48,8 +45,23 @@ public class ScoreCounter : MonoBehaviour
             if (s_nurseScore > 0)
             {
                 s_nurseScore -= 10;
-                nurseScore.GetComponent<TextMeshPro>().text = s_nurseScore.ToString();
+                sendScoreToPlayer(s_nurseScore, "Nurse");
             }
+        }
+    }
+
+    private void sendScoreToPlayer(int score, string activePlayer)
+    {
+        GameObject player = GameObject.Find(activePlayer);
+
+        if (player.tag == "Nurse")
+        {
+            player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(score, 0);
+
+        }
+        else if (player.tag == "Agressor")
+        {
+            player.GetComponent<AssignAuth>().ExecuteCmdSendPlayerScore(score, 1);
         }
     }
 }

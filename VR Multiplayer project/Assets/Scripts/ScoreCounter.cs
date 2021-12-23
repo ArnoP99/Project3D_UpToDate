@@ -56,6 +56,8 @@ public class ScoreCounter : NetworkBehaviour
 
     public void sendScoreToPlayer(int activePlayer)
     {
+        Debug.Log("ActivePlayer: " + activePlayer);
+
 
         if (activePlayer == 0)
         {

@@ -683,7 +683,8 @@ public class HPReverbControls : NetworkBehaviour
                 GameObject timer = GameObject.Find("Timer");
                 timer.GetComponent<Timer>().TimerIsRunning = true;
                 Debug.Log("timer: " + timer);
-
+                TargetStartTimer(agressorID.connectionToClient);
+                TargetStartTimer(nurseID.connectionToClient);
 
             }
 
@@ -784,6 +785,16 @@ public class HPReverbControls : NetworkBehaviour
             }
         }
     }
+
+    [TargetRpc]
+    public void TargetStartTimer(NetworkConnection target)
+    {
+        Debug.Log("TargetRPC timer called");
+        GameObject timer = GameObject.Find("Timer");
+        timer.GetComponent<Timer>().TimerIsRunning = true;
+        Debug.Log("timer started RPC: " + timer);
+    }
+
 }
 
 

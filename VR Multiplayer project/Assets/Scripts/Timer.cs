@@ -64,11 +64,10 @@ public class Timer : NetworkBehaviour
                     Debug.Log(timeRemaining);
                 }
             }
-        }
-        else
-        {
-            timeRemaining = 0;
-            timerIsRunning = false;
+            else
+            {
+                timeRemaining = 0;
+            }
         }
     }
 

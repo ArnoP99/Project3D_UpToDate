@@ -91,8 +91,7 @@ public class AssignAuth : NetworkBehaviour
             Debug.Log("Nurse score: " + nurseScore);
             if (this.isServer)
             {
-                TargetSendPlayerScore(nurseID.connectionToClient, nurseScore, agressorScore);
-                TargetSendPlayerScore(agressorID.connectionToClient, nurseScore, agressorScore);
+                TargetSendNurseScore(agressorID.connectionToClient, nurseScore);
             }
         }
         else if (player == 1)
@@ -103,22 +102,31 @@ public class AssignAuth : NetworkBehaviour
             Debug.Log("Agressor score: " + agressorScore);
             if (this.isServer)
             {
-                TargetSendPlayerScore(nurseID.connectionToClient, nurseScore, agressorScore);
-                TargetSendPlayerScore(agressorID.connectionToClient, nurseScore, agressorScore);
+                TargetSendAgressorScore(nurseID.connectionToClient, agressorScore);
             }
         }
     }
 
     [TargetRpc]
-    public void TargetSendPlayerScore(NetworkConnection playerConnection, int nurseScore, int agressorScore)
+    public void TargetSendNurseScore(NetworkConnection playerConnection, int otherPlayerScore)
     {
         GameObject nurseBar = GameObject.Find("NurseBar");
-        GameObject agressorBar = GameObject.Find("AgressorBar");
 
         Debug.Log("NurseScore" + nurseScore);
-        Debug.Log("AgressorScore" + agressorScore);
 
         nurseBar.GetComponent<ScoreBar>().SetScore(nurseScore);
+    }
+
+    [TargetRpc]
+    public void TargetSendAgressorScore(NetworkConnection playerConnection, int otherPlayerScore)
+    {
+
+        GameObject agressorBar = GameObject.Find("AgressorBar");
+
+
+        Debug.Log("AgressorScore" + agressorScore);
+
+
         agressorBar.GetComponent<ScoreBar>().SetScore(agressorScore);
     }
 

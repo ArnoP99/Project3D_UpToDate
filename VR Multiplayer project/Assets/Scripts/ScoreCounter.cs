@@ -61,6 +61,10 @@ public class ScoreCounter : NetworkBehaviour
 
         if (activePlayer == 0)
         {
+            GameObject nurseBar = GameObject.Find("NurseBar");
+
+            nurseBar.GetComponent<ScoreBar>().SetScore(s_nurseScore);
+
             player = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject;
             //Debug.Log("player: " + player.tag);
             if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
@@ -70,6 +74,10 @@ public class ScoreCounter : NetworkBehaviour
         }
         else if (activePlayer == 1)
         {
+            GameObject agressorBar = GameObject.Find("AgressorBar");
+
+            agressorBar.GetComponent<ScoreBar>().SetScore(s_agressorScore);
+
             player = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject; 
             //Debug.Log("player: " + player.tag);
             if (player.GetComponent<NetworkIdentity>().isLocalPlayer)

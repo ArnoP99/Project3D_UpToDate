@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class AssignAuth : NetworkBehaviour
 {
+    private int nurseScore = 0;
+    private int agressorScore = 0;
+
+
+
     public void ExecuteCmdHandGoesPoof(int hand, GameObject player)
     {
         if (this == isClient && this != isServer && this == isLocalPlayer && hand == 0)
@@ -77,15 +82,35 @@ public class AssignAuth : NetworkBehaviour
     {
         if (player == 0)
         {
-            Debug.Log("Nurse score: " + score);
+            GameObject nurseBar = GameObject.Find("NurseBar");
+            nurseBar.GetComponent<ScoreBar>().SetScore(score);
+            nurseScore = score;
+            Debug.Log("Nurse score: " + nurseScore);
         }
         else if (player == 1)
         {
-            Debug.Log("Agressor score: " + score);
+            GameObject agressorBar = GameObject.Find("AgressorBar");
+            agressorBar.GetComponent<ScoreBar>().SetScore(score);
+            agressorScore = score;
+            Debug.Log("Agressor score: " + agressorScore);
         }
+
+        NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+        NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+
+        TargetSendPlayerScore(nurseID.connectionToClient, nurseScore, agressorScore);
+        TargetSendPlayerScore(agressorID.connectionToClient, nurseScore, agressorScore);
     }
 
+    [TargetRpc]
+    public void TargetSendPlayerScore(NetworkConnection playerConnection, int nurseScore, int agressorScore)
+    {
+        GameObject nurseBar = GameObject.Find("NurseBar");
+        GameObject agressorBar = GameObject.Find("AgressorBar");
 
+        nurseBar.GetComponent<ScoreBar>().SetScore(nurseScore);
+        agressorBar.GetComponent<ScoreBar>().SetScore(agressorScore);
+    }
 
     [Command(requiresAuthority = false)]
     public void CmdAssignAuthority(NetworkIdentity objectID, NetworkIdentity playerID)

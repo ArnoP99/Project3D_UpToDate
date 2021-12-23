@@ -91,7 +91,7 @@ public class AssignAuth : NetworkBehaviour
             Debug.Log("Nurse score: " + nurseScore);
             if (this.isServer)
             {
-                TargetSendNurseScore(agressorID.connectionToClient, nurseScore);
+                TargetSendNurseScore(agressorID.connectionToClient, score);
             }
         }
         else if (player == 1)
@@ -102,7 +102,7 @@ public class AssignAuth : NetworkBehaviour
             Debug.Log("Agressor score: " + agressorScore);
             if (this.isServer)
             {
-                TargetSendAgressorScore(nurseID.connectionToClient, agressorScore);
+                TargetSendAgressorScore(nurseID.connectionToClient, score);
             }
         }
     }
@@ -112,9 +112,7 @@ public class AssignAuth : NetworkBehaviour
     {
         GameObject nurseBar = GameObject.Find("NurseBar");
 
-        Debug.Log("NurseScore" + nurseScore);
-
-        nurseBar.GetComponent<ScoreBar>().SetScore(nurseScore);
+        nurseBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
     }
 
     [TargetRpc]
@@ -123,11 +121,7 @@ public class AssignAuth : NetworkBehaviour
 
         GameObject agressorBar = GameObject.Find("AgressorBar");
 
-
-        Debug.Log("AgressorScore" + agressorScore);
-
-
-        agressorBar.GetComponent<ScoreBar>().SetScore(agressorScore);
+        agressorBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
     }
 
     [Command(requiresAuthority = false)]

@@ -1665,9 +1665,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  nurse: {fileID: 0}
-  agressor: {fileID: 0}
-  tempPlayers: []
 --- !u!114 &178289872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23145,6 +23142,7 @@ GameObject:
   - component: {fileID: 966343330957901252}
   - component: {fileID: 442184609097082751}
   - component: {fileID: 442184609097082752}
+  - component: {fileID: 442184609097082753}
   m_Layer: 0
   m_Name: SoapDispenserHallway
   m_TagString: Untagged
@@ -23177,6 +23175,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416e8565b06493b4482a2d2c165b0310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  nurse: {fileID: 0}
+  agressor: {fileID: 0}
+  tempPlayers: []
+--- !u!114 &442184609097082753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442184609097082750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 707545039
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!33 &445283725121638909
 MeshFilter:
   m_ObjectHideFlags: 0

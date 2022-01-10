@@ -5,10 +5,11 @@ using UnityEngine;
 public class HandSanitizer : MonoBehaviour
 {
     ParticleSystem handSanitizer;
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         handSanitizer = GameObject.Find("Sanitizer_ParticleSystem").GetComponent<ParticleSystem>();
 
         handSanitizer.Play();
     }
 }
+

@@ -19,7 +19,7 @@ public class ScoreCounter : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        Debug.Log(other.gameObject);
         if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {
             s_agressorScore += 10;

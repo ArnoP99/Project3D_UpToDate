@@ -14,7 +14,7 @@ public class HandSanitizer : NetworkBehaviour
     bool firstTime = true;
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.name == "Sanitizer_ParticleSystem")
+        if (gameObject.name == "SoapDispenserHallway")
         {
             handSanitizer = GameObject.Find("Sanitizer_ParticleSystem").GetComponent<ParticleSystem>();
 
@@ -26,7 +26,7 @@ public class HandSanitizer : NetworkBehaviour
                 InitConvo();
             }
         }
-        else if (gameObject.name == "Sanitizer_ParticleSystem_1")
+        else if (gameObject.name == "SoapDispenserRoom")
         {
             handSanitizer = GameObject.Find("Sanitizer_ParticleSystem_1").GetComponent<ParticleSystem>();
 

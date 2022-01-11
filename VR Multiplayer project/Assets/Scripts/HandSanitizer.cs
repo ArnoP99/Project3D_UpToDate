@@ -14,15 +14,26 @@ public class HandSanitizer : NetworkBehaviour
     bool firstTime = true;
     private void OnTriggerEnter(Collider other)
     {
-        handSanitizer = GameObject.Find("Sanitizer_ParticleSystem").GetComponent<ParticleSystem>();
-
-        handSanitizer.Play();
-
-        if(other.transform.parent.transform.parent.transform.GetChild(2).gameObject.tag == "Nurse" && firstTime)
+        if (gameObject.name == "Sanitizer_ParticleSystem")
         {
-            firstTime = false;
-            InitConvo();
+            handSanitizer = GameObject.Find("Sanitizer_ParticleSystem").GetComponent<ParticleSystem>();
+
+            handSanitizer.Play();
+
+            if (other.transform.parent.transform.parent.transform.GetChild(2).gameObject.tag == "Nurse" && firstTime)
+            {
+                firstTime = false;
+                InitConvo();
+            }
         }
+        else if (gameObject.name == "Sanitizer_ParticleSystem_1")
+        {
+            handSanitizer = GameObject.Find("Sanitizer_ParticleSystem_1").GetComponent<ParticleSystem>();
+
+            handSanitizer.Play();
+        }
+
+
 
     }
 

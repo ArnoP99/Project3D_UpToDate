@@ -52872,31 +52872,6 @@ PrefabInstance:
       propertyPath: sceneId
       value: 3779081034
       objectReference: {fileID: 0}
-    - target: {fileID: 7203621259259647446, guid: 30da66c2b1c08944eae8e8223c3b80aa,
-        type: 3}
-      propertyPath: m_Height
-      value: 0.0049971496
-      objectReference: {fileID: 0}
-    - target: {fileID: 7203621259259647446, guid: 30da66c2b1c08944eae8e8223c3b80aa,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.0012873943
-      objectReference: {fileID: 0}
-    - target: {fileID: 7203621259259647446, guid: 30da66c2b1c08944eae8e8223c3b80aa,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.00031299188
-      objectReference: {fileID: 0}
-    - target: {fileID: 7203621259259647446, guid: 30da66c2b1c08944eae8e8223c3b80aa,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 1.10637525e-17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7203621259259647446, guid: 30da66c2b1c08944eae8e8223c3b80aa,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.0010011247
-      objectReference: {fileID: 0}
     - target: {fileID: 8031434656836304576, guid: 30da66c2b1c08944eae8e8223c3b80aa,
         type: 3}
       propertyPath: m_Name

@@ -75,7 +75,7 @@ public class ScoreCounter : NetworkBehaviour
         else if (activePlayer == 1)
         {
             GameObject agressorBar = GameObject.Find("AgressorBar");
-
+            Debug.Log("agressorBar: " + agressorBar);
             agressorBar.GetComponent<ScoreBar>().SetScore(s_agressorScore);
 
             player = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject; 

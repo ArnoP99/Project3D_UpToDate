@@ -22,6 +22,7 @@ TagManager:
   - PointerNurse
   - NurseBox
   - AgressorBox
+  - test
   layers:
   - Default
   - TransparentFX

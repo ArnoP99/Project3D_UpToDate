@@ -37,6 +37,14 @@ public class ConversationElementInitializer
         startElement1.AddElementToReactions(neutraal1A);
         startElement1.AddElementToReactions(defensief1A);
 
+        startElement2.AddElementToReactions(agressief1A);
+        startElement2.AddElementToReactions(neutraal1A);
+        startElement2.AddElementToReactions(defensief1A);
+
+        startElement3.AddElementToReactions(agressief1A);
+        startElement3.AddElementToReactions(neutraal1A);
+        startElement3.AddElementToReactions(defensief1A);
+
         agressief1A.AddElementToReactions(agressief1B);
         agressief1A.AddElementToReactions(neutraal1B);
         agressief1A.AddElementToReactions(defensief1B);

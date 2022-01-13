@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ArrowAnimationAfterTimer : MonoBehaviour
 {
     Scene scene;
-    float timeRemaining = 5;
+    float timeRemaining = 10;
 
     MeshRenderer pointerNurse;
     MeshRenderer pointerAgressor;
@@ -22,6 +22,7 @@ public class ArrowAnimationAfterTimer : MonoBehaviour
         {
             if (scene.name == "IntroductionRoom")
             {
+                Debug.Log("in intro room");
                 if (isLoaded)
                 {
                     pointerAgressor = GameObject.Find("ArrowAgressor").GetComponent<MeshRenderer>();
@@ -29,12 +30,14 @@ public class ArrowAnimationAfterTimer : MonoBehaviour
                     pointerAgressor.enabled = false;
                     pointerNurse.enabled = false;
                     isLoaded = false;
+                    Debug.Log("turned off arrows");
                 }
                 timeRemaining -= Time.deltaTime;
                 if (timeRemaining <= 0)
                 {
                     pointerAgressor.enabled = true;
                     pointerNurse.enabled = true;
+                    Debug.Log("turned on arrows");
                 }
             }
 

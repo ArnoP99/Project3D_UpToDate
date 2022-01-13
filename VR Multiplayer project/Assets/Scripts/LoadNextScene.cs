@@ -8,7 +8,7 @@ public class LoadNextScene : NetworkBehaviour
 {
     bool nurseCheck;
     bool agressorCheck;
-    float timeRemaining = 5; // normaal 70, slechts 10 om te testen !!!! TIJD MEE AANPASSEN IN ARROW ANIMATION SCRIPT !!!!!
+    float timeRemaining = 15; // normaal 70, slechts 10 om te testen !!!! TIJD MEE AANPASSEN IN ARROW ANIMATION SCRIPT !!!!!
 
     Scene scene;
 

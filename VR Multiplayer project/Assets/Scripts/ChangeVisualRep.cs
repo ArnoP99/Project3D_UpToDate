@@ -1,8 +1,9 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeVisualRep : MonoBehaviour
+public class ChangeVisualRep : NetworkBehaviour
 {
     MeshRenderer pointerNurse;
     MeshRenderer pointerAgressor;
@@ -25,14 +26,14 @@ public class ChangeVisualRep : MonoBehaviour
         {
             GameObject player = this.transform.parent.transform.parent.transform.parent.gameObject;
 
-            if (other.gameObject.tag == "AgressorButton")
+            if (other.gameObject.tag == "AgressorButton" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteAgressorChange(player);
                 //GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(true);
                 pointerAgressor.enabled = true;
                 pointerNurse.enabled = false;
             }
-            if (other.gameObject.tag == "NurseButton")
+            if (other.gameObject.tag == "NurseButton" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteNurseChange(player);
                 //GameObject.FindGameObjectWithTag("PointerNurse").SetActive(true);

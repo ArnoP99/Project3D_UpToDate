@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 4597080891563621980}
   m_Layer: 9
   m_Name: Scissor
-  m_TagString: Untagged
+  m_TagString: High
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

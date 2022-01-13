@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 5541972132916530028}
   m_Layer: 9
   m_Name: TallGlassTable
-  m_TagString: Untagged
+  m_TagString: Medium
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

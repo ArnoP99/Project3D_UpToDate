@@ -24,6 +24,9 @@ TagManager:
   - AgressorBox
   - test
   - Server
+  - High
+  - Medium
+  - Low
   layers:
   - Default
   - TransparentFX

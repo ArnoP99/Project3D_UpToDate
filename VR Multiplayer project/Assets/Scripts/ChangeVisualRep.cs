@@ -13,7 +13,10 @@ public class ChangeVisualRep : MonoBehaviour
         //pointerAgressor.SetActive(false);
         //pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse");
         //pointerNurse.SetActive(false);
-
+        pointerAgressor = GameObject.FindGameObjectWithTag("PointerAgressor");
+        pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse");
+        pointerAgressor.SetActive(false);
+        pointerNurse.SetActive(false);
     }
     // Start is called before the first frame update
     public void OnTriggerEnter(Collider other)
@@ -26,11 +29,13 @@ public class ChangeVisualRep : MonoBehaviour
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteAgressorChange(player);
                 //GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(true);
+                pointerAgressor.SetActive(true);
             }
             if (other.gameObject.tag == "NurseButton")
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteNurseChange(player);
                 //GameObject.FindGameObjectWithTag("PointerNurse").SetActive(true);
+                pointerNurse.SetActive(true);
 
             }
         }

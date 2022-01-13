@@ -5582,7 +5582,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
@@ -5602,7 +5602,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.19624475
+      value: -0.1962447
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
@@ -5622,17 +5622,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.999962
+      value: 0.999962
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.008726558
+      value: -0.008726558
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
@@ -5642,7 +5642,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -464
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
@@ -5667,7 +5667,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a49109c8ff3d4b84b9e198c9d2f0c253, type: 3}
@@ -5677,6 +5677,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1489230576}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1489230578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
+    type: 3}
+  m_PrefabInstance: {fileID: 1489230576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &1489230579
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489230578}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 5b68ba3ad86f9ca4c9db05108cb1cba3, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5b68ba3ad86f9ca4c9db05108cb1cba3, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1501050993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6428,7 +6450,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a49109c8ff3d4b84b9e198c9d2f0c253, type: 3}
@@ -7104,6 +7126,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1913616069}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2041869655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a49109c8ff3d4b84b9e198c9d2f0c253,
+    type: 3}
+  m_PrefabInstance: {fileID: 1691470082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &2041869658
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041869655}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 5b68ba3ad86f9ca4c9db05108cb1cba3, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5b68ba3ad86f9ca4c9db05108cb1cba3, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2041952520
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChangeVisualRep : MonoBehaviour
 {
-    GameObject pointerNurse;
-    GameObject pointerAgressor;
+    MeshRenderer pointerNurse;
+    MeshRenderer pointerAgressor;
 
     public void Start()
     {
@@ -13,10 +13,10 @@ public class ChangeVisualRep : MonoBehaviour
         //pointerAgressor.SetActive(false);
         //pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse");
         //pointerNurse.SetActive(false);
-        pointerAgressor = GameObject.FindGameObjectWithTag("PointerAgressor");
-        pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse");
-        pointerAgressor.SetActive(false);
-        pointerNurse.SetActive(false);
+        pointerAgressor = GameObject.FindGameObjectWithTag("PointerAgressor").GetComponent<MeshRenderer>();
+        pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse").GetComponent<MeshRenderer>();
+        pointerAgressor.enabled = false;
+        pointerNurse.enabled = false;
     }
     // Start is called before the first frame update
     public void OnTriggerEnter(Collider other)
@@ -29,13 +29,13 @@ public class ChangeVisualRep : MonoBehaviour
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteAgressorChange(player);
                 //GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(true);
-                pointerAgressor.SetActive(true);
+                pointerAgressor.enabled = true;
             }
             if (other.gameObject.tag == "NurseButton")
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteNurseChange(player);
                 //GameObject.FindGameObjectWithTag("PointerNurse").SetActive(true);
-                pointerNurse.SetActive(true);
+                pointerNurse.enabled = true;
 
             }
         }

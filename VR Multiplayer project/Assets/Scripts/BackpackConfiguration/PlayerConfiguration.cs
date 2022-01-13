@@ -131,7 +131,7 @@ public class PlayerConfiguration : NetworkBehaviour
             this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
             this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
             this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
-
+            gameObject.tag = "Server";
         }
         this.transform.parent = GameObject.Find("Players").transform; //Set 'Players" gameobject as parent
 

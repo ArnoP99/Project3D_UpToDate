@@ -11,6 +11,16 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     private Vector3 currentPos;
     private Quaternion currentRot;
 
+    MeshRenderer pointerNurse;
+    MeshRenderer pointerAgressor;
+
+    public void Start()
+    {
+        pointerAgressor = GameObject.FindGameObjectWithTag("PointerAgressor").GetComponent<MeshRenderer>();
+        pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse").GetComponent<MeshRenderer>();
+        pointerAgressor.enabled = false;
+        pointerNurse.enabled = false;
+    }
     public void ExecuteNurseChange(GameObject player)
     {
         if (player == isClient)
@@ -49,6 +59,8 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
         visualRep.transform.GetChild(2).gameObject.SetActive(true);
         GameObject model = player.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject;
         model.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
+        pointerNurse.enabled = true;
+        pointerAgressor.enabled = false;
     }
 
     [ClientRpc]
@@ -61,5 +73,7 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
         visualRep.transform.gameObject.transform.GetChild(2).gameObject.SetActive(false);
         GameObject model = player.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject;
         model.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
+        pointerAgressor.enabled = true;
+        pointerNurse.enabled = false;
     }
 }

@@ -61667,8 +61667,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!65 &9170387424738847970
-BoxCollider:
+--- !u!64 &9170387424738847970
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -61677,9 +61677,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.6791053, y: 2.000003, z: 2}
-  m_Center: {x: 0.33955306, y: -0.000007715609, z: 0.000000007450581}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -478246838076175072, guid: 3466fa999060e974fbcb8803d9744373, type: 3}
 --- !u!23 &9177814950577985192
 MeshRenderer:
   m_ObjectHideFlags: 0

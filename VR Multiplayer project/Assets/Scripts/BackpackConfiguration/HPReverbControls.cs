@@ -400,14 +400,11 @@ public class HPReverbControls : NetworkBehaviour
             ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
             //Debug.Log("Target UAT: " + ConversationManager.Instance.ActiveReactionElements.Count);
 
-            foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
-            {
-                if (player.GetComponent<NetworkIdentity>().isLocalPlayer == false && player.GetComponent<NetworkIdentity>().netId == 15)
-                {
-                    //Debug.Log("audiosource set");
-                    audioSource = player.GetComponent<AudioSource>();
-                }
-            }
+            GameObject server = GameObject.FindGameObjectWithTag("Server");
+
+            audioSource = server.GetComponent<AudioSource>();
+
+          
             //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
             //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
             audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
@@ -525,14 +522,10 @@ public class HPReverbControls : NetworkBehaviour
             ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
             //Debug.Log("Target UNT: " + ConversationManager.Instance.ActiveReactionElements.Count);
 
-            foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
-            {
-                if (player.GetComponent<NetworkIdentity>().isLocalPlayer == false && player.GetComponent<NetworkIdentity>().netId == 15)
-                {
-                    //Debug.Log("audiosource set");
-                    audioSource = player.GetComponent<AudioSource>();
-                }
-            }
+            GameObject server = GameObject.FindGameObjectWithTag("Server");
+
+            audioSource = server.GetComponent<AudioSource>();
+
             //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
             //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
             audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
@@ -761,14 +754,10 @@ public class HPReverbControls : NetworkBehaviour
     [TargetRpc]
     public void TargetPlayAudioOnSender(NetworkConnection target)
     {
-        foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            if (player.GetComponent<NetworkIdentity>().isLocalPlayer == false && player.GetComponent<NetworkIdentity>().netId == 15)
-            {
-                //Debug.Log("audiosource set");
-                audioSource = player.GetComponent<AudioSource>();
-            }
-        }
+        GameObject server = GameObject.FindGameObjectWithTag("Server");
+
+        audioSource = server.GetComponent<AudioSource>();
+
         //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
         //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;

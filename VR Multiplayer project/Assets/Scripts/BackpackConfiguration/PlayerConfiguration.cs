@@ -92,6 +92,7 @@ public class PlayerConfiguration : NetworkBehaviour
                 myCamera.GetComponent<AudioListener>().enabled = false;
                 GameObject.Find("Main camera").GetComponent<Camera>().enabled = true;
                 GameObject.Find("Main camera").GetComponent<AudioListener>().enabled = true;
+                gameObject.tag = "Server";
                 
             }
 

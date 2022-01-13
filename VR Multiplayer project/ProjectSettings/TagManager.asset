@@ -23,6 +23,7 @@ TagManager:
   - NurseBox
   - AgressorBox
   - test
+  - Server
   layers:
   - Default
   - TransparentFX

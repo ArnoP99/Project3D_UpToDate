@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeVisualRep : NetworkBehaviour
+public class ChangeVisualRep : MonoBehaviour
 {
     
 
@@ -22,13 +22,13 @@ public class ChangeVisualRep : NetworkBehaviour
         {
             GameObject player = this.transform.parent.transform.parent.transform.parent.gameObject;
 
-            if (other.gameObject.tag == "AgressorButton" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
+            if (other.gameObject.tag == "AgressorButton")
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteAgressorChange(player);
                 //GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(true);
                 
             }
-            if (other.gameObject.tag == "NurseButton" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
+            if (other.gameObject.tag == "NurseButton")
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteNurseChange(player);
                 //GameObject.FindGameObjectWithTag("PointerNurse").SetActive(true);

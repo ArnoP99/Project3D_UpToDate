@@ -24,8 +24,8 @@ public class ArrowAnimationAfterTimer : MonoBehaviour
             {
                 if (isLoaded)
                 {
-                    pointerAgressor = GameObject.Find("ArrowAgressor").gameObject.GetComponent<MeshRenderer>();
-                    pointerNurse = GameObject.Find("ArrowNurse").gameObject.GetComponent<MeshRenderer>();
+                    pointerAgressor = GameObject.Find("ArrowAgressor").GetComponent<MeshRenderer>();
+                    pointerNurse = GameObject.Find("ArrowNurse").GetComponent<MeshRenderer>();
                     pointerAgressor.enabled = false;
                     pointerNurse.enabled = false;
                     isLoaded = false;

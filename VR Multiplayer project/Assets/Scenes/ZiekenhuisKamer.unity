@@ -759,17 +759,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73439935}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.00000010536708, y: -0.00000023180758, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 227384332}
-  m_RootOrder: 1
+  m_Father: {fileID: 1161020896}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000047683716, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 84.5, y: 0.20000076}
+  m_SizeDelta: {x: -187.33, y: -3.7369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &73439937
 MonoBehaviour:
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 744c9d963ca8fdd4c8932c493667ffc4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd24d8e2bf1a6a64bb980b0e6259cc53, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2379,18 +2379,17 @@ RectTransform:
   m_GameObject: {fileID: 219534671}
   m_LocalRotation: {x: -0.000000021073419, y: -0.000000063220256, z: 0.00000011920925,
     w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.30681}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2121094720}
-  - {fileID: 1355108280}
   m_Father: {fileID: 1161020896}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85, y: 2.8}
-  m_SizeDelta: {x: 13.44, y: 68.92}
+  m_AnchoredPosition: {x: -82.845, y: -2.7782}
+  m_SizeDelta: {x: 11.054, y: 87.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &219534673
 MonoBehaviour:
@@ -2450,8 +2449,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 150
-  m_WholeNumbers: 0
+  m_MaxValue: 200
+  m_WholeNumbers: 1
   m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2483,18 +2482,17 @@ RectTransform:
   m_GameObject: {fileID: 227384331}
   m_LocalRotation: {x: -0.000000021073419, y: -0.000000063220256, z: 0.00000011920925,
     w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1970354576}
-  - {fileID: 73439936}
   m_Father: {fileID: 1161020896}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85, y: 2.8}
-  m_SizeDelta: {x: 13.44, y: 68.92}
+  m_AnchoredPosition: {x: 84.54, y: -2.778}
+  m_SizeDelta: {x: 10.855, y: 88.086}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &227384333
 MonoBehaviour:
@@ -2554,9 +2552,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 150
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 200
+  m_WholeNumbers: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13832,8 +13830,10 @@ RectTransform:
   - {fileID: 579615353}
   - {fileID: 1420141078}
   - {fileID: 109794468}
-  - {fileID: 219534672}
   - {fileID: 227384332}
+  - {fileID: 73439936}
+  - {fileID: 219534672}
+  - {fileID: 1355108280}
   m_Father: {fileID: 1826658896068210343}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
@@ -20534,18 +20534,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355108279}
-  m_LocalRotation: {x: -0.00000008429369, y: -0.0000001685873, z: -0.00000011920925,
-    w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.00000010536708, y: -0.00000023180758, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.4148609}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 219534672}
-  m_RootOrder: 1
+  m_Father: {fileID: 1161020896}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -82.81006, y: 0.15994263}
+  m_SizeDelta: {x: -187.33, y: -3.6299973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355108281
 MonoBehaviour:
@@ -20567,7 +20566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a8e378d8144d32c4aaaabea1a3993e67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c8b74bee42117e459b37cb231384422, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25496,7 +25495,7 @@ RectTransform:
   m_GameObject: {fileID: 1970354575}
   m_LocalRotation: {x: -0.0000001053671, y: -0.00000010536706, z: -0.00000011920923,
     w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.44}
+  m_LocalPosition: {x: 0, y: 0, z: 0.43754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 227384332}
@@ -25504,8 +25503,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.032999992, y: -3.1899948}
-  m_SizeDelta: {x: -1.934, y: -9.378}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1970354577
 MonoBehaviour:
@@ -26838,7 +26837,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121094719}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.49}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 219534672}
@@ -26846,8 +26845,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.119999886, y: -3.8600006}
-  m_SizeDelta: {x: -1.92, y: -11}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2121094721
 MonoBehaviour:

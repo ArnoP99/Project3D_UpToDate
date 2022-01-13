@@ -30,13 +30,14 @@ public class ChangeVisualRep : MonoBehaviour
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteAgressorChange(player);
                 //GameObject.FindGameObjectWithTag("PointerAgressor").SetActive(true);
                 pointerAgressor.enabled = true;
+                pointerNurse.enabled = false;
             }
             if (other.gameObject.tag == "NurseButton")
             {
                 player.GetComponent<ExecuteChangeVisualRep>().ExecuteNurseChange(player);
                 //GameObject.FindGameObjectWithTag("PointerNurse").SetActive(true);
                 pointerNurse.enabled = true;
-
+                pointerAgressor.enabled = false;
             }
         }
     }

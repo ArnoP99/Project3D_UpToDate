@@ -23,6 +23,11 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     }
     public void ExecuteNurseChange(GameObject player)
     {
+        if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
+        {
+            pointerNurse.enabled = true;
+            pointerAgressor.enabled = false;
+        }
         if (player == isClient)
         {
             CmdUpdateNurse(player);
@@ -31,6 +36,11 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
 
     public void ExecuteAgressorChange(GameObject player)
     {
+        if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
+        {
+            pointerNurse.enabled = false;
+            pointerAgressor.enabled = true;
+        }
         if (player == isClient)
         {
             CmdUpdateAgressor(player);
@@ -59,21 +69,19 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
         visualRep.transform.GetChild(2).gameObject.SetActive(true);
         GameObject model = player.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject;
         model.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
-        pointerNurse.enabled = true;
-        pointerAgressor.enabled = false;
+
     }
 
     [ClientRpc]
     public void RpcUpdateAgressor(GameObject player)
     {
-        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;        
+        GameObject visualRep = player.transform.GetChild(0).transform.GetChild(2).gameObject;
         visualRep.tag = "Agressor";
         visualRep.transform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         visualRep.transform.GetChild(1).gameObject.SetActive(true);
         visualRep.transform.gameObject.transform.GetChild(2).gameObject.SetActive(false);
         GameObject model = player.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject;
         model.transform.localPosition = new Vector3(0.035f, -0.72f, -0.12f);
-        pointerAgressor.enabled = true;
-        pointerNurse.enabled = false;
+
     }
 }

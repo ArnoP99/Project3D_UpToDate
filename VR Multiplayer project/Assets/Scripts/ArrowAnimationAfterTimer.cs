@@ -12,8 +12,8 @@ public class ArrowAnimationAfterTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pointerAgressor = GameObject.FindGameObjectWithTag("PointerAgressor").GetComponent<MeshRenderer>();
-        pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse").GetComponent<MeshRenderer>();
+        pointerAgressor = GameObject.Find("ArrowAgressor").gameObject.GetComponent<MeshRenderer>();
+        pointerNurse = GameObject.Find("ArrowNurse").gameObject.GetComponent<MeshRenderer>();
         pointerAgressor.enabled = false;
         pointerNurse.enabled = false;
 

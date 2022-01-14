@@ -35,6 +35,11 @@ public class ScoreCounter : NetworkBehaviour
                 s_agressorScore += 30;
                 sendScoreToPlayer(1);
             }
+            if (other.gameObject.tag == "Ultra")
+            {
+                s_agressorScore += 100;
+                sendScoreToPlayer(1);
+            }
         }
         else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
         {
@@ -52,6 +57,11 @@ public class ScoreCounter : NetworkBehaviour
             {
                 s_nurseScore += 30;
                 sendScoreToPlayer(0);
+            }
+            if (other.gameObject.tag == "Ultra")
+            {
+                s_agressorScore += 100;
+                sendScoreToPlayer(1);
             }
         }
     }
@@ -76,6 +86,11 @@ public class ScoreCounter : NetworkBehaviour
                     s_agressorScore -= 30;
                     sendScoreToPlayer(1);
                 }
+                if (other.gameObject.tag == "Ultra")
+                {
+                    s_agressorScore -= 100;
+                    sendScoreToPlayer(1);
+                }
             }
         }
         else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
@@ -95,6 +110,11 @@ public class ScoreCounter : NetworkBehaviour
                 if (other.gameObject.tag == "High")
                 {
                     s_nurseScore -= 30;
+                    sendScoreToPlayer(0);
+                }
+                if (other.gameObject.tag == "Ultra")
+                {
+                    s_agressorScore -= 100;
                     sendScoreToPlayer(0);
                 }
             }

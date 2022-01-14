@@ -12,9 +12,18 @@ public class ArrowAnimationAfterTimer : MonoBehaviour
     MeshRenderer pointerAgressor;
 
     bool isLoaded = true;
+    bool sceneSet = true;
 
     void Update()
     {
+        if (sceneSet)
+        {
+            scene = SceneManager.GetActiveScene();
+            if (scene.name == "IntroductionRoom")
+            {
+                sceneSet = false;
+            }
+        }
         if (scene.name == "IntroductionRoom")
         {
             Debug.Log("in intro room");
@@ -33,6 +42,7 @@ public class ArrowAnimationAfterTimer : MonoBehaviour
                 pointerAgressor.enabled = true;
                 pointerNurse.enabled = true;
                 Debug.Log("turned on arrows");
+                scene = new Scene();
             }
         }
 

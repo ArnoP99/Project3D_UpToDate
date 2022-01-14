@@ -27,6 +27,7 @@ TagManager:
   - High
   - Medium
   - Low
+  - Ultra
   layers:
   - Default
   - TransparentFX

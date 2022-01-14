@@ -35426,7 +35426,7 @@ GameObject:
   - component: {fileID: 1397950055212594093}
   m_Layer: 9
   m_Name: EE
-  m_TagString: Low
+  m_TagString: Ultra
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

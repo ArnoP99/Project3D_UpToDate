@@ -17,7 +17,9 @@ public class ExecuteChangeVisualRep : NetworkBehaviour
     public void Start()
     {
         pointerAgressor = GameObject.FindGameObjectWithTag("PointerAgressor").GetComponent<MeshRenderer>();
+        Debug.Log(pointerAgressor);
         pointerNurse = GameObject.FindGameObjectWithTag("PointerNurse").GetComponent<MeshRenderer>();
+        Debug.Log(pointerNurse);
         pointerAgressor.enabled = false;
         pointerNurse.enabled = false;
     }

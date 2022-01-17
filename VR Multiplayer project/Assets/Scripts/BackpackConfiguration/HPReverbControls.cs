@@ -27,6 +27,8 @@ public class HPReverbControls : NetworkBehaviour
 
     bool checkControllerInstantiation = false;
     bool checkControllerInstantiation1 = false;
+    bool uitlegKader = false;
+
 
     Color selectColor = new Color(0, 180, 207);
 
@@ -83,26 +85,26 @@ public class HPReverbControls : NetworkBehaviour
 
 
 
-    //    try
-    //    {
-    //        if (checkControllerInstantiation == false || checkControllerInstantiation1 == false && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
-    //        {
-    //            if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
-    //            {
-    //                handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
-    //                checkControllerInstantiation = true;
-    //            }
-    //            else if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
-    //            {
-    //                 handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
-    //                checkControllerInstantiation1 = true;
-    //            }
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Debug.Log(ex);
-    //    }
+        //    try
+        //    {
+        //        if (checkControllerInstantiation == false || checkControllerInstantiation1 == false && this.GetComponent<NetworkIdentity>().isLocalPlayer && this.GetComponent<NetworkIdentity>().isClient && this.GetComponent<NetworkIdentity>().isServer != true)
+        //        {
+        //            if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
+        //            {
+        //                handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+        //                checkControllerInstantiation = true;
+        //            }
+        //            else if (gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>() != null)
+        //            {
+        //                 handAnimatorLeft = gameObject.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Animator>();
+        //                checkControllerInstantiation1 = true;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.Log(ex);
+        //    }
     }
 
     public void Joystick(InputAction.CallbackContext context)
@@ -202,30 +204,38 @@ public class HPReverbControls : NetworkBehaviour
         }
         else if (textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color == selectColor && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
-            activeChoice = textPopUp.transform.GetChild(1).gameObject;
-            textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color = Color.white;
-            textPopUp.SetActive(false);
-
-            if (gameObject.GetComponent<NetworkIdentity>().isClient == true && ConversationManager.Instance.ActiveConversation == -1)
+            //hier text uitzetten na selecteren uitleg met bool
+            if (uitlegKader == true)
             {
-                CmdSetConversation(2);
+                this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
             }
-
-            if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
+            else
             {
-                CmdUpdateActiveElement(2);
-                //Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
-                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                activeChoice = textPopUp.transform.GetChild(1).gameObject;
+                textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color = Color.white;
+                textPopUp.SetActive(false);
+
+                if (gameObject.GetComponent<NetworkIdentity>().isClient == true && ConversationManager.Instance.ActiveConversation == -1)
                 {
-
-                    CmdUpdateAgressorText();
+                    CmdSetConversation(2);
                 }
-                //Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
-            }
-            else if (firstTime)
-            {
-                CmdUpdateAgressorText();
-                firstTime = false;
+
+                if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
+                {
+                    CmdUpdateActiveElement(2);
+                    //Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
+                    if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                    {
+
+                        CmdUpdateAgressorText();
+                    }
+                    //Debug.Log("active element nurse 2de check:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
+                }
+                else if (firstTime)
+                {
+                    CmdUpdateAgressorText();
+                    firstTime = false;
+                }
             }
         }
         else if (textPopUp.transform.GetChild(2).GetComponent<TextMeshPro>().color == selectColor && nurse.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
@@ -242,7 +252,7 @@ public class HPReverbControls : NetworkBehaviour
             if (gameObject.GetComponent<NetworkIdentity>().isClient == true && firstTime == false)
             {
                 CmdUpdateActiveElement(3);
-               // Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
+                // Debug.Log("active element nurse:" + ConversationManager.Instance.GetActiveConversation().ActiveElement.Text);
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
                 {
 
@@ -291,21 +301,28 @@ public class HPReverbControls : NetworkBehaviour
         }
         else if (textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color == selectColor && agressor.transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
         {
-            activeChoice = textPopUp.transform.GetChild(1).gameObject;
-            textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color = Color.white;
-            textPopUp.SetActive(false);
-            if (gameObject.GetComponent<NetworkIdentity>().isClient == true)
+            if (uitlegKader == true)
             {
-                //Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
-                //Debug.Log("AgressorChoice CVM RE: " + ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements.Count);
-                //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
-                ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
-                //Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
-                CmdUpdateActiveElement(2);
-                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+            }
+            else
+            {
+                activeChoice = textPopUp.transform.GetChild(1).gameObject;
+                textPopUp.transform.GetChild(1).GetComponent<TextMeshPro>().color = Color.white;
+                textPopUp.SetActive(false);
+                if (gameObject.GetComponent<NetworkIdentity>().isClient == true)
                 {
+                    //Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
+                    //Debug.Log("AgressorChoice CVM RE: " + ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements.Count);
+                    //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.Text);
+                    ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
+                    //Debug.Log("AgressorChoice ARE: " + ConversationManager.Instance.ActiveReactionElements.Count);
+                    CmdUpdateActiveElement(2);
+                    if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Continue)
+                    {
 
-                    CmdUpdateNurseText();
+                        CmdUpdateNurseText();
+                    }
                 }
             }
         }
@@ -404,7 +421,7 @@ public class HPReverbControls : NetworkBehaviour
 
             audioSource = server.GetComponent<AudioSource>();
 
-          
+
             //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
             //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
             audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
@@ -671,17 +688,17 @@ public class HPReverbControls : NetworkBehaviour
             {
                 TargetPlayAudioOnSender(agressorID.connectionToClient);
                 TargetPlayAudioOnSender(nurseID.connectionToClient);
-               // audioSource.volume = 0;
-                
+                // audioSource.volume = 0;
+
                 GameObject timer = GameObject.Find("Timer");
                 timer.GetComponent<Timer>().TimerIsRunning = true;
                 //Debug.Log("timer: " + timer);
                 TargetStartTimer(agressorID.connectionToClient);
                 TargetStartTimer(nurseID.connectionToClient);
 
+
+
             }
-
-
         }
     }
 
@@ -760,19 +777,48 @@ public class HPReverbControls : NetworkBehaviour
 
         //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
         //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
+
+
         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
         //Debug.Log("play audio starting");
         //Debug.Log(audioSource.isActiveAndEnabled);
         audioSource.Play();
         //Debug.Log("play audio finished");
+
+
         if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Ended || ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
         {
             foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+                player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(true);
+                player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
+                player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.SetActive(false);
+
+
+                if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor")
+                {
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(true);
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationElementInitializer.UitlegFase2Agressor().Text;
+                    uitlegKader = true;
+                }
+
+                if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse")
+                {
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(true);
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationElementInitializer.UitlegFase2Nurse().Text;
+                    uitlegKader = true;
+                }
+
             }
+
         }
+
+
+
+
     }
 
     [TargetRpc]

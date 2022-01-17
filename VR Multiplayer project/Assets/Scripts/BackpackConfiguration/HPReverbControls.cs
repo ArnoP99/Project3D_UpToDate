@@ -640,67 +640,67 @@ public class HPReverbControls : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdUpdateActiveElement(int activeChoice)
     {
-
-        if (this.isServer)
+        if (uitlegKader == false)
         {
-
-            ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
-            //Debug.Log("Cmd UAE: " + ConversationManager.Instance.ActiveReactionElements.Count);
-            if (ConversationManager.Instance.ActiveReactionElements.Count == 3)
-            {
-                if (activeChoice == 1)
-                {
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[0];
-                }
-                if (activeChoice == 2)
-                {
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
-                }
-                if (activeChoice == 3)
-                {
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[2];
-                }
-            }
-            else if (ConversationManager.Instance.ActiveReactionElements.Count == 2)
-            {
-                if (activeChoice == 1)
-                {
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[0];
-                }
-                if (activeChoice == 3)
-                {
-                    ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
-                }
-            }
-            //Debug.Log("Updated active element on server");
-            NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-            NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-            TargetUpdateActiveElementNurse(nurseID.connectionToClient, activeChoice);
-            TargetUpdateActiveElementAgressor(agressorID.connectionToClient, activeChoice);
-
-            if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Ended)
+            if (this.isServer)
             {
 
-                TargetPlayAudioOnSender(agressorID.connectionToClient);
-                TargetPlayAudioOnSender(nurseID.connectionToClient);
-                //audioSource.volume = 0;
-                lastAudioPlayed = true;
-            }
+                ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
+                //Debug.Log("Cmd UAE: " + ConversationManager.Instance.ActiveReactionElements.Count);
+                if (ConversationManager.Instance.ActiveReactionElements.Count == 3)
+                {
+                    if (activeChoice == 1)
+                    {
+                        ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[0];
+                    }
+                    if (activeChoice == 2)
+                    {
+                        ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
+                    }
+                    if (activeChoice == 3)
+                    {
+                        ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[2];
+                    }
+                }
+                else if (ConversationManager.Instance.ActiveReactionElements.Count == 2)
+                {
+                    if (activeChoice == 1)
+                    {
+                        ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[0];
+                    }
+                    if (activeChoice == 3)
+                    {
+                        ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
+                    }
+                }
+                //Debug.Log("Updated active element on server");
+                NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+                NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+                TargetUpdateActiveElementNurse(nurseID.connectionToClient, activeChoice);
+                TargetUpdateActiveElementAgressor(agressorID.connectionToClient, activeChoice);
 
-            if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Phase2)
-            {
-                TargetPlayAudioOnSender(agressorID.connectionToClient);
-                TargetPlayAudioOnSender(nurseID.connectionToClient);
-                // audioSource.volume = 0;
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Ended)
+                {
 
-                GameObject timer = GameObject.Find("Timer");
-                timer.GetComponent<Timer>().TimerIsRunning = true;
-                //Debug.Log("timer: " + timer);
-                TargetStartTimer(agressorID.connectionToClient);
-                TargetStartTimer(nurseID.connectionToClient);
+                    TargetPlayAudioOnSender(agressorID.connectionToClient);
+                    TargetPlayAudioOnSender(nurseID.connectionToClient);
+                    //audioSource.volume = 0;
+                    lastAudioPlayed = true;
+                }
 
+                if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Phase2)
+                {
+                    TargetPlayAudioOnSender(agressorID.connectionToClient);
+                    TargetPlayAudioOnSender(nurseID.connectionToClient);
+                    // audioSource.volume = 0;
 
-
+                    GameObject timer = GameObject.Find("Timer");
+                    timer.GetComponent<Timer>().TimerIsRunning = true;
+                    //Debug.Log("timer: " + timer);
+                    TargetStartTimer(agressorID.connectionToClient);
+                    TargetStartTimer(nurseID.connectionToClient);
+                    uitlegKader = true;
+                }
             }
         }
     }

@@ -26,7 +26,6 @@ public class ArrowAnimationAfterTimer : MonoBehaviour
         }
         if (scene.name == "IntroductionRoom")
         {
-            Debug.Log("in intro room");
             if (isLoaded)
             {
                 pointerAgressor = GameObject.Find("ArrowAgressor").GetComponent<MeshRenderer>();

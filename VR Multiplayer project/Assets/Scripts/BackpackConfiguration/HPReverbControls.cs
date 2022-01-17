@@ -27,7 +27,7 @@ public class HPReverbControls : NetworkBehaviour
 
     bool checkControllerInstantiation = false;
     bool checkControllerInstantiation1 = false;
-    bool uitlegKader = false;
+    public bool uitlegKader = false;
 
 
     Color selectColor = new Color(0, 180, 207);
@@ -784,7 +784,7 @@ public class HPReverbControls : NetworkBehaviour
                 ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
             }
         }
-        //Debug.Log("active element nurse targetRPC: " + ConversationManager.Instance.GetActiveConversation().activeElement);
+        Debug.Log("active element nurse targetRPC: " + ConversationManager.Instance.GetActiveConversation().activeElement);
     }
 
     [TargetRpc]
@@ -818,6 +818,7 @@ public class HPReverbControls : NetworkBehaviour
                 ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
             }
         }
+        Debug.Log("active element agrssr targetRPC: " + ConversationManager.Instance.GetActiveConversation().activeElement);
     }
     [TargetRpc]
     public void TargetPlayAudioOnSender(NetworkConnection target)
@@ -842,15 +843,15 @@ public class HPReverbControls : NetworkBehaviour
                 }
                 else if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
                 {
-                    audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
-
-                    Debug.Log("play audio starting");
-                    //Debug.Log(audioSource.isActiveAndEnabled);
-                    audioSource.Play();
-                    Debug.Log("PAS fase2");
-                    player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+                   
                     if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
                     {
+                        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+
+
+                        //Debug.Log(audioSource.isActiveAndEnabled);
+                        audioSource.Play();
+                        Debug.Log("PAS fase2");
                         player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(true);
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = "";
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = "";
@@ -864,6 +865,12 @@ public class HPReverbControls : NetworkBehaviour
 
                     if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
                     {
+                        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+
+
+                        //Debug.Log(audioSource.isActiveAndEnabled);
+                        audioSource.Play();
+                        Debug.Log("PAS fase2");
                         player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(true);
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = "";
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = "";

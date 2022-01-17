@@ -400,12 +400,15 @@ public class HPReverbControls : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdUpdateAgressorText()
     {
-        ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
-        //Debug.Log("Cmd UAT: " + ConversationManager.Instance.ActiveReactionElements.Count);
-        NetworkIdentity AgressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-        NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-        TargetUpdateAgressorText(AgressorID.connectionToClient);
-        TargetPlayAudioOnSender(nurseID.connectionToClient);
+        if (uitlegKader == false)
+        {
+            ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
+            //Debug.Log("Cmd UAT: " + ConversationManager.Instance.ActiveReactionElements.Count);
+            NetworkIdentity AgressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+            NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+            TargetUpdateAgressorText(AgressorID.connectionToClient);
+            TargetPlayAudioOnSender(nurseID.connectionToClient);
+        }
     }
 
     [TargetRpc]
@@ -520,12 +523,15 @@ public class HPReverbControls : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdUpdateNurseText()
     {
-        ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
-        //Debug.Log("Cmd UNT: " + ConversationManager.Instance.ActiveReactionElements.Count);
-        NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-        NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-        TargetUpdateNurseText(nurseID.connectionToClient);
-        TargetPlayAudioOnSender(agressorID.connectionToClient);
+        if (uitlegKader == false)
+        {
+            ConversationManager.Instance.ActiveReactionElements = ConversationManager.Instance.GetActiveConversation().activeElement.ReactionElements;
+            //Debug.Log("Cmd UNT: " + ConversationManager.Instance.ActiveReactionElements.Count);
+            NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+            NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+            TargetUpdateNurseText(nurseID.connectionToClient);
+            TargetPlayAudioOnSender(agressorID.connectionToClient);
+        }
     }
 
     [TargetRpc]

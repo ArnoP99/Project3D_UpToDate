@@ -121,20 +121,16 @@ public class ConversationManager : NetworkBehaviour
 
     public Conversation GetActiveConversation()
     {
-        Debug.Log("Executed GAC");
         if (activeConversation == 1)
         {
-            Debug.Log(generalCheckUpCv.ToString());
             return generalCheckUpCv;
         }
         else if (activeConversation == 2)
         {
-            Debug.Log(timeForMedicationCv.ToString());
             return timeForMedicationCv;
         }
         else if (activeConversation == 3)
         {
-            Debug.Log(helpButtonCv.ToString());
             return helpButtonCv;
         }
 

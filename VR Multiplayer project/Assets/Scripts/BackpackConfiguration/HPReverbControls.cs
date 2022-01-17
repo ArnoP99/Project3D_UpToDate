@@ -208,6 +208,7 @@ public class HPReverbControls : NetworkBehaviour
             if (uitlegKader == true)
             {
                 this.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(false);
+                Debug.Log("zet uitleg uit nurse");
             }
             else
             {
@@ -304,6 +305,8 @@ public class HPReverbControls : NetworkBehaviour
             if (uitlegKader == true)
             {
                 this.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(false);
+                Debug.Log("zet uitleg uit Agressor");
+
             }
             else
             {

@@ -853,7 +853,7 @@ public class HPReverbControls : NetworkBehaviour
                 }
                 else if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
                 {
-               
+                    player.GetComponent<HPReverbControls>().uitlegKader = true;
                     if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
                     {
                         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
@@ -877,7 +877,7 @@ public class HPReverbControls : NetworkBehaviour
                     {
                         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
-
+                        player.GetComponent<HPReverbControls>().uitlegKader = true;
                         //Debug.Log(audioSource.isActiveAndEnabled);
                         audioSource.Play();
                         Debug.Log("PAS fase2");

@@ -778,16 +778,17 @@ public class HPReverbControls : NetworkBehaviour
         //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
         //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
 
+        if (uitlegKader == true)
+        {
+            audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
-        audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+            //Debug.Log("play audio starting");
+            //Debug.Log(audioSource.isActiveAndEnabled);
+            audioSource.Play();
+            //Debug.Log("play audio finished");
+        }
 
-        //Debug.Log("play audio starting");
-        //Debug.Log(audioSource.isActiveAndEnabled);
-        audioSource.Play();
-        //Debug.Log("play audio finished");
-
-
-        if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Ended || ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
+        if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Ended || ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2 && uitlegKader == false)
         {
             foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
             {

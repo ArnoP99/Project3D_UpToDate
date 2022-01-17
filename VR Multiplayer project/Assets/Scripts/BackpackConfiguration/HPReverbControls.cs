@@ -720,8 +720,11 @@ public class HPReverbControls : NetworkBehaviour
                 //Debug.Log("Updated active element on server");
                 NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
                 NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+
+
                 TargetUpdateActiveElementNurse(nurseID.connectionToClient, activeChoice);
                 TargetUpdateActiveElementAgressor(agressorID.connectionToClient, activeChoice);
+
 
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Ended)
                 {
@@ -734,6 +737,7 @@ public class HPReverbControls : NetworkBehaviour
 
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Phase2)
                 {
+                    uitlegKader = true;
                     TargetPlayAudioOnSender(agressorID.connectionToClient);
                     TargetPlayAudioOnSender(nurseID.connectionToClient);
                     // audioSource.volume = 0;
@@ -743,7 +747,7 @@ public class HPReverbControls : NetworkBehaviour
                     //Debug.Log("timer: " + timer);
                     TargetStartTimer(agressorID.connectionToClient);
                     TargetStartTimer(nurseID.connectionToClient);
-                    uitlegKader = true;
+
                 }
             }
         }
@@ -825,17 +829,9 @@ public class HPReverbControls : NetworkBehaviour
         //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement);
         //Debug.Log(ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech);
 
-        if (uitlegKader == false)
-        {
-            audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
-            Debug.Log("play audio starting");
-            //Debug.Log(audioSource.isActiveAndEnabled);
-            audioSource.Play();
-            //Debug.Log("play audio finished");
-        }
 
-        if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Ended || ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2 && uitlegKader == false)
+        if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Ended || ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
         {
             foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
             {
@@ -846,6 +842,11 @@ public class HPReverbControls : NetworkBehaviour
                 }
                 else if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
                 {
+                    audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+
+                    Debug.Log("play audio starting");
+                    //Debug.Log(audioSource.isActiveAndEnabled);
+                    audioSource.Play();
                     Debug.Log("PAS fase2");
                     player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
                     if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
@@ -875,6 +876,16 @@ public class HPReverbControls : NetworkBehaviour
                     }
                 }
             }
+        }
+
+        if (uitlegKader == false)
+        {
+            audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+
+            Debug.Log("play audio starting");
+            //Debug.Log(audioSource.isActiveAndEnabled);
+            audioSource.Play();
+            //Debug.Log("play audio finished");
         }
     }
 

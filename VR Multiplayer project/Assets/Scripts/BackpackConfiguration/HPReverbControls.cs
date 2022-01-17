@@ -823,7 +823,7 @@ public class HPReverbControls : NetworkBehaviour
         {
             audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
 
-            //Debug.Log("play audio starting");
+            Debug.Log("play audio starting");
             //Debug.Log(audioSource.isActiveAndEnabled);
             audioSource.Play();
             //Debug.Log("play audio finished");
@@ -843,6 +843,8 @@ public class HPReverbControls : NetworkBehaviour
                     if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
                     {
                         player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(true);
+                        player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = "";
+                        player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = "";
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.SetActive(false);
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(true);
@@ -854,6 +856,8 @@ public class HPReverbControls : NetworkBehaviour
                     if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
                     {
                         player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(true);
+                        player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.GetComponent<TextMeshPro>().text = "";
+                        player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = "";
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.SetActive(false);
                         player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(true);

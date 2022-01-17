@@ -789,7 +789,7 @@ public class HPReverbControls : NetworkBehaviour
         {
             uitlegKader = true;
         }
-        Debug.Log("active element nurse targetRPC: " + ConversationManager.Instance.GetActiveConversation().activeElement);
+        Debug.Log("active element nurse targetRPC: " + ConversationManager.Instance.GetActiveConversation().activeElement.Text);
     }
 
     [TargetRpc]
@@ -827,7 +827,7 @@ public class HPReverbControls : NetworkBehaviour
         {
             uitlegKader = true;
         }
-        Debug.Log("active element agrssr targetRPC: " + ConversationManager.Instance.GetActiveConversation().activeElement);
+        Debug.Log("active element agrssr targetRPC: " + ConversationManager.Instance.GetActiveConversation().activeElement.Text);
     }
     [TargetRpc]
     public void TargetPlayAudioOnSender(NetworkConnection target)
@@ -843,6 +843,7 @@ public class HPReverbControls : NetworkBehaviour
 
         if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Ended || ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
         {
+            uitlegKader = true;
             foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
             {
                 if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Ended)
@@ -852,7 +853,7 @@ public class HPReverbControls : NetworkBehaviour
                 }
                 else if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
                 {
-                    uitlegKader = true;
+               
                     if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
                     {
                         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
@@ -908,6 +909,7 @@ public class HPReverbControls : NetworkBehaviour
     [TargetRpc]
     public void TargetStartTimer(NetworkConnection target)
     {
+        uitlegKader = true;
         //Debug.Log("TargetRPC timer called");
         GameObject timer = GameObject.Find("Timer");
         timer.GetComponent<Timer>().TimerIsRunning = true;

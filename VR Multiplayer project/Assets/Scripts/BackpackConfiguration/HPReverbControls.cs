@@ -852,7 +852,7 @@ public class HPReverbControls : NetworkBehaviour
                 }
                 else if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
                 {
-                   
+                    uitlegKader = true;
                     if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
                     {
                         audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;

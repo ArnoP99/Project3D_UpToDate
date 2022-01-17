@@ -784,6 +784,11 @@ public class HPReverbControls : NetworkBehaviour
                 ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
             }
         }
+
+        if(ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
+        {
+            uitlegKader = true;
+        }
         Debug.Log("active element nurse targetRPC: " + ConversationManager.Instance.GetActiveConversation().activeElement);
     }
 
@@ -817,6 +822,10 @@ public class HPReverbControls : NetworkBehaviour
             {
                 ConversationManager.Instance.GetActiveConversation().activeElement = ConversationManager.Instance.ActiveReactionElements[1];
             }
+        }
+        if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
+        {
+            uitlegKader = true;
         }
         Debug.Log("active element agrssr targetRPC: " + ConversationManager.Instance.GetActiveConversation().activeElement);
     }

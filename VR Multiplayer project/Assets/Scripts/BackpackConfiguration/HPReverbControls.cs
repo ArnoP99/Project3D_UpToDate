@@ -791,21 +791,25 @@ public class HPReverbControls : NetworkBehaviour
         {
             foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(true);
-                player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
-                player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.SetActive(false);
+                player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
 
 
-                if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor")
+                if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
                 {
+                    player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(true);
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.SetActive(false);
                     player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(true);
                     player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
                     player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationElementInitializer.UitlegFase2Agressor().Text;
                     uitlegKader = true;
                 }
 
-                if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse")
+                if (player.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse" && player.GetComponent<NetworkIdentity>().isLocalPlayer)
                 {
+                    player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(true);
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
+                    player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(2).gameObject.SetActive(false);
                     player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(true);
                     player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Style/VRpleegkunde_SpeechBubbles_WithLogo_Neutral");
                     player.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = ConversationElementInitializer.UitlegFase2Nurse().Text;

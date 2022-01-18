@@ -60,6 +60,7 @@ public class Timer : NetworkBehaviour
             else
             {
                 timeRemaining = 0;
+                NetworkManager.singleton.ServerChangeScene("EndRoom");
             }
         }
     }

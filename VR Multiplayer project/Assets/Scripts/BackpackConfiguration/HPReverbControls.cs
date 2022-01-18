@@ -852,6 +852,12 @@ public class HPReverbControls : NetworkBehaviour
             {
                 if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Ended)
                 {
+                    audioSource.clip = ConversationManager.Instance.GetActiveConversation().activeElement.TextToSpeech;
+
+                    Debug.Log("play audio starting");
+                    //Debug.Log(audioSource.isActiveAndEnabled);
+                    audioSource.Play();
+                    //Debug.Log("play audio finished");
                     Debug.Log("PAS ended");
                     player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
                     player.GetComponent<HPReverbControls>().conversationEnded = true;

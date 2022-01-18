@@ -23,7 +23,7 @@ public class SetEvaluationScreen : NetworkBehaviour
             {
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
-                    if (ConversationManager.Instance.GetActiveConversation().ActiveElement.UState == ConversationElement.UserState.Nurse)
+                    if (ConversationManager.Instance.GetActiveConversation().activeElement.UState == ConversationElement.UserState.Nurse)
                     {
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");
@@ -94,7 +94,7 @@ public class SetEvaluationScreen : NetworkBehaviour
             {
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
-                    if (ConversationManager.Instance.GetActiveConversation().ActiveElement.UState == ConversationElement.UserState.Nurse)
+                    if (ConversationManager.Instance.GetActiveConversation().activeElement.UState == ConversationElement.UserState.Nurse)
                     {
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");
@@ -165,7 +165,7 @@ public class SetEvaluationScreen : NetworkBehaviour
             {
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
-                    if (ConversationManager.Instance.GetActiveConversation().ActiveElement.UState == ConversationElement.UserState.Nurse)
+                    if (ConversationManager.Instance.GetActiveConversation().activeElement.UState == ConversationElement.UserState.Nurse)
                     {
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");

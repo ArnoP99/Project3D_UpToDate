@@ -36,6 +36,8 @@ public class HPReverbControls : NetworkBehaviour
 
     Scene scene;
 
+    public bool conversationEnded = false;
+
     private void Start()
     {
 
@@ -733,6 +735,8 @@ public class HPReverbControls : NetworkBehaviour
                     TargetPlayAudioOnSender(nurseID.connectionToClient);
                     //audioSource.volume = 0;
                     lastAudioPlayed = true;
+
+                    conversationEnded = true;
                 }
 
                 if (ConversationManager.Instance.GetActiveConversation().ActiveElement.AState == ConversationElement.ActiveState.Phase2)
@@ -850,6 +854,7 @@ public class HPReverbControls : NetworkBehaviour
                 {
                     Debug.Log("PAS ended");
                     player.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+                    player.GetComponent<HPReverbControls>().conversationEnded = true;
                 }
                 else if (ConversationManager.Instance.GetActiveConversation().activeElement.AState == ConversationElement.ActiveState.Phase2)
                 {

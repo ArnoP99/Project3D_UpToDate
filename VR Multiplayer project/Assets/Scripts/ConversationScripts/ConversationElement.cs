@@ -100,4 +100,12 @@ public class ConversationElement
             return elementState;
         }
     }
+
+    public UserState UState
+    {
+        get
+        {
+            return userstate;
+        }
+    }
 }

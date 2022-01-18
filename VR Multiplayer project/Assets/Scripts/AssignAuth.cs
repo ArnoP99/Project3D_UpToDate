@@ -5,8 +5,15 @@ using UnityEngine;
 
 public class AssignAuth : NetworkBehaviour
 {
-    private int nurseScore = 0;
-    private int agressorScore = 0;
+    public int nurseScore = 0;
+    public int agressorScore = 0;
+
+    public int highObjectsA = 0;
+    public int highObjectsN = 0;
+    public int mediumObjectsA = 0;
+    public int mediumObjectsN = 0;
+    public int lowObjectsA = 0;
+    public int lowObjectsN = 0;
 
 
 
@@ -69,16 +76,16 @@ public class AssignAuth : NetworkBehaviour
         }
     }
 
-    public void ExecuteCmdSendPlayerScore(int score, int player)
+    public void ExecuteCmdSendPlayerScore(int score, int player, int highObject, int mediumObject, int lowObject)
     {
         if (this == isClient && this != isServer && this == isLocalPlayer)
         {
-            CmdSendPlayerScore(score, player);
+            CmdSendPlayerScore(score, player, highObject,mediumObject,lowObject);
         }
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdSendPlayerScore(int score, int player)
+    public void CmdSendPlayerScore(int score, int player, int highObject, int mediumObject, int lowObject)
     {
         NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
         NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
@@ -88,10 +95,13 @@ public class AssignAuth : NetworkBehaviour
             GameObject nurseBar = GameObject.Find("NurseBar");
             nurseBar.GetComponent<ScoreBar>().SetScore(score);
             nurseScore = score;
+            highObjectsN += highObject;
+            mediumObjectsN += mediumObject;
+            lowObjectsN += lowObject;
             Debug.Log("Nurse score: " + nurseScore);
             if (this.isServer)
             {
-                TargetSendNurseScore(agressorID.connectionToClient, score);
+                TargetSendNurseScore(agressorID.connectionToClient, score, highObjectsN, mediumObjectsN, lowObjectsN);
             }
         }
         else if (player == 1)
@@ -99,27 +109,40 @@ public class AssignAuth : NetworkBehaviour
             GameObject agressorBar = GameObject.Find("AgressorBar");
             agressorBar.GetComponent<ScoreBar>().SetScore(score);
             agressorScore = score;
+            highObjectsA += highObject;
+            mediumObjectsA += mediumObject;
+            lowObjectsA += lowObject;
             Debug.Log("Agressor score: " + agressorScore);
             if (this.isServer)
             {
-                TargetSendAgressorScore(nurseID.connectionToClient, score);
+                TargetSendAgressorScore(nurseID.connectionToClient, score, highObjectsA, mediumObjectsA, lowObjectsA);
             }
         }
     }
 
     [TargetRpc]
-    public void TargetSendNurseScore(NetworkConnection playerConnection, int otherPlayerScore)
+    public void TargetSendNurseScore(NetworkConnection playerConnection, int otherPlayerScore, int highObjectN, int mediumObjectN, int lowObjectN)
     {
         GameObject nurseBar = GameObject.Find("NurseBar");
+        nurseScore = otherPlayerScore;
+
+        highObjectsN = highObjectN;
+        mediumObjectsN = mediumObjectN;
+        lowObjectsN = lowObjectN;
 
         nurseBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
     }
 
     [TargetRpc]
-    public void TargetSendAgressorScore(NetworkConnection playerConnection, int otherPlayerScore)
+    public void TargetSendAgressorScore(NetworkConnection playerConnection, int otherPlayerScore, int highObjectA, int mediumObjectA, int lowObjectA)
     {
 
         GameObject agressorBar = GameObject.Find("AgressorBar");
+        agressorScore = otherPlayerScore;
+
+        highObjectsA = highObjectA;
+        mediumObjectsA = mediumObjectA;
+        lowObjectsA = lowObjectA;
 
         agressorBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
     }

@@ -17,7 +17,7 @@ public class AssignAuth : NetworkBehaviour
     public int lowObjectsA = 0;
     public int lowObjectsN = 0;
 
-    float timeRemaining = 5;
+    float timeRemaining = 3;
 
     GameObject gameManager;
 

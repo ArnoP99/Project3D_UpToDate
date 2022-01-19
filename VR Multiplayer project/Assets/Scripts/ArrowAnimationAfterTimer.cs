@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ArrowAnimationAfterTimer : MonoBehaviour
 {
     Scene scene;
-    float timeRemaining = 70;
+    float timeRemaining = 73;
 
     MeshRenderer pointerNurse;
     MeshRenderer pointerAgressor;

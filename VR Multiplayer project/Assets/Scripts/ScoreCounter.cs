@@ -80,6 +80,7 @@ public class ScoreCounter : NetworkBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log(other.gameObject);
         if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {
             if (s_agressorScore > 0)

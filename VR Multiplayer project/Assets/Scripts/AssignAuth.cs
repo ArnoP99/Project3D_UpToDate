@@ -17,8 +17,6 @@ public class AssignAuth : NetworkBehaviour
     public int lowObjectsA = 0;
     public int lowObjectsN = 0;
 
-    float timeRemaining = 3;
-
     GameObject gameManager;
 
     Scene scene;
@@ -39,8 +37,7 @@ public class AssignAuth : NetworkBehaviour
         scene = SceneManager.GetActiveScene();
         if (scene.name == "EndRoom")
         {
-            timeRemaining -= Time.deltaTime;
-            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server" && timeRemaining <= 0)
+            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server")
             {
                 RpcSendScores(gameManager.GetComponent<GameManager>().NurseScoreGM, gameManager.GetComponent<GameManager>().AgressorScoreGM, gameManager.GetComponent<GameManager>().HighObjectsNGM, gameManager.GetComponent<GameManager>().HighObjectsAGM, gameManager.GetComponent<GameManager>().MediumObjectsNGM, gameManager.GetComponent<GameManager>().MediumObjectsAGM, gameManager.GetComponent<GameManager>().LowObjectsNGM, gameManager.GetComponent<GameManager>().LowObjectsAGM);
                 Debug.Log("This is server");

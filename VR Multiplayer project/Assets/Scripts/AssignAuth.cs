@@ -17,13 +17,20 @@ public class AssignAuth : NetworkBehaviour
     public int lowObjectsA = 0;
     public int lowObjectsN = 0;
 
+    GameObject gameManager;
+
     Scene scene;
 
     bool nurseWon = false;
     bool agressorWon = false;
+
+    public void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+    }
     public void Update()
     {
-        //Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!       " + GameManager.Instance.NurseScoreGM + "      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!       " + gameManager.GetComponent<GameManager>().NurseScoreGM + "      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 
         scene = SceneManager.GetActiveScene();
@@ -55,7 +62,7 @@ public class AssignAuth : NetworkBehaviour
                 }
                 else
                 {
-                    if (GameManager.Instance.NurseScoreGM > GameManager.Instance.AgressorScoreGM)
+                    if (gameManager.GetComponent<GameManager>().NurseScoreGM > gameManager.GetComponent<GameManager>().AgressorScoreGM)
                     {
                         nurseWon = true;
                     }
@@ -73,15 +80,15 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Agressor");
 
 
-                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsNGM.ToString();
-                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsNGM.ToString();
-                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsNGM.ToString();
-                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.NurseScoreGM.ToString();
+                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsNGM.ToString();
+                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsNGM.ToString();
+                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsNGM.ToString();
+                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().NurseScoreGM.ToString();
 
-                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsAGM.ToString();
-                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsAGM.ToString();
-                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsAGM.ToString();
-                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.AgressorScoreGM.ToString();
+                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsAGM.ToString();
+                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsAGM.ToString();
+                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsAGM.ToString();
+                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                     else
                     {
@@ -92,15 +99,15 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Nurse");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Agressor");
 
-                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsNGM.ToString();
-                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsNGM.ToString();
-                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsNGM.ToString();
-                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.NurseScoreGM.ToString();
+                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsNGM.ToString();
+                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsNGM.ToString();
+                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsNGM.ToString();
+                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().NurseScoreGM.ToString();
 
-                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsAGM.ToString();
-                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsAGM.ToString();
-                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsAGM.ToString();
-                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.AgressorScoreGM.ToString();
+                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsAGM.ToString();
+                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsAGM.ToString();
+                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsAGM.ToString();
+                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
             }
@@ -129,7 +136,7 @@ public class AssignAuth : NetworkBehaviour
                 }
                 else
                 {
-                    if (GameManager.Instance.NurseScoreGM > GameManager.Instance.AgressorScoreGM)
+                    if (gameManager.GetComponent<GameManager>().NurseScoreGM > gameManager.GetComponent<GameManager>().AgressorScoreGM)
                     {
                         nurseWon = true;
                     }
@@ -147,15 +154,15 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Nurse");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Agressor");
 
-                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsNGM.ToString();
-                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsNGM.ToString();
-                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsNGM.ToString();
-                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.NurseScoreGM.ToString();
+                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsNGM.ToString();
+                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsNGM.ToString();
+                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsNGM.ToString();
+                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().NurseScoreGM.ToString();
 
-                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsAGM.ToString();
-                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsAGM.ToString();
-                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsAGM.ToString();
-                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.AgressorScoreGM.ToString();
+                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsAGM.ToString();
+                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsAGM.ToString();
+                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsAGM.ToString();
+                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                     else
                     {
@@ -165,15 +172,15 @@ public class AssignAuth : NetworkBehaviour
 
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Nurse");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Agressor");
-                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsNGM.ToString();
-                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsNGM.ToString();
-                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsNGM.ToString();
-                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.NurseScoreGM.ToString();
+                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsNGM.ToString();
+                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsNGM.ToString();
+                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsNGM.ToString();
+                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().NurseScoreGM.ToString();
 
-                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsAGM.ToString();
-                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsAGM.ToString();
-                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsAGM.ToString();
-                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.AgressorScoreGM.ToString();
+                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsAGM.ToString();
+                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsAGM.ToString();
+                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsAGM.ToString();
+                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
             }
@@ -202,7 +209,7 @@ public class AssignAuth : NetworkBehaviour
                 }
                 else
                 {
-                    if (GameManager.Instance.NurseScoreGM > GameManager.Instance.AgressorScoreGM)
+                    if (gameManager.GetComponent<GameManager>().NurseScoreGM > gameManager.GetComponent<GameManager>().AgressorScoreGM)
                     {
                         nurseWon = true;
                     }
@@ -220,15 +227,15 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Nurse");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Agressor");
 
-                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsNGM.ToString();
-                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsNGM.ToString();
-                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsNGM.ToString();
-                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.NurseScoreGM.ToString();
+                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsNGM.ToString();
+                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsNGM.ToString();
+                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsNGM.ToString();
+                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().NurseScoreGM.ToString();
 
-                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsAGM.ToString();
-                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsAGM.ToString();
-                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsAGM.ToString();
-                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.AgressorScoreGM.ToString();
+                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsAGM.ToString();
+                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsAGM.ToString();
+                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsAGM.ToString();
+                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                     else
                     {
@@ -239,15 +246,15 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Nurse");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Agressor");
 
-                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsNGM.ToString();
-                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsNGM.ToString();
-                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsNGM.ToString();
-                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = GameManager.Instance.NurseScoreGM.ToString();
+                        GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsNGM.ToString();
+                        GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsNGM.ToString();
+                        GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsNGM.ToString();
+                        GameObject.Find("TotalScoreNurse").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().NurseScoreGM.ToString();
 
-                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.HighObjectsAGM.ToString();
-                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.MediumObjectsAGM.ToString();
-                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.LowObjectsAGM.ToString();
-                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = GameManager.Instance.AgressorScoreGM.ToString();
+                        GameObject.Find("HighScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().HighObjectsAGM.ToString();
+                        GameObject.Find("MediumScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().MediumObjectsAGM.ToString();
+                        GameObject.Find("LowScoreTextAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().LowObjectsAGM.ToString();
+                        GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
             }
@@ -342,10 +349,10 @@ public class AssignAuth : NetworkBehaviour
                 mediumObjectsN = mediumObject;
                 lowObjectsN = lowObject;
 
-                GameManager.Instance.NurseScoreGM = nurseScore;
-                GameManager.Instance.HighObjectsNGM = highObjectsN;
-                GameManager.Instance.MediumObjectsNGM = mediumObjectsN;
-                GameManager.Instance.LowObjectsNGM = lowObjectsN;
+                gameManager.GetComponent<GameManager>().NurseScoreGM = nurseScore;
+                gameManager.GetComponent<GameManager>().HighObjectsNGM = highObjectsN;
+                gameManager.GetComponent<GameManager>().MediumObjectsNGM = mediumObjectsN;
+                gameManager.GetComponent<GameManager>().LowObjectsNGM = lowObjectsN;
                 Debug.Log("Score S N: " + score);
                 Debug.Log("High S N: " + highObjectsN);
                 Debug.Log("Medium S N: " + mediumObjectsN);
@@ -363,10 +370,10 @@ public class AssignAuth : NetworkBehaviour
                 mediumObjectsA = mediumObject;
                 lowObjectsA = lowObject;
 
-                GameManager.Instance.AgressorScoreGM = agressorScore;
-                GameManager.Instance.HighObjectsAGM = highObjectsA;
-                GameManager.Instance.MediumObjectsAGM = mediumObjectsA;
-                GameManager.Instance.LowObjectsAGM = lowObjectsA;
+                gameManager.GetComponent<GameManager>().AgressorScoreGM = agressorScore;
+                gameManager.GetComponent<GameManager>().HighObjectsAGM = highObjectsA;
+                gameManager.GetComponent<GameManager>().MediumObjectsAGM = mediumObjectsA;
+                gameManager.GetComponent<GameManager>().LowObjectsAGM = lowObjectsA;
                 Debug.Log("Score S A: " + nurseScore);
                 Debug.Log("High S A: " + highObjectsA);
                 Debug.Log("Medium S A: " + mediumObjectsA);
@@ -388,10 +395,10 @@ public class AssignAuth : NetworkBehaviour
         mediumObjectsN = mediumObjectN;
         lowObjectsN = lowObjectN;
 
-        GameManager.Instance.NurseScoreGM = nurseScore;
-        GameManager.Instance.HighObjectsNGM = highObjectsN;
-        GameManager.Instance.MediumObjectsNGM = mediumObjectsN;
-        GameManager.Instance.LowObjectsNGM = lowObjectsN;
+        gameManager.GetComponent<GameManager>().NurseScoreGM = nurseScore;
+        gameManager.GetComponent<GameManager>().HighObjectsNGM = highObjectsN;
+        gameManager.GetComponent<GameManager>().MediumObjectsNGM = mediumObjectsN;
+        gameManager.GetComponent<GameManager>().LowObjectsNGM = lowObjectsN;
         Debug.Log("Score N: " + nurseScore);
         Debug.Log("High N: " + highObjectsN);
         Debug.Log("Medium N: " + mediumObjectsN);
@@ -411,10 +418,10 @@ public class AssignAuth : NetworkBehaviour
         mediumObjectsA = mediumObjectA;
         lowObjectsA = lowObjectA;
 
-        GameManager.Instance.AgressorScoreGM = agressorScore;
-        GameManager.Instance.HighObjectsAGM = highObjectsA;
-        GameManager.Instance.MediumObjectsAGM = mediumObjectsA;
-        GameManager.Instance.LowObjectsAGM = lowObjectsA;
+        gameManager.GetComponent<GameManager>().AgressorScoreGM = agressorScore;
+        gameManager.GetComponent<GameManager>().HighObjectsAGM = highObjectsA;
+        gameManager.GetComponent<GameManager>().MediumObjectsAGM = mediumObjectsA;
+        gameManager.GetComponent<GameManager>().LowObjectsAGM = lowObjectsA;
         Debug.Log("Score A: " + agressorScore);
         Debug.Log("High A: " + highObjectsA);
         Debug.Log("Medium A: " + mediumObjectsA);

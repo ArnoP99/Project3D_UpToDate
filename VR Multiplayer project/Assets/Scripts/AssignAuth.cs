@@ -42,12 +42,7 @@ public class AssignAuth : NetworkBehaviour
             timeRemaining -= Time.deltaTime;
             if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server" && timeRemaining <= 0)
             {
-                NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-                NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-                TargetSendNurseScore(nurseID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
-                TargetSendNurseScore(agressorID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
-                TargetSendAgressorScore(agressorID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
-                TargetSendAgressorScore(nurseID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
+                RpcSendScores(nurseScore, agressorScore, highObjectsN, highObjectsA, mediumObjectsN, mediumObjectsA, lowObjectsN, lowObjectsA);
                 Debug.Log("This is server");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
@@ -121,7 +116,7 @@ public class AssignAuth : NetworkBehaviour
                 }
               
             }
-            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && gameManager.GetComponent<GameManager>().AgressorScoreGM != 0)
+            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor")
             {
                 Debug.Log("this is agressor");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
@@ -195,7 +190,7 @@ public class AssignAuth : NetworkBehaviour
                 }
            
             }
-            else if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse" && gameManager.GetComponent<GameManager>().NurseScoreGM != 0)
+            else if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse")
             {
                 Debug.Log("dit is de nurse");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
@@ -402,7 +397,6 @@ public class AssignAuth : NetworkBehaviour
     [TargetRpc]
     public void TargetSendNurseScore(NetworkConnection playerConnection, int otherPlayerScore, int highObjectN, int mediumObjectN, int lowObjectN)
     {
-
         nurseScore = otherPlayerScore;
 
         highObjectsN = highObjectN;
@@ -478,6 +472,28 @@ public class AssignAuth : NetworkBehaviour
         gameManager.GetComponent<GameManager>().HighObjectsAGM = highObjectsA;
         gameManager.GetComponent<GameManager>().MediumObjectsAGM = mediumObjectsA;
         gameManager.GetComponent<GameManager>().LowObjectsAGM = lowObjectsA;
+    }
+
+    [ClientRpc]
+    public void RpcSendScores(int scoreN, int scoreA, int highN, int highA, int mediumN, int mediumA, int lowN, int lowA)
+    {
+        nurseScore = scoreN;
+        agressorScore = scoreA;
+        highObjectsA = highA;
+        highObjectsN = highN;
+        mediumObjectsA = mediumA;
+        mediumObjectsN = mediumN;
+        lowObjectsA = lowA;
+        lowObjectsN = lowN;
+
+        gameManager.GetComponent<GameManager>().AgressorScoreGM = agressorScore;
+        gameManager.GetComponent<GameManager>().HighObjectsAGM = highObjectsA;
+        gameManager.GetComponent<GameManager>().MediumObjectsAGM = mediumObjectsA;
+        gameManager.GetComponent<GameManager>().LowObjectsAGM = lowObjectsA;
+        gameManager.GetComponent<GameManager>().NurseScoreGM = nurseScore;
+        gameManager.GetComponent<GameManager>().HighObjectsNGM = highObjectsN;
+        gameManager.GetComponent<GameManager>().MediumObjectsNGM = mediumObjectsN;
+        gameManager.GetComponent<GameManager>().LowObjectsNGM = lowObjectsN;
     }
 
     [Command(requiresAuthority = false)]

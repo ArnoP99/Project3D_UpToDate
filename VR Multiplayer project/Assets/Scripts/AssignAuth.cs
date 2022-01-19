@@ -30,9 +30,6 @@ public class AssignAuth : NetworkBehaviour
     }
     public void Update()
     {
-        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!       " + gameManager.GetComponent<GameManager>().NurseScoreGM + "      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-
         scene = SceneManager.GetActiveScene();
         if (scene.name == "EndRoom")
         {
@@ -358,6 +355,7 @@ public class AssignAuth : NetworkBehaviour
                 Debug.Log("Medium S N: " + mediumObjectsN);
                 Debug.Log("Low S N: " + lowObjectsN);
 
+                TargetSendOwnScoreN(agressorID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
                 TargetSendNurseScore(agressorID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
 
             }
@@ -379,8 +377,8 @@ public class AssignAuth : NetworkBehaviour
                 Debug.Log("Medium S A: " + mediumObjectsA);
                 Debug.Log("Low S A: " + lowObjectsA);
 
-
-                TargetSendAgressorScore(nurseID.connectionToClient, score, highObjectsA, mediumObjectsA, lowObjectsA);
+                TargetSendOwnScoreN(nurseID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
+                TargetSendAgressorScore(nurseID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
             }
         }
     }
@@ -408,6 +406,19 @@ public class AssignAuth : NetworkBehaviour
     }
 
     [TargetRpc]
+    public void TargetSendOwnScoreN(NetworkConnection playerConnection, int ownScore, int highObjectN, int mediumObjectN, int lowObjectN)
+    {
+        highObjectsN = highObjectN;
+        mediumObjectsN = mediumObjectN;
+        lowObjectsN = lowObjectN;
+
+        gameManager.GetComponent<GameManager>().NurseScoreGM = nurseScore;
+        gameManager.GetComponent<GameManager>().HighObjectsNGM = highObjectsN;
+        gameManager.GetComponent<GameManager>().MediumObjectsNGM = mediumObjectsN;
+        gameManager.GetComponent<GameManager>().LowObjectsNGM = lowObjectsN;
+    }
+
+    [TargetRpc]
     public void TargetSendAgressorScore(NetworkConnection playerConnection, int otherPlayerScore, int highObjectA, int mediumObjectA, int lowObjectA)
     {
 
@@ -428,6 +439,19 @@ public class AssignAuth : NetworkBehaviour
         Debug.Log("Low A: " + lowObjectsA);
 
         agressorBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
+    }
+
+    [TargetRpc]
+    public void TargetSendOwnScoreA(NetworkConnection playerConnection, int ownScore, int highObjectA, int mediumObjectA, int lowObjectA)
+    {
+        highObjectsA = highObjectA;
+        mediumObjectsA = mediumObjectA;
+        lowObjectsA = lowObjectA;
+
+        gameManager.GetComponent<GameManager>().AgressorScoreGM = agressorScore;
+        gameManager.GetComponent<GameManager>().HighObjectsAGM = highObjectsA;
+        gameManager.GetComponent<GameManager>().MediumObjectsAGM = mediumObjectsA;
+        gameManager.GetComponent<GameManager>().LowObjectsAGM = lowObjectsA;
     }
 
     [Command(requiresAuthority = false)]

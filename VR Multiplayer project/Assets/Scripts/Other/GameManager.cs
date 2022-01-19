@@ -11,6 +11,17 @@ public class GameManager : NetworkBehaviour
     private bool nurseOnSpawn = false;
     private bool agressorOnSpawn = false;
 
+    private int nurseScoreGM = 0;
+    private int agressorScoreGM = 0;
+
+    private int highObjectsAGM = 0;
+    private int highObjectsNGM = 0;
+    private int mediumObjectsAGM = 0;
+    private int mediumObjectsNGM = 0;
+    private int lowObjectsAGM = 0;
+    private int lowObjectsNGM = 0;
+
+
     private GameManager()
     {
     }
@@ -29,6 +40,15 @@ public class GameManager : NetworkBehaviour
             }
         }
     }
+
+    public int NurseScoreGM { get => nurseScoreGM; set => nurseScoreGM = value; }
+    public int AgressorScoreGM { get => agressorScoreGM; set => agressorScoreGM = value; }
+    public int HighObjectsAGM { get => highObjectsAGM; set => highObjectsAGM = value; }
+    public int HighObjectsNGM { get => highObjectsNGM; set => highObjectsNGM = value; }
+    public int MediumObjectsAGM { get => mediumObjectsAGM; set => mediumObjectsAGM = value; }
+    public int MediumObjectsNGM { get => mediumObjectsNGM; set => mediumObjectsNGM = value; }
+    public int LowObjectsAGM { get => lowObjectsAGM; set => lowObjectsAGM = value; }
+    public int LowObjectsNGM { get => lowObjectsNGM; set => lowObjectsNGM = value; }
 
     void Start()
     {
@@ -87,4 +107,6 @@ public class GameManager : NetworkBehaviour
         }
         //on enter true on exit false
     }
+
+
 }

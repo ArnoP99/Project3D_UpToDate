@@ -26,6 +26,7 @@ public class Timer : NetworkBehaviour
     {
         if (timerIsRunning)
         {
+            GameObject.Find("AudioTimer").GetComponent<AudioSource>().Play();
             if (timeRemaining > 0)
             {
                 float minutes = Mathf.FloorToInt(timeRemaining / 60);

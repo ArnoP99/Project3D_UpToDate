@@ -34,7 +34,7 @@ public class AssignAuth : NetworkBehaviour
     }
     public void Update()
     {
-      
+
 
         scene = SceneManager.GetActiveScene();
         if (scene.name == "EndRoom" && setValues == false)
@@ -402,7 +402,7 @@ public class AssignAuth : NetworkBehaviour
     [TargetRpc]
     public void TargetSendNurseScore(NetworkConnection playerConnection, int otherPlayerScore, int highObjectN, int mediumObjectN, int lowObjectN)
     {
-        GameObject nurseBar = GameObject.Find("NurseBar");
+
         nurseScore = otherPlayerScore;
 
         highObjectsN = highObjectN;
@@ -418,7 +418,11 @@ public class AssignAuth : NetworkBehaviour
         Debug.Log("Medium N: " + mediumObjectsN);
         Debug.Log("Low N: " + lowObjectsN);
 
-        nurseBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
+        if (scene.name == "ZiekenhuisKamer")
+        {
+            GameObject nurseBar = GameObject.Find("NurseBar");
+            nurseBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
+        }
     }
 
     [TargetRpc]
@@ -439,7 +443,7 @@ public class AssignAuth : NetworkBehaviour
     public void TargetSendAgressorScore(NetworkConnection playerConnection, int otherPlayerScore, int highObjectA, int mediumObjectA, int lowObjectA)
     {
 
-        GameObject agressorBar = GameObject.Find("AgressorBar");
+
         agressorScore = otherPlayerScore;
 
         highObjectsA = highObjectA;
@@ -455,7 +459,11 @@ public class AssignAuth : NetworkBehaviour
         Debug.Log("Medium A: " + mediumObjectsA);
         Debug.Log("Low A: " + lowObjectsA);
 
-        agressorBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
+        if (scene.name == "ZiekenhuisKamer")
+        {
+            GameObject agressorBar = GameObject.Find("AgressorBar");
+            agressorBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
+        }
     }
 
     [TargetRpc]

@@ -98,10 +98,7 @@ public class AssignAuth : NetworkBehaviour
             highObjectsN += highObject;
             mediumObjectsN += mediumObject;
             lowObjectsN += lowObject;
-            Debug.Log("Nurse score: " + nurseScore);
-            Debug.Log("Nurse highscore:" + highObjectsN);
-            Debug.Log("Nurse mediumscore:" + mediumObjectsN);
-            Debug.Log("Nurse lowscore:" + lowObjectsN);
+       
             if (this.isServer)
             {
                 TargetSendNurseScore(agressorID.connectionToClient, score, highObjectsN, mediumObjectsN, lowObjectsN);

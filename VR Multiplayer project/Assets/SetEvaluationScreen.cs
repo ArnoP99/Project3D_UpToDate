@@ -60,6 +60,11 @@ public class SetEvaluationScreen : NetworkBehaviour
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Nurse");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Agressor");
 
+                        Debug.Log("Nurse score: " + gameObject.GetComponent<AssignAuth>().nurseScore);
+                        Debug.Log("Nurse highscore:" + gameObject.GetComponent<AssignAuth>().highObjectsN);
+                        Debug.Log("Nurse mediumscore:" + gameObject.GetComponent<AssignAuth>().mediumObjectsN);
+                        Debug.Log("Nurse lowscore:" + gameObject.GetComponent<AssignAuth>().lowObjectsN);
+
                         GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = gameObject.GetComponent<AssignAuth>().highObjectsN.ToString();
                         GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = gameObject.GetComponent<AssignAuth>().mediumObjectsN.ToString();
                         GameObject.Find("LowScoreTextNurse").GetComponent<TextMeshPro>().text = gameObject.GetComponent<AssignAuth>().lowObjectsN.ToString();
@@ -72,6 +77,11 @@ public class SetEvaluationScreen : NetworkBehaviour
                     }
                     else
                     {
+                        Debug.Log("Nurse score: " + gameObject.GetComponent<AssignAuth>().nurseScore);
+                        Debug.Log("Nurse highscore:" + gameObject.GetComponent<AssignAuth>().highObjectsN);
+                        Debug.Log("Nurse mediumscore:" + gameObject.GetComponent<AssignAuth>().mediumObjectsN);
+                        Debug.Log("Nurse lowscore:" + gameObject.GetComponent<AssignAuth>().lowObjectsN);
+
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");
 
@@ -125,6 +135,11 @@ public class SetEvaluationScreen : NetworkBehaviour
 
                     if (nurseWon)
                     {
+                        Debug.Log("Nurse score: " + gameObject.GetComponent<AssignAuth>().nurseScore);
+                        Debug.Log("Nurse highscore:" + gameObject.GetComponent<AssignAuth>().highObjectsN);
+                        Debug.Log("Nurse mediumscore:" + gameObject.GetComponent<AssignAuth>().mediumObjectsN);
+                        Debug.Log("Nurse lowscore:" + gameObject.GetComponent<AssignAuth>().lowObjectsN);
+
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseWins");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorLoses");
 
@@ -143,6 +158,11 @@ public class SetEvaluationScreen : NetworkBehaviour
                     }
                     else
                     {
+                        Debug.Log("Nurse score: " + gameObject.GetComponent<AssignAuth>().nurseScore);
+                        Debug.Log("Nurse highscore:" + gameObject.GetComponent<AssignAuth>().highObjectsN);
+                        Debug.Log("Nurse mediumscore:" + gameObject.GetComponent<AssignAuth>().mediumObjectsN);
+                        Debug.Log("Nurse lowscore:" + gameObject.GetComponent<AssignAuth>().lowObjectsN);
+
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");
 
@@ -196,6 +216,11 @@ public class SetEvaluationScreen : NetworkBehaviour
 
                     if (nurseWon)
                     {
+                        Debug.Log("Nurse score: " + gameObject.GetComponent<AssignAuth>().nurseScore);
+                        Debug.Log("Nurse highscore:" + gameObject.GetComponent<AssignAuth>().highObjectsN);
+                        Debug.Log("Nurse mediumscore:" + gameObject.GetComponent<AssignAuth>().mediumObjectsN);
+                        Debug.Log("Nurse lowscore:" + gameObject.GetComponent<AssignAuth>().lowObjectsN);
+
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseWins");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorLoses");
 
@@ -214,6 +239,11 @@ public class SetEvaluationScreen : NetworkBehaviour
                     }
                     else
                     {
+                        Debug.Log("Nurse score: " + gameObject.GetComponent<AssignAuth>().nurseScore);
+                        Debug.Log("Nurse highscore:" + gameObject.GetComponent<AssignAuth>().highObjectsN);
+                        Debug.Log("Nurse mediumscore:" + gameObject.GetComponent<AssignAuth>().mediumObjectsN);
+                        Debug.Log("Nurse lowscore:" + gameObject.GetComponent<AssignAuth>().lowObjectsN);
+
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");
 

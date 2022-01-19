@@ -42,7 +42,7 @@ public class AssignAuth : NetworkBehaviour
             timeRemaining -= Time.deltaTime;
             if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server" && timeRemaining <= 0)
             {
-                RpcSendScores(nurseScore, agressorScore, highObjectsN, highObjectsA, mediumObjectsN, mediumObjectsA, lowObjectsN, lowObjectsA);
+                RpcSendScores(gameManager.GetComponent<GameManager>().NurseScoreGM, gameManager.GetComponent<GameManager>().AgressorScoreGM, gameManager.GetComponent<GameManager>().HighObjectsNGM, gameManager.GetComponent<GameManager>().HighObjectsAGM, gameManager.GetComponent<GameManager>().MediumObjectsNGM, gameManager.GetComponent<GameManager>().MediumObjectsAGM, gameManager.GetComponent<GameManager>().LowObjectsNGM, gameManager.GetComponent<GameManager>().LowObjectsAGM);
                 Debug.Log("This is server");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {

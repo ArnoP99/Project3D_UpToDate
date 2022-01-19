@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ScoreCounter : NetworkBehaviour
 {
-    bool executed = false;
 
     int s_agressorScore = 0;
     int s_nurseScore = 0;
@@ -24,69 +23,67 @@ public class ScoreCounter : NetworkBehaviour
     {
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (executed == false)
+
+        Debug.Log(other.gameObject);
+        if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {
-            Debug.Log(other.gameObject);
-            if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
+            if (other.gameObject.tag == "Low")
             {
-                if (other.gameObject.tag == "Low")
-                {
-                    s_agressorScore += 10;
-                    counterLowObjectsA += 1;
-                    sendScoreToPlayer(1);
-                }
-                if (other.gameObject.tag == "Medium")
-                {
-                    s_agressorScore += 20;
-                    counterMediumObjectsA += 1;
-                    sendScoreToPlayer(1);
-                }
-                if (other.gameObject.tag == "High")
-                {
-                    s_agressorScore += 30;
-                    counterHighObjectsA += 1;
-                    sendScoreToPlayer(1);
-                }
-                if (other.gameObject.tag == "Ultra")
-                {
-                    s_agressorScore += 100;
-                    sendScoreToPlayer(1);
-                }
+                s_agressorScore += 20;
+                counterLowObjectsA += 2;
+                sendScoreToPlayer(1);
             }
-            else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
+            if (other.gameObject.tag == "Medium")
             {
-                if (other.gameObject.tag == "Low")
-                {
-                    s_nurseScore += 10;
-                    counterLowObjectsN += 1;
-                    sendScoreToPlayer(0);
-                }
-                if (other.gameObject.tag == "Medium")
-                {
-                    s_nurseScore += 20;
-                    counterMediumObjectsN += 1;
-                    sendScoreToPlayer(0);
-                }
-                if (other.gameObject.tag == "High")
-                {
-                    s_nurseScore += 30;
-                    counterHighObjectsN += 1;
-                    sendScoreToPlayer(0);
-                }
-                if (other.gameObject.tag == "Ultra")
-                {
-                    s_nurseScore += 100;
-                    sendScoreToPlayer(1);
-                }
+                s_agressorScore += 40;
+                counterMediumObjectsA += 2;
+                sendScoreToPlayer(1);
             }
-            executed = true;
+            if (other.gameObject.tag == "High")
+            {
+                s_agressorScore += 60;
+                counterHighObjectsA += 2;
+                sendScoreToPlayer(1);
+            }
+            if (other.gameObject.tag == "Ultra")
+            {
+                s_agressorScore += 200;
+                sendScoreToPlayer(1);
+            }
+        }
+        else if (other.gameObject.layer == 9 && this.gameObject.tag == "NurseBox")
+        {
+            if (other.gameObject.tag == "Low")
+            {
+                s_nurseScore += 10;
+                counterLowObjectsN += 1;
+                sendScoreToPlayer(0);
+            }
+            if (other.gameObject.tag == "Medium")
+            {
+                s_nurseScore += 20;
+                counterMediumObjectsN += 1;
+                sendScoreToPlayer(0);
+            }
+            if (other.gameObject.tag == "High")
+            {
+                s_nurseScore += 30;
+                counterHighObjectsN += 1;
+                sendScoreToPlayer(0);
+            }
+            if (other.gameObject.tag == "Ultra")
+            {
+                s_nurseScore += 100;
+                sendScoreToPlayer(1);
+            }
+
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        executed = false;
+
         Debug.Log(other.gameObject);
         if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {

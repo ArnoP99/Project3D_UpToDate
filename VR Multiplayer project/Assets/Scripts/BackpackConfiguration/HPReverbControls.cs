@@ -12,7 +12,7 @@ public class HPReverbControls : NetworkBehaviour
 {
     public GameObject nurse;
     public GameObject agressor;
-
+    long testcounter = 0;
     public GameObject textPopUp;
     public GameObject activeChoice;
 
@@ -75,6 +75,9 @@ public class HPReverbControls : NetworkBehaviour
 
     private void Update()
     {
+        testcounter += 1;
+        Debug.Log(testcounter);
+
         scene = SceneManager.GetActiveScene();
         if (lastAudioPlayed && this.isServer)
         {

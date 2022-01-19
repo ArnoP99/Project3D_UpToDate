@@ -39,8 +39,10 @@ public class AssignAuth : NetworkBehaviour
             {
                 NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
                 NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
-                TargetSendOwnScoreN(nurseID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
-                TargetSendOwnScoreN(agressorID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
+                TargetSendNurseScore(nurseID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
+                TargetSendNurseScore(agressorID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
+                TargetSendAgressorScore(agressorID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
+                TargetSendAgressorScore(nurseID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
                 Debug.Log("This is server");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
@@ -112,8 +114,9 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
+                setValues = true;
             }
-            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor")
+            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && agressorScore != 0)
             {
                 Debug.Log("this is agressor");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
@@ -185,8 +188,9 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
+                setValues = true;
             }
-            else if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse")
+            else if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse" && nurseScore != 0)
             {
                 Debug.Log("dit is de nurse");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
@@ -222,7 +226,7 @@ public class AssignAuth : NetworkBehaviour
 
                     if (nurseWon)
                     {
- 
+
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseWins");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorLoses");
 
@@ -259,8 +263,9 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
+                setValues = true;
             }
- 
+
         }
     }
 
@@ -361,7 +366,7 @@ public class AssignAuth : NetworkBehaviour
                 Debug.Log("Medium S N: " + mediumObjectsN);
                 Debug.Log("Low S N: " + lowObjectsN);
 
-             
+
                 TargetSendNurseScore(agressorID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
 
             }
@@ -383,7 +388,7 @@ public class AssignAuth : NetworkBehaviour
                 Debug.Log("Medium S A: " + mediumObjectsA);
                 Debug.Log("Low S A: " + lowObjectsA);
 
-                
+
                 TargetSendAgressorScore(nurseID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
             }
         }

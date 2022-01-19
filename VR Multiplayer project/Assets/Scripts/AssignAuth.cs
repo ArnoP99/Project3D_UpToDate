@@ -21,6 +21,8 @@ public class AssignAuth : NetworkBehaviour
 
     Scene scene;
 
+    bool setValues = false;
+
     bool nurseWon = false;
     bool agressorWon = false;
 
@@ -31,11 +33,14 @@ public class AssignAuth : NetworkBehaviour
     public void Update()
     {
         scene = SceneManager.GetActiveScene();
-        if (scene.name == "EndRoom")
+        if (scene.name == "EndRoom" && setValues == false)
         {
             if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server")
             {
-
+                NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+                NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
+                TargetSendOwnScoreN(nurseID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
+                TargetSendOwnScoreN(agressorID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
                 Debug.Log("This is server");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
@@ -255,6 +260,7 @@ public class AssignAuth : NetworkBehaviour
                     }
                 }
             }
+ 
         }
     }
 
@@ -355,7 +361,7 @@ public class AssignAuth : NetworkBehaviour
                 Debug.Log("Medium S N: " + mediumObjectsN);
                 Debug.Log("Low S N: " + lowObjectsN);
 
-                TargetSendOwnScoreN(agressorID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
+             
                 TargetSendNurseScore(agressorID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
 
             }
@@ -377,7 +383,7 @@ public class AssignAuth : NetworkBehaviour
                 Debug.Log("Medium S A: " + mediumObjectsA);
                 Debug.Log("Low S A: " + lowObjectsA);
 
-                TargetSendOwnScoreN(nurseID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
+                
                 TargetSendAgressorScore(nurseID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
             }
         }

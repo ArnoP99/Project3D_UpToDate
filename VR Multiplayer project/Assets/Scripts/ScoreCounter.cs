@@ -31,25 +31,25 @@ public class ScoreCounter : NetworkBehaviour
         {
             if (other.gameObject.tag == "Low")
             {
-                s_agressorScore += 20;
-                counterLowObjectsA += 2;
+                s_agressorScore += 10;
+                counterLowObjectsA += 1;
                 sendScoreToPlayer(1);
             }
             if (other.gameObject.tag == "Medium")
             {
-                s_agressorScore += 40;
-                counterMediumObjectsA += 2;
+                s_agressorScore += 20;
+                counterMediumObjectsA += 1;
                 sendScoreToPlayer(1);
             }
             if (other.gameObject.tag == "High")
             {
-                s_agressorScore += 60;
-                counterHighObjectsA += 2;
+                s_agressorScore += 30;
+                counterHighObjectsA += 1;
                 sendScoreToPlayer(1);
             }
             if (other.gameObject.tag == "Ultra")
             {
-                s_agressorScore += 200;
+                s_agressorScore += 100;
                 sendScoreToPlayer(1);
             }
         }

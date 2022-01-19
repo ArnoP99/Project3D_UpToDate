@@ -414,6 +414,7 @@ public class AssignAuth : NetworkBehaviour
     [TargetRpc]
     public void TargetSendOwnScoreN(NetworkConnection playerConnection, int ownScore, int highObjectN, int mediumObjectN, int lowObjectN)
     {
+        nurseScore = ownScore;
         highObjectsN = highObjectN;
         mediumObjectsN = mediumObjectN;
         lowObjectsN = lowObjectN;
@@ -450,6 +451,7 @@ public class AssignAuth : NetworkBehaviour
     [TargetRpc]
     public void TargetSendOwnScoreA(NetworkConnection playerConnection, int ownScore, int highObjectA, int mediumObjectA, int lowObjectA)
     {
+        agressorScore = ownScore;
         highObjectsA = highObjectA;
         mediumObjectsA = mediumObjectA;
         lowObjectsA = lowObjectA;

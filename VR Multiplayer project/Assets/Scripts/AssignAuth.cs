@@ -23,7 +23,7 @@ public class AssignAuth : NetworkBehaviour
 
     Scene scene;
 
-    bool setValues = false;
+
 
     bool nurseWon = false;
     bool agressorWon = false;
@@ -37,7 +37,7 @@ public class AssignAuth : NetworkBehaviour
 
 
         scene = SceneManager.GetActiveScene();
-        if (scene.name == "EndRoom" && setValues == false)
+        if (scene.name == "EndRoom")
         {
             timeRemaining -= Time.deltaTime;
             if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server" && timeRemaining <= 0)
@@ -119,7 +119,7 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
-                setValues = true;
+              
             }
             if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && agressorScore != 0)
             {
@@ -193,7 +193,7 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
-                setValues = true;
+           
             }
             else if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse" && nurseScore != 0)
             {
@@ -268,7 +268,7 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
-                setValues = true;
+          
             }
 
         }

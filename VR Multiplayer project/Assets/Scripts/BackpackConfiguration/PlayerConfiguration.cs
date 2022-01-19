@@ -29,7 +29,7 @@ public class PlayerConfiguration : NetworkBehaviour
 
     public XRController XRControllerLeft;
     public XRController XRControllerRight;
-    // Start is called before the first frame update
+
     void Start()
     {
         StartCoroutine(WaitOneFrame()); //Wait 1 frame before instantiating player
@@ -60,7 +60,6 @@ public class PlayerConfiguration : NetworkBehaviour
             //When it is the local player and isn't the server/PC enable the camera, the tracked pose driver of the camera
             if (NetworkConfiguration.GameSettings.ID != 0)
             {
-                Debug.Log("LocalPlayer && != server");
                 TrackedPoseDriverLeftController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
                 TrackedPoseDriverRightController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<TrackedPoseDriver>();
                 XRControllerLeft = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<XRController>();
@@ -79,12 +78,11 @@ public class PlayerConfiguration : NetworkBehaviour
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
                 this.transform.GetChild(0).transform.GetChild(2).transform.GetChild(2).gameObject.SetActive(false);
                 this.transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
-                
+
             }
             //When it is the local player and it is the server/PC enable the main camera
             else
             {
-                Debug.Log("LocalPlayer && == server");
                 syncRotation.enabled = false;
                 controllersToHMDLocal.enabled = false;
                 myCamera.enabled = false;
@@ -93,21 +91,19 @@ public class PlayerConfiguration : NetworkBehaviour
                 GameObject.Find("Main camera").GetComponent<Camera>().enabled = true;
                 GameObject.Find("Main camera").GetComponent<AudioListener>().enabled = true;
                 gameObject.tag = "Server";
-                
             }
 
             sentPlayerInfo(NetworkConfiguration.GameSettings.ID, NetworkConfiguration.GameSettings.Rigidbodybody); //Share player info with other devices
             optitrackrigidHmd.RigidBodyId = NetworkConfiguration.GameSettings.Rigidbodybody; //Set rigidbody ID
             optitrackrigidHmd.StreamingClient = optitrackClient;
         }
-        //When it isn't the local player dissable camera and audiolistener
+        //When it isn't the local player disable camera and audiolistener
         else
         {
             XRControllerLeft = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<XRController>();
             XRControllerRight = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<XRController>();
             TrackedPoseDriverLeftController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TrackedPoseDriver>();
             TrackedPoseDriverRightController = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).GetComponent<TrackedPoseDriver>();
-            Debug.Log("Not LocalPlayer");
             syncRotation.enabled = false;
             TrackedPoseDriverPlayerCamera.enabled = false;
             TrackedPoseDriverLeftController.enabled = false;
@@ -145,12 +141,10 @@ public class PlayerConfiguration : NetworkBehaviour
         }
     }
 
-
     //Receive player ID and rigidbody
     [ClientRpc]
     public void receivePlayerID(int playerid, int playerRigidbodyid)
     {
-
     }
 
     //Sent player ID and rigidbody

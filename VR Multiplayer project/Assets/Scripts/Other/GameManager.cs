@@ -21,7 +21,6 @@ public class GameManager : NetworkBehaviour
     private int lowObjectsAGM = 0;
     private int lowObjectsNGM = 0;
 
-
     public GameManager()
     {
     }
@@ -105,8 +104,5 @@ public class GameManager : NetworkBehaviour
         {
             NetworkManager.singleton.ServerChangeScene("IntroductionRoom");
         }
-        //on enter true on exit false
     }
-
-
 }

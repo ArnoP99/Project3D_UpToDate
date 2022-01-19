@@ -9,7 +9,7 @@ public class SetClientsReady : NetworkBehaviour
     {
         GameObject nurse = GameObject.FindGameObjectWithTag("Nurse");
         GameObject agressor = GameObject.FindGameObjectWithTag("Agressor");
-        if(nurse == isClient && nurse == isLocalPlayer)
+        if (nurse == isClient && nurse == isLocalPlayer)
         {
             NetworkClient.Ready();
         }
@@ -18,12 +18,9 @@ public class SetClientsReady : NetworkBehaviour
             NetworkClient.Ready();
         }
 
-        if(this == isServer)
+        if (this == isServer)
         {
             NetworkServer.SpawnObjects();
         }
     }
-
-
-
 }

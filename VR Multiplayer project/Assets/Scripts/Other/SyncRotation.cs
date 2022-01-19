@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System;
-
 public class SyncRotation : NetworkBehaviour
 {
     GameObject playerCamera;

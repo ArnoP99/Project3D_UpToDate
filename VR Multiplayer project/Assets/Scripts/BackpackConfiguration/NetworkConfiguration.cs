@@ -4,14 +4,12 @@ using UnityEngine;
 using Mirror;
 using System.IO;
 
-
 public class NetworkConfiguration : MonoBehaviour
 {
     public static settings GameSettings;
     public NetworkManager _networkManager;
     public bool IsServer;
 
-    // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);

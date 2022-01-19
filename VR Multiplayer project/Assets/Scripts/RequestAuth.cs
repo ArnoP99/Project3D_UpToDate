@@ -11,7 +11,6 @@ public class RequestAuth : MonoBehaviour
     private void Start()
     {
         player = this.transform.parent.transform.parent.transform.parent.gameObject;
-        //Debug.Log("ReqAuth Player: " + player);
     }
 
     public void OnTriggerEnter(Collider other)

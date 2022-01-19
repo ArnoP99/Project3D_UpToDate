@@ -34,7 +34,6 @@ public class ConversationElement
 
     public ConversationElement()
     {
-
     }
 
     public ConversationElement(string m_text, ElementState m_elementState, UserState m_userState)
@@ -46,7 +45,7 @@ public class ConversationElement
         textToSpeech = null;
     }
 
-    public ConversationElement(string m_text, ElementState m_elementState, UserState m_userState, AudioClip m_audio , ActiveState m_activeState)
+    public ConversationElement(string m_text, ElementState m_elementState, UserState m_userState, AudioClip m_audio, ActiveState m_activeState)
     {
         text = m_text;
         elementState = m_elementState;

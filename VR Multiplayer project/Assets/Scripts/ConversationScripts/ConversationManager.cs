@@ -16,14 +16,12 @@ public class ConversationManager : NetworkBehaviour
     public GameObject activeParticipant;
     public List<ConversationElement> activeReactionElements = new List<ConversationElement>();
 
-
     public Conversation generalCheckUpCv;
     public Conversation timeForMedicationCv;
     public Conversation helpButtonCv;
 
     public ConversationManager()
     {
-        
     }
 
     public static ConversationManager Instance
@@ -81,14 +79,12 @@ public class ConversationManager : NetworkBehaviour
 
     private void EndConversation(Conversation conversationToEnd)
     {
-
     }
 
     private void UpdateConversation(Conversation conversationToUpdate)
     {
         if (conversationToUpdate.CurrentState == Conversation.ConversationState.Ended)
         {
-
         }
     }
 
@@ -114,7 +110,6 @@ public class ConversationManager : NetworkBehaviour
                 {
                     activeConversation = 3;
                 }
-                Debug.Log(choice);
             }
         }
     }
@@ -133,27 +128,8 @@ public class ConversationManager : NetworkBehaviour
         {
             return helpButtonCv;
         }
-
-        Debug.Log("No active conversation found.");
         return null;
     }
-
-    //[Command(requiresAuthority = false)]
-    //public void CmdStartConversation(GameObject nurse)
-    //{
-    //    Debug.Log("During cmd: " + nurse);
-    //    TargetStartConversation(nurse.GetComponent<NetworkIdentity>().connectionToServer, nurse);
-    //    Debug.Log("After TargetRpc: " + nurse);
-    //}
-
-    //[TargetRpc]
-    //public void TargetStartConversation(NetworkConnection target, GameObject nurse)
-    //{
-    //    Debug.Log("During TargetRpc: " + nurse);
-
-    //}
-
-    //pass choice to server with an int and then from server to agressor
 
     public Conversation GeneralCheckupConversation
     {

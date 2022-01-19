@@ -21,8 +21,6 @@ public class AssignAuth : NetworkBehaviour
 
     Scene scene;
 
-
-
     bool nurseWon = false;
     bool agressorWon = false;
 
@@ -32,22 +30,19 @@ public class AssignAuth : NetworkBehaviour
     }
     public void Update()
     {
-
-
         scene = SceneManager.GetActiveScene();
         if (scene.name == "EndRoom")
         {
             if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server")
             {
                 RpcSendScores(gameManager.GetComponent<GameManager>().NurseScoreGM, gameManager.GetComponent<GameManager>().AgressorScoreGM, gameManager.GetComponent<GameManager>().HighObjectsNGM, gameManager.GetComponent<GameManager>().HighObjectsAGM, gameManager.GetComponent<GameManager>().MediumObjectsNGM, gameManager.GetComponent<GameManager>().MediumObjectsAGM, gameManager.GetComponent<GameManager>().LowObjectsNGM, gameManager.GetComponent<GameManager>().LowObjectsAGM);
-                Debug.Log("This is server");
+
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
                     if (ConversationManager.Instance.GetActiveConversation().activeElement.UState == ConversationElement.UserState.Nurse)
                     {
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");
-
 
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2NurseEndedGood");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2AgressorEndedBad");
@@ -93,7 +88,6 @@ public class AssignAuth : NetworkBehaviour
                     }
                     else
                     {
-
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");
 
@@ -111,11 +105,10 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
-              
+
             }
             if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor")
             {
-                Debug.Log("this is agressor");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
                     if (ConversationManager.Instance.GetActiveConversation().activeElement.UState == ConversationElement.UserState.Nurse)
@@ -133,7 +126,6 @@ public class AssignAuth : NetworkBehaviour
 
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2NurseEndedGood");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2AgressorEndedBad");
-
                     }
                 }
                 else
@@ -185,11 +177,10 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
-           
+
             }
             else if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse")
             {
-                Debug.Log("dit is de nurse");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
                     if (ConversationManager.Instance.GetActiveConversation().activeElement.UState == ConversationElement.UserState.Nurse)
@@ -207,7 +198,6 @@ public class AssignAuth : NetworkBehaviour
 
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2NurseEndedGood");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2AgressorEndedBad");
-
                     }
                 }
                 else
@@ -223,7 +213,6 @@ public class AssignAuth : NetworkBehaviour
 
                     if (nurseWon)
                     {
-
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseWins");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorLoses");
 
@@ -260,9 +249,7 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("TotalScoreAgressor").GetComponent<TextMeshPro>().text = gameManager.GetComponent<GameManager>().AgressorScoreGM.ToString();
                     }
                 }
-          
             }
-
         }
     }
 
@@ -292,15 +279,6 @@ public class AssignAuth : NetworkBehaviour
     // Function where we can check if player isClient and isLocalPlayer and not isServer before executing CmdAssignAuthority
     public void ExecuteCmdAssignAuthority(NetworkIdentity objectID)
     {
-        //Debug.Log("AssAuth Player: " + this);
-
-        //Debug.Log("AssAuth Player == IsClient: " + (this == isClient));
-        //Debug.Log("AssAuth Player == IsServer: " + (this == isServer));
-        //Debug.Log("AssAuth Player == IsLocalPlayer: " + (this == isLocalPlayer));
-
-        //Debug.Log("AssAuth Other GO NetID: " + objectID);
-        //Debug.Log("AssAuth player NetID: " + this.GetComponent<NetworkIdentity>());
-
         if (this == isClient && this != isServer && this == isLocalPlayer)
         {
             CmdAssignAuthority(objectID, this.GetComponent<NetworkIdentity>());
@@ -310,15 +288,6 @@ public class AssignAuth : NetworkBehaviour
     // Function where we can check if player isClient and isLocalPlayer and not isServer before executing CmdRemoveAuthority
     public void ExecuteCmdRemoveAuthority(NetworkIdentity objectID)
     {
-        //Debug.Log("RemAuth Player: " + this);
-
-        //Debug.Log("RemAuth Player == IsClient: " + (this == isClient));
-        //Debug.Log("RemAuth Player == IsServer: " + (this == isServer));
-        //Debug.Log("RemAuth Player == IsLocalPlayer: " + (this == isLocalPlayer));
-
-        //Debug.Log("RemAuth Other GO NetID: " + objectID);
-        //Debug.Log("RemAuth player NetID: " + this.GetComponent<NetworkIdentity>());
-
         if (this == isClient && this != isServer && this == isLocalPlayer)
         {
             CmdRemoveAuthority(objectID);
@@ -329,10 +298,6 @@ public class AssignAuth : NetworkBehaviour
     {
         if (this == isClient && this != isServer && this == isLocalPlayer)
         {
-            Debug.Log("Score: " + score);
-            Debug.Log("High: " + highObject);
-            Debug.Log("Medium: " + mediumObject);
-            Debug.Log("Low: " + lowObject);
             CmdSendPlayerScore(score, player, highObject, mediumObject, lowObject);
         }
     }
@@ -358,14 +323,8 @@ public class AssignAuth : NetworkBehaviour
                 gameManager.GetComponent<GameManager>().HighObjectsNGM = highObjectsN;
                 gameManager.GetComponent<GameManager>().MediumObjectsNGM = mediumObjectsN;
                 gameManager.GetComponent<GameManager>().LowObjectsNGM = lowObjectsN;
-                Debug.Log("Score S N: " + score);
-                Debug.Log("High S N: " + highObjectsN);
-                Debug.Log("Medium S N: " + mediumObjectsN);
-                Debug.Log("Low S N: " + lowObjectsN);
-
 
                 TargetSendNurseScore(agressorID.connectionToClient, nurseScore, highObjectsN, mediumObjectsN, lowObjectsN);
-
             }
             else if (player == 1)
             {
@@ -380,11 +339,6 @@ public class AssignAuth : NetworkBehaviour
                 gameManager.GetComponent<GameManager>().HighObjectsAGM = highObjectsA;
                 gameManager.GetComponent<GameManager>().MediumObjectsAGM = mediumObjectsA;
                 gameManager.GetComponent<GameManager>().LowObjectsAGM = lowObjectsA;
-                Debug.Log("Score S A: " + nurseScore);
-                Debug.Log("High S A: " + highObjectsA);
-                Debug.Log("Medium S A: " + mediumObjectsA);
-                Debug.Log("Low S A: " + lowObjectsA);
-
 
                 TargetSendAgressorScore(nurseID.connectionToClient, agressorScore, highObjectsA, mediumObjectsA, lowObjectsA);
             }
@@ -404,10 +358,6 @@ public class AssignAuth : NetworkBehaviour
         gameManager.GetComponent<GameManager>().HighObjectsNGM = highObjectsN;
         gameManager.GetComponent<GameManager>().MediumObjectsNGM = mediumObjectsN;
         gameManager.GetComponent<GameManager>().LowObjectsNGM = lowObjectsN;
-        Debug.Log("Score N: " + nurseScore);
-        Debug.Log("High N: " + highObjectsN);
-        Debug.Log("Medium N: " + mediumObjectsN);
-        Debug.Log("Low N: " + lowObjectsN);
 
         if (scene.name == "ZiekenhuisKamer")
         {
@@ -433,8 +383,6 @@ public class AssignAuth : NetworkBehaviour
     [TargetRpc]
     public void TargetSendAgressorScore(NetworkConnection playerConnection, int otherPlayerScore, int highObjectA, int mediumObjectA, int lowObjectA)
     {
-
-
         agressorScore = otherPlayerScore;
 
         highObjectsA = highObjectA;
@@ -445,10 +393,6 @@ public class AssignAuth : NetworkBehaviour
         gameManager.GetComponent<GameManager>().HighObjectsAGM = highObjectsA;
         gameManager.GetComponent<GameManager>().MediumObjectsAGM = mediumObjectsA;
         gameManager.GetComponent<GameManager>().LowObjectsAGM = lowObjectsA;
-        Debug.Log("Score A: " + agressorScore);
-        Debug.Log("High A: " + highObjectsA);
-        Debug.Log("Medium A: " + mediumObjectsA);
-        Debug.Log("Low A: " + lowObjectsA);
 
         if (scene.name == "ZiekenhuisKamer")
         {
@@ -496,14 +440,12 @@ public class AssignAuth : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdAssignAuthority(NetworkIdentity objectID, NetworkIdentity playerID)
     {
-        //Debug.Log("Authority Assigned to: " + this);
         objectID.AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
     }
 
     [Command(requiresAuthority = false)]
     public void CmdRemoveAuthority(NetworkIdentity objectID)
     {
-        //Debug.Log("Authority Removed from object.");
         objectID.RemoveClientAuthority();
     }
 
@@ -535,13 +477,11 @@ public class AssignAuth : NetworkBehaviour
             player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
             RpcHandComesBack(1, player);
         }
-
     }
 
     [ClientRpc]
     public void RpcHandGoesPoof(int hand, GameObject player)
     {
-
         if (hand == 0)
         {
             player.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);

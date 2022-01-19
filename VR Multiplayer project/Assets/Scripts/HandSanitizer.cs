@@ -32,9 +32,6 @@ public class HandSanitizer : NetworkBehaviour
 
             handSanitizer.Play();
         }
-
-
-
     }
 
     public void InitConvo()

@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ScoreCounter : NetworkBehaviour
 {
-
     int s_agressorScore = 0;
     int s_nurseScore = 0;
 
@@ -25,8 +24,6 @@ public class ScoreCounter : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        Debug.Log(other.gameObject);
         if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {
             if (other.gameObject.tag == "Low")
@@ -78,13 +75,10 @@ public class ScoreCounter : NetworkBehaviour
                 s_nurseScore += 100;
                 sendScoreToPlayer(1);
             }
-
         }
     }
     private void OnTriggerExit(Collider other)
     {
-
-        Debug.Log(other.gameObject);
         if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {
             if (s_agressorScore > 0)

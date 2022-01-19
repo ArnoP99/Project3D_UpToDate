@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class InitializeConversation : NetworkBehaviour
 {
-
     private void Start()
-    {
-       
+    {       
     }
 }

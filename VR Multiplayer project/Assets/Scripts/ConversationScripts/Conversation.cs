@@ -33,8 +33,7 @@ public class Conversation
     
 
     private void SelectNextElement()
-    {
-        
+    {        
     }
 
     public ConversationElement StartElement

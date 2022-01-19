@@ -7,9 +7,4 @@ using UnityEngine.SceneManagement;
 
 public class SetEvaluationScreen : NetworkBehaviour
 {
-
-
-
-    // Start is called before the first frame update
-   
 }

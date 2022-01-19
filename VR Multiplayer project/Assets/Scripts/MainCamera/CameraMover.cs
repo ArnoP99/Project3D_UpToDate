@@ -62,11 +62,8 @@ public class CameraMover : MonoBehaviour
                 transform.RotateAround(focusTarget, -this.transform.right, moveSpeedInDegrees * Time.deltaTime);
             }
         }
-
-
         
         float scrollDelta = UnityEngine.Input.mouseScrollDelta.y; //Get the value of howmuch is scrolled since the last frame
-
 
         //Move the camera closer of father away from the focus point according to the scrolldelta value
         if(scrollDelta != 0)
@@ -86,8 +83,6 @@ public class CameraMover : MonoBehaviour
 
     public void ChangeFocusTarget(int buttonNumber)
     {
-        Debug.Log(buttonNumber);
-
         //When a button is presed change to that player as new focus point, when the player allready is the focuspoint take the origin as focus point
         if (buttonNumber >= 0)
         {

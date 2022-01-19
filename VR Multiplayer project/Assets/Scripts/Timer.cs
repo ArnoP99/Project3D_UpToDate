@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Timer : NetworkBehaviour
 {
-    float timeRemaining = 60;
+    float timeRemaining = 180;
     bool timerIsRunning = false;
 
     GameObject minutes0;
@@ -26,7 +26,6 @@ public class Timer : NetworkBehaviour
     {
         if (timerIsRunning)
         {
-
             if (timeRemaining > 0)
             {
                 float minutes = Mathf.FloorToInt(timeRemaining / 60);
@@ -67,14 +66,9 @@ public class Timer : NetworkBehaviour
 
     public bool TimerIsRunning
     {
-
         get { return timerIsRunning; }
 
         set { timerIsRunning = value; }
-
     }
-
-
-
 }
 

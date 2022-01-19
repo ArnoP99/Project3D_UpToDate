@@ -8,7 +8,7 @@ public class LoadNextScene : NetworkBehaviour
 {
     bool nurseCheck;
     bool agressorCheck;
-    float timeRemaining = 15; // normaal 70, slechts 10 om te testen !!!! TIJD MEE AANPASSEN IN ARROW ANIMATION SCRIPT !!!!!
+    float timeRemaining = 75; // normaal 70, slechts 10 om te testen !!!! TIJD MEE AANPASSEN IN ARROW ANIMATION SCRIPT !!!!!
 
     Scene scene;
 
@@ -20,8 +20,6 @@ public class LoadNextScene : NetworkBehaviour
         {
             gameManager = GameObject.Find("GameManager");
         }
-
-
     }
 
     private void Update()
@@ -31,14 +29,12 @@ public class LoadNextScene : NetworkBehaviour
         if (scene.name == "IntroductionRoom")
         {
             timeRemaining -= Time.deltaTime;
-
         }
     }
 
 
     public void OnTriggerEnter(Collider other)
     {
-
         if (other.tag == "Nurse")
         {
             if (this == isServer)
@@ -46,8 +42,7 @@ public class LoadNextScene : NetworkBehaviour
                 Debug.Log("NurseOnSpawn");
                 if (scene.name == "Wachtkamer")
                 {
-                    //gameManager.GetComponent<GameManager>().GoToIntroductionRoom(1, 1);
-                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(1, 1);
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(1, 1);
                 }
                 if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
                 {
@@ -62,8 +57,7 @@ public class LoadNextScene : NetworkBehaviour
                 Debug.Log("AgressorOnSpawn");
                 if (scene.name == "Wachtkamer")
                 {
-                    //gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2, 1);
-                    gameManager.GetComponent<GameManager>().GoToHospitalRoom(2, 1);
+                    gameManager.GetComponent<GameManager>().GoToIntroductionRoom(2, 1);
                 }
                 if (scene.name == "IntroductionRoom" && timeRemaining <= 0)
                 {

@@ -22,7 +22,7 @@ public class GameManager : NetworkBehaviour
     private int lowObjectsNGM = 0;
 
 
-    private GameManager()
+    public GameManager()
     {
     }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Timer : NetworkBehaviour
 {
-    float timeRemaining = 300;
+    float timeRemaining = 60;
     bool timerIsRunning = false;
 
     GameObject minutes0;

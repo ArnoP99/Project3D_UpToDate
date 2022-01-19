@@ -32,10 +32,12 @@ public class AssignAuth : NetworkBehaviour
     }
     public void Update()
     {
+      
+
         scene = SceneManager.GetActiveScene();
         if (scene.name == "EndRoom" && setValues == false)
         {
-            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server")
+            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server" && NetworkServer.isLoadingScene == false)
             {
                 NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
                 NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();

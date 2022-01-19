@@ -121,7 +121,7 @@ public class AssignAuth : NetworkBehaviour
                 }
               
             }
-            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && agressorScore != 0)
+            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor" && gameManager.GetComponent<GameManager>().AgressorScoreGM != 0)
             {
                 Debug.Log("this is agressor");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
@@ -195,7 +195,7 @@ public class AssignAuth : NetworkBehaviour
                 }
            
             }
-            else if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse" && nurseScore != 0)
+            else if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse" && gameManager.GetComponent<GameManager>().NurseScoreGM != 0)
             {
                 Debug.Log("dit is de nurse");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)

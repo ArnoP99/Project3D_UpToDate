@@ -26,8 +26,8 @@ public class ScoreCounter : NetworkBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //if (executed == false)
-        //{
+        if (executed == false)
+        {
             Debug.Log(other.gameObject);
             if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
             {
@@ -81,12 +81,12 @@ public class ScoreCounter : NetworkBehaviour
                     sendScoreToPlayer(1);
                 }
             }
-            //executed = true;
-        //}
+            executed = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        //executed = false;
+        executed = false;
         Debug.Log(other.gameObject);
         if (other.gameObject.layer == 9 && this.gameObject.tag == "AgressorBox")
         {

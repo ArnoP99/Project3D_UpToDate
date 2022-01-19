@@ -23,6 +23,9 @@ public class AssignAuth : NetworkBehaviour
     bool agressorWon = false;
     public void Update()
     {
+        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!       " + nurseScore + "      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+
         scene = SceneManager.GetActiveScene();
         if (scene.name == "EndRoom")
         {
@@ -69,10 +72,6 @@ public class AssignAuth : NetworkBehaviour
                         GameObject.Find("NursePlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Nurse");
                         GameObject.Find("AgressorPlane").GetComponent<Renderer>().material = Resources.Load<Material>("Style/EvaluationCardV2Agressor");
 
-                        Debug.Log("Nurse score: " + nurseScore);
-                        Debug.Log("Nurse highscore:" + highObjectsN);
-                        Debug.Log("Nurse mediumscore:" + mediumObjectsN);
-                        Debug.Log("Nurse lowscore:" + lowObjectsN);
 
                         GameObject.Find("HighScoreTextNurse").GetComponent<TextMeshPro>().text = highObjectsN.ToString();
                         GameObject.Find("MediumScoreTextNurse").GetComponent<TextMeshPro>().text = mediumObjectsN.ToString();
@@ -86,10 +85,6 @@ public class AssignAuth : NetworkBehaviour
                     }
                     else
                     {
-                        Debug.Log("Nurse score: " + nurseScore);
-                        Debug.Log("Nurse highscore:" + highObjectsN);
-                        Debug.Log("Nurse mediumscore:" + mediumObjectsN);
-                        Debug.Log("Nurse lowscore:" + lowObjectsN);
 
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");
@@ -145,10 +140,6 @@ public class AssignAuth : NetworkBehaviour
 
                     if (nurseWon)
                     {
-                        Debug.Log("Nurse score: " + nurseScore);
-                        Debug.Log("Nurse highscore:" + highObjectsN);
-                        Debug.Log("Nurse mediumscore:" + mediumObjectsN);
-                        Debug.Log("Nurse lowscore:" + lowObjectsN);
 
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseWins");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorLoses");
@@ -168,10 +159,6 @@ public class AssignAuth : NetworkBehaviour
                     }
                     else
                     {
-                        Debug.Log("Nurse score: " + nurseScore);
-                        Debug.Log("Nurse highscore:" + highObjectsN);
-                        Debug.Log("Nurse mediumscore:" + mediumObjectsN);
-                        Debug.Log("Nurse lowscore:" + lowObjectsN);
 
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");
@@ -227,11 +214,7 @@ public class AssignAuth : NetworkBehaviour
 
                     if (nurseWon)
                     {
-                        Debug.Log("Nurse score: " + nurseScore);
-                        Debug.Log("Nurse highscore:" + highObjectsN);
-                        Debug.Log("Nurse mediumscore:" + mediumObjectsN);
-                        Debug.Log("Nurse lowscore:" + lowObjectsN);
-
+ 
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseWins");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorLoses");
 
@@ -250,10 +233,6 @@ public class AssignAuth : NetworkBehaviour
                     }
                     else
                     {
-                        Debug.Log("Nurse score: " + nurseScore);
-                        Debug.Log("Nurse highscore:" + highObjectsN);
-                        Debug.Log("Nurse mediumscore:" + mediumObjectsN);
-                        Debug.Log("Nurse lowscore:" + lowObjectsN);
 
                         GameObject.Find("NursePicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/NurseLoses");
                         GameObject.Find("AgressorPicture").GetComponent<Renderer>().material = Resources.Load<Material>("Style/AgressorWins");

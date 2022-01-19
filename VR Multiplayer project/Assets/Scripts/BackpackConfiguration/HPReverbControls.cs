@@ -75,9 +75,6 @@ public class HPReverbControls : NetworkBehaviour
 
     private void Update()
     {
-        testcounter += 1;
-        Debug.Log(testcounter);
-
         scene = SceneManager.GetActiveScene();
         if (lastAudioPlayed && this.isServer)
         {

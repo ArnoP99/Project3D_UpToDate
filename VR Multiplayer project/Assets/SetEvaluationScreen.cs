@@ -21,6 +21,8 @@ public class SetEvaluationScreen : NetworkBehaviour
         {
             if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server")
             {
+
+                Debug.Log("This is server");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
                     if (ConversationManager.Instance.GetActiveConversation().activeElement.UState == ConversationElement.UserState.Nurse)
@@ -102,6 +104,7 @@ public class SetEvaluationScreen : NetworkBehaviour
             }
             if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Agressor")
             {
+                Debug.Log("this is agressor");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
                     if (ConversationManager.Instance.GetActiveConversation().activeElement.UState == ConversationElement.UserState.Nurse)
@@ -183,6 +186,7 @@ public class SetEvaluationScreen : NetworkBehaviour
             }
             else if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.transform.GetChild(0).transform.GetChild(2).gameObject.tag == "Nurse")
             {
+                Debug.Log("dit is de nurse");
                 if (gameObject.GetComponent<HPReverbControls>().conversationEnded)
                 {
                     if (ConversationManager.Instance.GetActiveConversation().activeElement.UState == ConversationElement.UserState.Nurse)

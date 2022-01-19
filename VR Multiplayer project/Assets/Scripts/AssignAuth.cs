@@ -98,7 +98,9 @@ public class AssignAuth : NetworkBehaviour
             highObjectsN += highObject;
             mediumObjectsN += mediumObject;
             lowObjectsN += lowObject;
-       
+            Debug.Log("nurse highscore:" + highObjectsN);
+            Debug.Log("nurse mediumscore:" + mediumObjectsN);
+            Debug.Log("nurse lowscore:" + lowObjectsN);
             if (this.isServer)
             {
                 TargetSendNurseScore(agressorID.connectionToClient, score, highObjectsN, mediumObjectsN, lowObjectsN);
@@ -133,6 +135,10 @@ public class AssignAuth : NetworkBehaviour
         highObjectsN = highObjectN;
         mediumObjectsN = mediumObjectN;
         lowObjectsN = lowObjectN;
+        Debug.Log("nurse score: " + nurseScore);
+        Debug.Log("nurse highscore:" + highObjectsN);
+        Debug.Log("nurse mediumscore:" + mediumObjectsN);
+        Debug.Log("nurse lowscore:" + lowObjectsN);
 
         nurseBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
     }
@@ -147,6 +153,10 @@ public class AssignAuth : NetworkBehaviour
         highObjectsA = highObjectA;
         mediumObjectsA = mediumObjectA;
         lowObjectsA = lowObjectA;
+        Debug.Log("Agressor score: " + agressorScore);
+        Debug.Log("agressor highscore:" + highObjectsA);
+        Debug.Log("agressor mediumscore:" + mediumObjectsA);
+        Debug.Log("agressor lowscore:" + lowObjectsA);
 
         agressorBar.GetComponent<ScoreBar>().SetScore(otherPlayerScore);
     }

@@ -23,7 +23,7 @@ public class AssignAuth : NetworkBehaviour
     bool agressorWon = false;
     public void Update()
     {
-        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!       " + nurseScore + "      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        //Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!       " + GameManager.Instance.NurseScoreGM + "      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 
         scene = SceneManager.GetActiveScene();

@@ -17,6 +17,8 @@ public class AssignAuth : NetworkBehaviour
     public int lowObjectsA = 0;
     public int lowObjectsN = 0;
 
+    float timeRemaining = 5;
+
     GameObject gameManager;
 
     Scene scene;
@@ -37,7 +39,8 @@ public class AssignAuth : NetworkBehaviour
         scene = SceneManager.GetActiveScene();
         if (scene.name == "EndRoom" && setValues == false)
         {
-            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server" && NetworkServer.isLoadingScene == false)
+            timeRemaining -= Time.deltaTime;
+            if (gameObject.GetComponent<NetworkIdentity>().isLocalPlayer && gameObject.gameObject.tag == "Server" && timeRemaining <= 0)
             {
                 NetworkIdentity nurseID = GameObject.FindGameObjectWithTag("Nurse").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
                 NetworkIdentity agressorID = GameObject.FindGameObjectWithTag("Agressor").transform.parent.transform.parent.gameObject.GetComponent<NetworkIdentity>();
